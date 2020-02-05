@@ -1,6 +1,13 @@
+// Para incluir uma bibltoeca padrão utiliza-se '<>' entre o nome da bibloteca.
+// A bibloteca 'stdio' é a bibloteca padrão para input e output.
 #include <stdio.h>
 
-int main(){
+// O método main é o primeiro método a ser executado no programa.
+int main() {
+
+    // Utilizando o método printf contido na bibloteca stdio. Ele é utilizado para imprimir uma informação em tela. 
+    // O printf imprime esta informação formatada
     printf("Hello World!");
-    return 0;
+
+    // É padrão retornar alguma informação mesmo quando não é necessário.
 }
