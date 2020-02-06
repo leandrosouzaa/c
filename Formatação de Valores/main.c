@@ -30,7 +30,7 @@ int main() {
     float f = 4.12;
     printf("%f\n", f);
 
-    printf("%i - %f ", x, f)/
+    printf("%i - %f\n", x, f);
 
 
 
