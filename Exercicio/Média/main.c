@@ -3,37 +3,51 @@
 #include <ctype.h>
 #include <string.h>
 
-char *toUpper (char nome[50]) {
-    int len = strlen(nome);
-    int i = 0;
-    char *upper;
-
-    for (i=0; i<len; i++) {
-        upper[i] = toupper(nome[i]);
-    }
-
-    return upper;
-
-}
-
-
 int main() {
 
     printf("Calculadora de Média 1.0 - Leandro Ribeiro de Souza\n\n");
 
-    int n1,n2,n3,n4,n5;
-    float media;
+    float media,n1,n2,n3,n4,n5;
     char nome[50], materia[50];
 
     printf("Aluno: ");
     scanf("%s", nome);
-    printf("%s", toUpper(nome));
 
-    // printf("Matéria: ");
-    // scanf("%s", materia);
+    printf("Matéria: ");
+    scanf("%s", materia);
 
+    system("clear");
 
-    // printf("INFORME AS NOTADOS DO ALUNO NA DISCIPLINA DE %s", toUpper(nome));
+    printf("\nInforme as notas do aluno %s na disciplina de %s.", nome, materia);
+
+    printf("\n\nAvaliação Bimestral(Peso 5): ");
+    scanf("%f", &n5);
+    printf("Seminário Bimestral(Peso 4): ");
+    scanf("%f", &n4);
+    printf("Observação Direta(Peso 3): ");
+    scanf("%f",&n3);
+    printf("Atividades extras(Peso 2): ");
+    scanf("%f", &n2);
+    printf("Lista de Exercícios(Peso 1): ");
+    scanf("%f", &n1);
+
+    system("clear");
+
+    media = ((n1*1)+(n2*2)+(n3*3)+(n4*4)+(n5*5))/15;
+
+    printf("Aluno: %s        Matéria:%s\n\n", nome,materia);
+    printf("Avaliação Bimestral: %f\n",n5);
+    printf("Seminário Bimestral: %f\n",n4);
+    printf("Observação Direta: %f\n",n3);
+    printf("Atividades Extras: %f\n",n2);
+    printf("Lista de Exercícios: %f\n",n1);
+
+    printf("Média Final: %f\n\n", media);
+    if (media <6) {
+        printf("Situação Final: REPROVADO");
+    } else {
+        printf("Situação Final: APROVADO");
+    };
 
 
     return 0;
