@@ -25,7 +25,7 @@ int main() {
 
     printf("Informe o período de duração de seu Investimento(Meses): ");
     scanf("%f", &n);
-    
+
     m = p;
 
     for (x=0; x<n; x++) {
@@ -43,7 +43,7 @@ int main() {
     printf("O lucro bruto obtido foi de R$%f.\n",m);
     printf("Devido aos descontos do IOF(R$%f) o lucro bruto foi reduzido para R$%f.\n",m*0.08, M);
     printf("O lucro liquido foi de R$%f\n", lucro);
-    printf("Foi obtido um lucro de %f%% em relação ao investimento inicial.\n");
+    printf("Foi obtido um lucro de %f%% em relação ao investimento inicial.\n", porcentagem);
     
 
 
