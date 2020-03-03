@@ -36,13 +36,13 @@ int main() {
     media = ((n1*1)+(n2*2)+(n3*3)+(n4*4)+(n5*5))/15;
 
     printf("Aluno: %s        Matéria:%s\n\n", nome,materia);
-    printf("Avaliação Bimestral: %f\n",n5);
-    printf("Seminário Bimestral: %f\n",n4);
-    printf("Observação Direta: %f\n",n3);
-    printf("Atividades Extras: %f\n",n2);
-    printf("Lista de Exercícios: %f\n",n1);
+    printf("Avaliação Bimestral:       %12.2f\n",n5);
+    printf("Seminário Bimestral:       %12.2f\n",n4);
+    printf("Observação Direta:         %12.2f\n",n3);
+    printf("Atividades Extras:         %12.2f\n",n2);
+    printf("Lista de Exercícios:       %12.2f\n",n1);
 
-    printf("Média Final: %f\n\n", media);
+    printf("Média Final: %.2f\n\n", media);
     if (media <6) {
         printf("Situação Final: REPROVADO");
     } else {
