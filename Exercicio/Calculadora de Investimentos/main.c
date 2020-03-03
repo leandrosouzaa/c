@@ -20,7 +20,7 @@ int main() {
     printf("Informe o valor do seu investimento: R$");
     scanf("%f", &p);
 
-    printf("Informe a taxa de juros(): ");
+    printf("Informe a taxa de juros(%%): ");
     scanf("%f", &i);
 
     printf("Informe o período de duração de seu Investimento(Meses): ");
