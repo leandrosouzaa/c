@@ -7,6 +7,6 @@
     printf("Você já tomou café?\n");
     printf("\n\nA solução não existe!\nNão insista!");
 
-     getchar();
-     return 0;
+    getchar();
+    return 0;
  }
