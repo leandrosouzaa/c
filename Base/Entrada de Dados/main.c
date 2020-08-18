@@ -9,7 +9,7 @@ int main() {
         Para ler 2 valores e salvar em 2 variáveis:
             scanf("%tipo1%tipo2", &var1, &var2);
     */
-   int x,y = 0;
+    int x,y = 0;
     printf("Por favor, informe um número:\n");
     scanf("%i",&x);
     printf("O número digitado foi %i\n", x);
