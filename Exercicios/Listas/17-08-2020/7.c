@@ -15,7 +15,7 @@ int main() {
    printf("Informe o total de camisetas GRANDES compradas: ");
    scanf("%i", &qtdG);
 
-   valorTotal = qtdP * 15 + qtdM * 22 + qtdP * 25;
+   valorTotal = qtdP * 15 + qtdM * 22 + qtdG * 25;
 
    printf("\nValor total arrecadado nessa venda: R$%g.", valorTotal);
 
