@@ -20,5 +20,4 @@ int main() {
    printf("\nValor total de litros vendidos: %gL.", litrosTotal);
 
    return 0;
-   return 0;
 }
