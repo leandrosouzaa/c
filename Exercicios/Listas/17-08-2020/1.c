@@ -3,8 +3,8 @@
 int main() {
    printf("Padaria Hotpão - Leandro Ribeiro de Souza \n\n");
 
-   int qtdBroa, qtdPao;
-   float valorTotal, valorPoupado, valorFinal, porcentagem;
+   int qtdBroa, qtdPao=0;
+   float valorTotal, valorPoupado, valorFinal, porcentagem=0;
 
    printf("Informe a quantidade de Broas vendidas: ");
    scanf("%i", &qtdBroa);
@@ -19,7 +19,7 @@ int main() {
    valorPoupado = (valorTotal * (porcentagem/100));
    valorFinal = (valorTotal - valorPoupado);
 
-   printf("\nQuantidade de Broas Vendidas: %i\n.", qtdBroa);
+   printf("\nQuantidade de Broas Vendidas: %i.\n", qtdBroa);
    printf("Quantidade de Pães Vendidos: %i.\n", qtdBroa);
    printf("Total arrecadado com as vendas: R$%g.\n", valorTotal);
    printf("Valor poupado (%g%%): R$%g.\n", porcentagem, valorPoupado);
