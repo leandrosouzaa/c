@@ -15,9 +15,9 @@ int main() {
    printf("Informe a porcentagem das vendas que deseja poupar: ");
    scanf("%f", &porcentagem);
 
-   valorTotal = (qtdBroa*4.50 + qtdPao*0.6);
-   valorPoupado = (valorTotal * (porcentagem/100));
-   valorFinal = (valorTotal - valorPoupado);
+   valorTotal = qtdBroa*4.50 + qtdPao*0.6;
+   valorPoupado = valorTotal * (porcentagem/100);
+   valorFinal = valorTotal - valorPoupado;
 
    printf("\nQuantidade de Broas Vendidas: %i.\n", qtdBroa);
    printf("Quantidade de Pães Vendidos: %i.\n", qtdBroa);
