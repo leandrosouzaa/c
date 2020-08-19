@@ -12,8 +12,8 @@ int main() {
    valorSemCentavos = valorDaCorrida / 3;
    valorComCentavos = ((valorDaCorrida / 3) - valorSemCentavos) * 2 + valorDaCorrida / 3;
 
-   printf("Valor a ser pago pelo dois primeiros: R$%i\n", valorSemCentavos);
-   printf("Valor a ser pago pelo ultimo: R$%g\n", valorComCentavos);
+   printf("\nValor a ser pago pelo dois primeiros: R$%i\n", valorSemCentavos);
+   printf("Valor a ser pago pelo ultimo: R$%g", valorComCentavos);
 
    return 0;
 }
