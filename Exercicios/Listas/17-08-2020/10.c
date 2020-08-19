@@ -16,10 +16,10 @@ int main() {
 
    media = (avaliacao * 6 + trabalho * 2 + simulado * 2)/10;
 
-   printf("\nAvaliação Bimestral: %g.\n", avaliacao);
-   printf("Trabalho Prático: %g.\n", trabalho);
-   printf("Simulado: %g.\n", simulado);
-   printf("Média Final: %g.", media);
+   printf("\nAvaliação Bimestral: %f.\n", avaliacao);
+   printf("Trabalho Prático: %f.\n", trabalho);
+   printf("Simulado: %f.\n", simulado);
+   printf("Média Final: %f.", media);
 
    return 0;
 }

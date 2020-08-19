@@ -14,9 +14,9 @@ int main() {
    qHamburguer = qtdSanduiche * 0.1;
 
    printf("\nQuantidade de ingredientes necessários para o recheio de %i sanduíches:\n", qtdSanduiche);
-   printf("Queijo: %gkg\n",qQueijo );
-   printf("Presunto: %gkg\n",qPresunto );
-   printf("Hamburguer: %gkg\n",qHamburguer );
+   printf("Queijo: %fkg\n",qQueijo );
+   printf("Presunto: %fkg\n",qPresunto );
+   printf("Hamburguer: %fkg\n",qHamburguer );
 
    return 0;
 }

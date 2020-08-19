@@ -17,7 +17,7 @@ int main() {
 
    litrosTotal = qtdLata * 0.35 + qtdGarrafaP * 0.6 + qtdGarrafaG * 2;
 
-   printf("\nValor total de litros vendidos: %gL.", litrosTotal);
+   printf("\nValor total de litros vendidos: %fL.", litrosTotal);
 
    return 0;
 }

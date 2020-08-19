@@ -15,9 +15,9 @@ int main() {
    valorTotal = qtdKw * valorKw;
    valorFinal = valorTotal - (valorTotal / 10);
 
-   printf("\nValor do KW: R$%g.\n", valorKw);
-   printf("Valor Total da conta: R$%g.\n", valorTotal);
-   printf("Valor com desconto (10%%): R$%g.", valorFinal);
+   printf("\nValor do KW: R$%f.\n", valorKw);
+   printf("Valor Total da conta: R$%f.\n", valorTotal);
+   printf("Valor com desconto (10%%): R$%f.", valorFinal);
 
    return 0;
 }

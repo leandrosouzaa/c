@@ -23,12 +23,12 @@ int main() {
    valorFinal = valorTotal - valorDesconto;
 
    printf("\nQuantidade de Diárias: %i.\n",qtdDiarias);
-   printf("Valor da diária: R$%g.\n", valorDiaria);
-   printf("Porcentagem de desconto: %g%%.\n", desconto);
-   printf("Gastos diversos: R$%g\n.", gastosDiversos);
-   printf("Valor Total: R$%g.\n", valorTotal);
-   printf("Valor de Desconto: R$%g.\n", valorDesconto);
-   printf("Valor Final a ser pago: R$%g.\n", valorFinal);
+   printf("Valor da diária: R$%f.\n", valorDiaria);
+   printf("Porcentagem de desconto: %f%%.\n", desconto);
+   printf("Gastos diversos: R$%f\n.", gastosDiversos);
+   printf("Valor Total: R$%f.\n", valorTotal);
+   printf("Valor de Desconto: R$%f.\n", valorDesconto);
+   printf("Valor Final a ser pago: R$%f.\n", valorFinal);
 
    return 0;
 }

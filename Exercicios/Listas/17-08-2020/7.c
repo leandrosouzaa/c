@@ -17,7 +17,7 @@ int main() {
 
    valorTotal = qtdP * 15 + qtdM * 22 + qtdG * 25;
 
-   printf("\nValor total arrecadado nessa venda: R$%g.", valorTotal);
+   printf("\nValor total arrecadado nessa venda: R$%f.", valorTotal);
 
    return 0;
 }

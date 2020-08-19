@@ -13,10 +13,10 @@ int main() {
 
    salarioTotal = salarioMinimo + (totalVendas * 0.04);
 
-   printf("\nSalário Mínimo: R$%g.\n", salarioMinimo);
-   printf("Total de Vendas: R$%g.\n", totalVendas);
-   printf("Bônus de vendas: R$%g.\n", salarioMinimo * 0.04);
-   printf("Salário Total: R$%g.", salarioTotal);
+   printf("\nSalário Mínimo: R$%f.\n", salarioMinimo);
+   printf("Total de Vendas: R$%f.\n", totalVendas);
+   printf("Bônus de vendas: R$%f.\n", salarioMinimo * 0.04);
+   printf("Salário Total: R$%f.", salarioTotal);
 
    return 0;
 }
