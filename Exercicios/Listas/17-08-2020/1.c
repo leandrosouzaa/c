@@ -21,9 +21,9 @@ int main() {
 
    printf("\nQuantidade de Broas Vendidas: %i.\n", qtdBroa);
    printf("Quantidade de Pães Vendidos: %i.\n", qtdBroa);
-   printf("Total arrecadado com as vendas: R$%f.\n", valorTotal);
-   printf("Valor poupado (%f%%): R$%f.\n", porcentagem, valorPoupado);
-   printf("Valor restado em Caixa: R$%f.", valorFinal);
+   printf("Total arrecadado com as vendas: R$%0.2f.\n", valorTotal);
+   printf("Valor poupado (%0.2f%%): R$%0.2f.\n", porcentagem, valorPoupado);
+   printf("Valor restado em Caixa: R$%0.2f.", valorFinal);
 
    return 0;
 }

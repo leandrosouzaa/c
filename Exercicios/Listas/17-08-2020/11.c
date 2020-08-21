@@ -12,7 +12,7 @@ int main() {
    totalBatidas = idade * 365.25 * 24 * 60 * 60;
 
    printf("\nIdade: %i.", idade);
-   printf("Total de Batidas: %f.", totalBatidas); 
+   printf("Total de Batidas: %0.2f.", totalBatidas); 
 
    return 0;
 }
