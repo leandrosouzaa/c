@@ -3,7 +3,7 @@
 int main() {
    printf("Login - Leandro Ribeiro de Souza \n\n");
 
-   int senha = 0;
+   int senha;
 
    printf("Informe a senha (Somente números): ");
    scanf("%i", &senha);

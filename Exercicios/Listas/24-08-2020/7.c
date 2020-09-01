@@ -3,7 +3,7 @@
 int main() {
    printf("Peso Ideal - Leandro Ribeiro de Souza \n\n");
 
-   float altura, peso = 0;
+   float altura, peso;
    char sexo;
 
    printf("Informe sua Altura (cm): ");

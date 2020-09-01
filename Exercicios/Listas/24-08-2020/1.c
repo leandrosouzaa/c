@@ -3,7 +3,7 @@
 int main() {
    printf("Números Pares - Leandro Ribeiro de Souza \n\n");
 
-   int num = 0;
+   int num;
 
    printf("Informe um número inteiro: ");
    scanf("%i", &num);

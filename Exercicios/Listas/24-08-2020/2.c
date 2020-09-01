@@ -3,7 +3,7 @@
 int main() {
    printf("Maior número - Leandro Ribeiro de Souza \n\n");
 
-   float num1, num2 = 0;
+   float num1, num2;
 
    printf("Informe um número: ");
    scanf("%f", &num1);

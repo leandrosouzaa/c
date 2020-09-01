@@ -3,7 +3,7 @@
 int main() {
    printf("Maio número (Troca de Valores) - Leandro Ribeiro de Souza \n\n");
 
-   float a,b, temp = 0;
+   float a,b, temp;
 
    printf("Informe um valor para A: ");
    scanf("%f", &a);

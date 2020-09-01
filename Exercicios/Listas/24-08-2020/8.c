@@ -3,7 +3,7 @@
 int main() {
    printf("Cálculo de Média - Leandro Ribeiro de Souza \n\n");
 
-   float n1,n2,n3,media = 0;
+   float n1,n2,n3,media;
 
    printf("Informe a nota 1: ");
    scanf("%f", &n1);

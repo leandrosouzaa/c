@@ -3,7 +3,7 @@
 int main() {
    printf("Calculadora de Conceito - Leandro Ribeiro de Souza \n\n");
 
-   float media, avaliacao, trabalho, simulado = 0;
+   float media, avaliacao, trabalho, simulado;
 
    printf("Nota do Trabalho de Laboratório: ");
    scanf("%f", &trabalho);

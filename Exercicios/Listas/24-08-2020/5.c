@@ -3,7 +3,7 @@
 int main() {
    printf("Reajuste Salárial - Leandro Ribeiro de Souza \n\n");
 
-   float salario, reajuste, salarioReajustado, taxaReajuste = 0;
+   float salario, reajuste, salarioReajustado, taxaReajuste;
 
    printf("Informe o Salário do Funcionário: R$");
    scanf("%f", &salario);

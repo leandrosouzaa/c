@@ -3,7 +3,7 @@
 int main() {
    printf("Categoria - Leandro Ribeiro de Souza \n\n");
 
-   int idade = 0;
+   int idade;
 
    printf("Informe a idade do Competidor: ");
    scanf("%i", &idade);
