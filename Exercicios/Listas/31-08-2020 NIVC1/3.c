@@ -3,7 +3,7 @@
 int main() {
    printf("Cálculo de Média - Leandro Ribeiro de Souza \n\n");
 
-   float notas[3], media;
+   float notas[3], media, total;
    int i;
 
    for (i=0; i<3; i++) {
@@ -12,12 +12,11 @@ int main() {
       if (notas[i] < 0 || notas[i] > 10) {
          printf("\nNota inválida, finalizando Programa.");
          return 0;
-      }
-   }
-
-   for (i--; i>=0; i--) {
-      media = media + notas[i]/3;
+      };
+      total = total + notas[i];
    };
+
+   media = total / 3;
 
    printf("\nMédia do Aluno: %0.2f.\n", media);
 
