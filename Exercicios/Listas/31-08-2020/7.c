@@ -15,11 +15,7 @@ int main() {
    total = num;
 
    for (i=1; i < 20; i++) {
-<<<<<<< HEAD
       printf("Informe outro número: ");
-=======
-      printf("\nInforme um número: ");
->>>>>>> 982dc6a73d85222e4c5915bf9d36bdd03a14a5dc
       scanf("%f", &num);
 
       if (num < menorValor) {
