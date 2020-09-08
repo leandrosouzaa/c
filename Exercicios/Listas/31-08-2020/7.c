@@ -23,11 +23,11 @@ int main() {
       } else {
          if (num > maiorValor) {
             maiorValor = num;
-         };
-      };
+         }
+      }
 
       total = total + num;
-   };
+   }
 
    media = total / 20;
 

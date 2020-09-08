@@ -7,11 +7,11 @@ int main() {
 
    for(i=0; i<=30; i+=2) {
       printf("%i\n", i);
-   };
+   }
 
    for(i=29; i > 0; i--) {
       printf("%i\n", i);
-   };
+   }
 
    return 0;
 }

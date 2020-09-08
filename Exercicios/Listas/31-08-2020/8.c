@@ -16,19 +16,13 @@ int main() {
 
       media = (n1+n2) / 2;
 
-      if (media < 0 || media > 10) {
-         printf("Média inválida, finalizando o programa...");
-
-         return 0;
-      };
-
       total = total + media;
       if (media < 6) {
          reprovados++;
       } else {
          aprovados++;
-      };
-   };
+      }
+   }
 
    mediaGlobal = total / 10;
    percentualAprovados = 10 * aprovados;

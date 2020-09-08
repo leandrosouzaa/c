@@ -12,11 +12,11 @@ int main() {
       printf("Não existe fatorial de número negativo.");
 
       return 0;
-   };
+   }
 
    for(i = num; i > 0; i--) {
       total = i * total;
-   };
+   }
 
    printf("\nO resultado de %i! é %i.",num, total);
 

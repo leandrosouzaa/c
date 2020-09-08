@@ -19,8 +19,8 @@ int main() {
          if (num == 0) {
             qtdNulos++;
          };
-      };
-   };
+      }
+   }
 
    printf("\nTotal de números informados: %i.\n", qtdNums);
    printf("Total de números positivos: %i.\n", qtdNumsPositivos);
