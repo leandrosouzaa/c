@@ -12,11 +12,11 @@ int main() {
    scanf("%i", &num2);
 
    if (num1 < num2) {
-      for(i=num1; i <= num2; i++) {
+      for(i=num1 + 1; i < num2; i++) {
          printf("%i\n", i);
       }
    } else {
-      for(i=num2; i <= num1; i++) {
+      for(i=num2 + 1; i < num1; i++) {
          printf("%i\n", i);
       }
    }
