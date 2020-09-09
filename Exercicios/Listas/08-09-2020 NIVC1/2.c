@@ -1,19 +1,20 @@
 #include <stdio.h>
 
 int main() {
-   printf("Vinhos - Leandro Ribeiro de Souza \n\n");
+   printf("Pessoas - Leandro Ribeiro de Souza \n\n");
 
    char sexo;
-   int soma = 0, idade = 0, qtdPessoas = 0, qtdHomens = 0, qtdHomensAcima60 = 0, qtdMulheres = 0, qtdMlheresAte20 = 0, qtdPessoasEntre30e60 = 0, qtdOutros = 0;
+   int idade = 0, soma = 0, qtdPessoas = 0, qtdHomens = 0, qtdHomensAcima60 = 0, qtdMulheres = 0, qtdMlheresAte20 = 0, qtdPessoasEntre30e60 = 0, qtdOutros = 0;
    float media;
    while (idade >= 0 && idade < 100) {
-      printf("\nInforme o sexo da pessoa (M ou F): ");
+      printf("\n\nInforme o sexo da pessoa (M ou F): ");
       scanf(" %c", &sexo);
 
       printf("Informe idade da pessoa: ");
       scanf("%i", &idade);
 
       if (idade >= 0 && idade < 100) {
+         qtdPessoas++;
          soma = soma + idade;
          if (sexo == 'M') {
             qtdHomens++;
@@ -36,7 +37,10 @@ int main() {
             qtdPessoasEntre30e60++;
          }
       }
+
    }
+
+   media = soma / qtdPessoas;
 
    printf("\nRELATÓRIO FINAL\n");
    printf("Total de pessoas: %i.\n", qtdPessoas);
@@ -46,6 +50,7 @@ int main() {
    printf("Total de homens acima de 60 anos: %i.\n", qtdHomensAcima60);
    printf("Total de mulheres até 20 anos: %i.\n", qtdMlheresAte20);
    printf("Total de pessoas entre 30 e 60 anos: %i.\n", qtdPessoasEntre30e60);
+   printf("Média das idades informadas: %f.", media);
 
    return 0;
 }
