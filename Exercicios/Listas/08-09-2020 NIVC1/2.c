@@ -50,11 +50,7 @@ int main() {
    printf("Total de homens acima de 60 anos: %i.\n", qtdHomensAcima60);
    printf("Total de mulheres até 20 anos: %i.\n", qtdMlheresAte20);
    printf("Total de pessoas entre 30 e 60 anos: %i.\n", qtdPessoasEntre30e60);
-<<<<<<< HEAD:Exercicios/Listas/08-09-2020 NIVC1/2.c
    printf("Média das idades informadas: %0.2f.", media);
-=======
-   printf("Média das idades informadas: %f.", media);
->>>>>>> fa2f703e54d45bbeea2d20d75e380027fc3a62b4:Exercicios/Listas/08-09-2020/2.c
 
    return 0;
 }
