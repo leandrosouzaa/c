@@ -5,7 +5,7 @@
 int main() {
    printf("Adivinhador - Leandro Ribeiro de Souza \n\n");
 
-   int n1, n2, sorteado, qtdTentavas = 1;
+   int n1, n2, sorteado1, sorteado2, qtdTentavas = 1;
 
    srand(time(NULL));
 
@@ -23,18 +23,19 @@ int main() {
    }
 
    do {
-      sorteado = rand()%75 + 1;
+      sorteado1 = rand()%75 + 1;
+      sorteado2 = rand()%75 + 1;
+
       printf("\nTentativa número: %i.\n", qtdTentavas);
-      printf("Número Gerado: %i.\n", sorteado);
+      printf("1° Número Gerado: %i.\n", sorteado1);
+      printf("2 °Número Gerado: %i.\n", sorteado2);
+
       qtdTentavas++;
-   } while (sorteado != n1 && sorteado != n2);
+   } while (sorteado1 != n1 || sorteado2 != n2);
 
    printf("\nTotal de Tentavias: %i.\n", qtdTentavas);
-   if (sorteado == n1) {
-      printf("Número adivinhado: %i.\n", n1);
-   } else {
-      printf("Número adivinhado: %i.\n", n1);
-   }
+   printf("1° Número adivinhado: %i.\n", sorteado1);
+   printf("2° Número adivinhado: %i.\n", sorteado2);
 
    return 0;
 }
