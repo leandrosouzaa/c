@@ -19,25 +19,25 @@ int main() {
       totalTemp = qtdFichas2 * 2 + qtdFichas5 * 5;
       totalCaixa+= totalTemp;
 
-      printf("Total da venda: R$%0.2f.\n", totalTemp);
+      printf("Valor da venda atual: R$%0.2f.\n", totalTemp);
       printf("Total das vendas: R$%0.2f.\n", totalCaixa);
 
-      printf("Existem mais pessoas na fila (S para sim e N para não)?: ");
+      printf("\nExistem mais pessoas na fila (S para sim e N para não)?: ");
       scanf(" %c", &continua);
       printf("\n");
       qtdClientes++;
 
    } while (continua == 'S');
 
-   valorTotalFichas2 = qtdFichas2 * 2;
-   valorTotalFichas5 = qtdFichas5 * 5;
+   valorTotalFichas2 = totalFichas2 * 2;
+   valorTotalFichas5 = totalFichas5 * 5;
 
    printf("RELATÓRIO DE VENDAS\n");
    printf("Total de clientes: %i.\n", qtdClientes);
-   printf("Total de fichas de R$2.00 vendidas: %i.\n", qtdFichas2);
-   printf("Total vendido em fichas de R$2.00: R$%0.2f.\n", valorTotalFichas2);
-   printf("Total de fichas de R$5.00 vendidas: %i\n", qtdFichas5);
-   printf("Total vendido em fichas de R$5.00: R$%0.2f.\n", valorTotalFichas5);
+   printf("Quantidade de fichas de R$2.00 vendidas: %i.\n", totalFichas2);
+   printf("Valor vendido em fichas de R$2.00: R$%0.2f.\n", valorTotalFichas2);
+   printf("Quantidade de fichas de R$5.00 vendidas: %i\n", totalFichas5);
+   printf("Valor vendido em fichas de R$5.00: R$%0.2f.\n", valorTotalFichas5);
    printf("Valor total de Vendas: R$%0.2f.\n", totalCaixa);
 
    return 0;

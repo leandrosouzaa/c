@@ -31,7 +31,12 @@ int main() {
    printf("\nRESULTADO FINAL\n");
    printf("Total de Rodadas: %i.\n", qtdRodadas);
    printf("Pontos do Jogador 1: %i.\n", jogador1);
-   printf("Pontos do Jogador 2: %i.", jogador2);
+   printf("Pontos do Jogador 2: %i.\n", jogador2);
+   if (jogador1 > jogador2) {
+      printf("GANHADOR: Jogador 1.");
+   } else {
+      printf("GANHADOR: Jogador 2.");
+   }
 
    return 0;
 }

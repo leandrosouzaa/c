@@ -3,7 +3,7 @@
 int main() {
    printf("Caixa de Mercado - Leandro Ribeiro de Souza \n\n");
 
-   float valorProduto, total;
+   float valorProduto, total = 0;
    int qtdProdutos = -1;
 
    do {
@@ -11,10 +11,10 @@ int main() {
       printf("Informe o valor do Produto: R$");
       scanf("%f", &valorProduto);
 
-      total = valorProduto + total;
-      printf("Atual valor da compra: %0.2f\n\n", total);
-
+      total+= valorProduto;
       qtdProdutos++;
+
+      printf("Atual valor da compra: %0.2f\n\n", total);
    } while (valorProduto > 0);
 
    printf("EXTRATO DA COMPRA\n");

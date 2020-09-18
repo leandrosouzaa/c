@@ -18,24 +18,23 @@ int main() {
 
       printf("\n\n");
 
+      totalVotos++;
+
       switch (voto) {
          case 83:
             votosAlibaba++;
-            totalVotos++;
             break;
          case 93:
             votosAlcapone++;
-            totalVotos++;
             break;
          case 00:
             votosBrancos++;
-            totalVotos++;
             break;
          case -1:
+            totalVotos--;
             break;      
          default:
             votosNulos++;
-            totalVotos++;
             break;
       }
    } while (voto != -1);
