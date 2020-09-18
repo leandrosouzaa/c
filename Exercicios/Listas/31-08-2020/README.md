@@ -1,3 +1,5 @@
+# Lista da Semana 31/08/2020
+
 - [x] 1. Fazer um programa em linguagem C capaz de imprimir de 0 a 30 de dois em dois e depois imprimir de 29 até 1 de um em um.
   0 2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1
 - [x] 2. Fazer um programa em linguagem C capaz de imprimir o quadrado e o cubo dos números de 1 ate 20.
