@@ -17,14 +17,14 @@ int main() {
    //Loop para Calculo
    for (i=1; i < 5; i++) {
       if (nums[i] > maior) {
-         maior = nums[1];
+         maior = nums[i];
       };
 
-      if (nums[i] < menor) {
-         maior= nums[1];
+      if (menor > nums[i]) {
+         menor= nums[i];
       }
 
-      soma+= nums[1];
+      soma+= nums[i];
    }
 
    media = soma / 5;
@@ -34,6 +34,11 @@ int main() {
    printf("Menor Elemento: %0.2f.\n", menor);
    printf("Soma dos Elementos: %0.2f.\n", soma);
    printf("Média dos Elementos: %0.2f.\n", media);
+
+   printf("\nELEMENTOS DO VETOR\n");
+   for (i=0; i < 5; i++) {
+      printf("Posição %i: %0.2f.\n", i, nums[i]);
+   }
 
    return 0;
 }
