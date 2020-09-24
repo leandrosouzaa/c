@@ -6,7 +6,7 @@ int main() {
    int i, nums[10], soma = 0, maiorI = 0;
 
    for (i=0; i < 10; i++) {
-      printf("Informe um número para a posição %i do: ", i);
+      printf("Informe um número para a posição %i do Vetor: ", i);
       scanf("%i", &nums[i]);
    }
 

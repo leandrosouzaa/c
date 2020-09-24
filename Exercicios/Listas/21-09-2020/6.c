@@ -20,19 +20,12 @@ int main() {
    printf("\nInforme um Prontuário para busca: PE");
    scanf("%i", &busca);
 
-   // while (i <= tl && prontuarios[buscaIndex] != buscaIndex) {
-      // printf("%i", prontuarios[i]);
-      // if (prontuarios[i] == busca) {
-         // buscaIndex = i;
-         // printf("caiu e saiu");
-      // }
-      // i++;
-   // }
-
-   for (i = 0; (i <= tl && prontuarios[buscaIndex] != busca); i++) {
-      if (prontuarios[i] == busca) {  
+   i=0;
+   while (i < tl && prontuarios[buscaIndex] != busca) {
+      if (prontuarios[i] == busca) {
          buscaIndex = i;
-      };
+      }
+      i++;
    }
 
    if (buscaIndex == -1) {
@@ -45,9 +38,13 @@ int main() {
    scanf("%i", &vagas);
 
    printf("\nLISTA DE SELECIONADOS\n");
-   for (i=0; (i < tl && i < vagas); i++) {
+
+   i = 0;
+   while (i < tl && i < vagas) {
       printf("%iº: PE%i.\n", i+1, prontuarios[i]);
+      i++;
    }
+   
 
    printf("\nCLASSIFICAÇÃO GERAL\n");
    for (i=0; i < tl; i++) {

@@ -8,7 +8,7 @@ int main() {
 
    //Loop para leitura
    for (i=0; i < 5; i++) {
-      printf("%i: Informe um número: ", i + 1);
+      printf("Informe um número para a posição %i do: ", i);
       scanf("%f", &nums[i]);
    }
 

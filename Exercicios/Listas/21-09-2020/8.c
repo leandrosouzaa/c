@@ -27,8 +27,10 @@ int main() {
    printf("Quantidade de Palavras: %i.\n", qtdPalavras + 1);
    printf("Quantidade de Espaços: %i.\n", qtdEspacos);
    printf("Primeiro Nome: ");
-   for(i=0;(i < tl && nome[i] != ' ');i++) {
+   i = 0;
+   while (i < tl && nome[i] != ' ') {
       printf("%c", nome[i]);
+      i++;
    }
 
    return 0;

@@ -13,7 +13,7 @@ int main() {
          printf("Número inválido, informe novamente...\n");
          i--;
       }
-   };
+   }
 
    for (i = 8; i >= 0; i--) {
       numeros[i] = numeros[i - 1];
@@ -33,7 +33,7 @@ int main() {
          qtdOcorrencias++;
       }
    }
-   printf("Quantidade de Ocorrência do número %i no Vetor: %i.",ocorrencia, qtdOcorrencias);
+   printf("Quantidade de Ocorrências do número %i no Vetor: %i.",ocorrencia, qtdOcorrencias);
 
    return 0;
 }
