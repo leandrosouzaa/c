@@ -4,24 +4,24 @@
 int main() {
    printf("Auxílio Permanência - Leandro Ribeiro de Souza \n\n");
 
-   int i = 0, tl = 0, vagas, prontuarios[256], busca, buscaIndex = -1;
+   int i = 0, vagas, n, busca, buscaIndex = -1;
    char status;
 
-   do {
-      printf("\nProntuário do colocado em %iº na lista de prioridade: PE", tl + 1);
-      scanf("%i", &prontuarios[tl]);
-      
-      tl++;
+   printf("Informe a quantidade de Alunos: ");
+   scanf("%d", &n);
 
-      printf("Existem mais alunos? ");
-      scanf(" %c", &status);
-   } while (status == 's' && tl < 100);
+   int prontuarios[n];
+
+   for (i=0; i < n; i++) {
+      printf("\nProntuário do colocado em %iº na lista de prioridade: PE", i + 1);
+      scanf("%i", &prontuarios[i]);
+   }
 
    printf("\nInforme um Prontuário para busca: PE");
    scanf("%i", &busca);
 
    i=0;
-   while (i < tl && prontuarios[buscaIndex] != busca) {
+   while (i < n && prontuarios[buscaIndex] != busca) {
       if (prontuarios[i] == busca) {
          buscaIndex = i;
       }
@@ -40,14 +40,14 @@ int main() {
    printf("\nLISTA DE SELECIONADOS\n");
 
    i = 0;
-   while (i < tl && i < vagas) {
+   while (i < n && i < vagas) {
       printf("%iº: PE%i.\n", i+1, prontuarios[i]);
       i++;
    }
    
 
    printf("\nCLASSIFICAÇÃO GERAL\n");
-   for (i=0; i < tl; i++) {
+   for (i=0; i < n; i++) {
       printf("%iº: PE%i.\n", i+1, prontuarios[i]);
    }
 
