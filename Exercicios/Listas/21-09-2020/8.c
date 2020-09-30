@@ -4,7 +4,7 @@ int main() {
    printf("Nome Completo - Leandro Ribeiro de Souza \n\n");
 
    char nome[30];
-   int tl = 0, qtdPalavras = 0, qtdEspacos = 0, i;
+   int tl = 0, qtdPalavras = 1, qtdLetras = 0, i;
 
    printf("Informe um nome: ");
    do {
@@ -15,8 +15,8 @@ int main() {
    }
 
    for (i = 0; i < tl; i++) {
-      if ((nome[i] == ' ' && nome[i + i] != ' ') && nome[i - 1] != ' ') {
-         qtdEspacos++;
+      if (nome[i] != ' ') {
+         qtdLetras++;
       }
 
       if ((nome[i] != ' ' && nome[i + 1] == ' ')) {
@@ -25,8 +25,8 @@ int main() {
    }
    
    printf("\nRELATÓRIO FINAL\n");
-   printf("Quantidade de Palavras: %i.\n", qtdPalavras + 1);
-   printf("Quantidade de Espaços: %i.\n", qtdEspacos);
+   printf("Quantidade de Palavras: %i.\n", qtdPalavras);
+   printf("Quantidade de Espaços: %i.\n", qtdLetras);
    printf("Nome completo: ");
    for (i=0; i < tl; i++) {
       printf("%c", nome[i]);

@@ -35,7 +35,7 @@ int main() {
             printf("\nJuntando Vetores...\n");
             for (i=0; i < 5; i++) {
                c[i] = a[i];
-               c[9-i] = b[i];
+               c[5+i] = b[i];
             }
             printf("Junção concluída!\n");
             break;
@@ -69,7 +69,8 @@ int main() {
 
             printf("\nRESULTADO\n");
             for (i=0; i < 10; i++) {
-               printf("%i x %i = %i.\n", c[i], x, c[i] * x);
+               c[i]*=x;
+               printf("Posição %i multiplicada por %i = %i.\n", i, x, c[i]);
             }
             break;
 

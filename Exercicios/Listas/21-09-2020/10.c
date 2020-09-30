@@ -6,7 +6,7 @@ int main() {
    int i =0, indexMenorConta;
    float contas[25], total = 0, icms, valorMaiorConta ;
 
-   for (i=0; i < 10; i++) {
+   for (i=0; i < 25; i++) {
       printf("Conta da Casa %i: R$", i + 1);
       scanf("%f", &contas[i]);
    }
@@ -14,7 +14,7 @@ int main() {
    total = contas[0];
    valorMaiorConta = contas[0];
    indexMenorConta = 0;
-   for (i=1; i < 10; i++) {
+   for (i=1; i < 25; i++) {
       total+= contas[i];
 
       if (contas[i] > valorMaiorConta) {

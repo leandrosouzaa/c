@@ -10,7 +10,7 @@ int main() {
 
    do {
       scanf("%c", &frase[tl]);
-      if ((frase[tl] == 'a') && (tl < 20 )) {
+      if ((frase[tl] == 'A' || frase[tl] == 'a')  && (tl < 20 )) {
          qtdA++;
       }
    } while(tl< 20 && frase[tl++] != 10);
