@@ -72,6 +72,28 @@ int showRoundWinner(char winner) {
    return 0;
 }
 
+int showFinishWinner() {
+   printf("\e[1;1H\e[2J\n");
+   printf("Total de Jogos: %d.\n", points.o + points.x + points.tie);
+   printf("Pontuação Final: \n");
+   showPoints();
+   if (points.o > points.x && points.o > points.tie) {
+      printf("\nVencedor: O");
+   } else {
+      if (points.x > points.o && points.x > points.tie) {
+         printf("\nVencedor: X");
+      } else {
+         if (points.tie > points.x && points.tie > points.o) {
+            printf("Deu velha!");
+         } else {
+            printf("Empate!");
+         }
+      }
+   }
+
+   return 0;
+}
+
 int showTie() {
    printf("\e[1;1H\e[2J\n");
    printBoard();
@@ -83,7 +105,7 @@ int showTie() {
    return 0;
 }
 
-char checkWinner() {
+int checkWinner() {
    for (iWinner = 0; iWinner < 8; iWinner++) {
       if (squares[lines[iWinner][0]] && squares[lines[iWinner][0]] == squares[lines[iWinner][1]] && squares[lines[iWinner][0]] == squares[lines[iWinner][2]] ) {
          i = 10;
@@ -132,6 +154,6 @@ int main() {
          reset();
       }
    } while(repeat == 'S');
-
+   showFinishWinner();
    return 0;
 }

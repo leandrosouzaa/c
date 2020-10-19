@@ -5,6 +5,7 @@
         ".prettierrc": "json",
         "ctype.h": "c",
         "string.h": "c",
-        "2.C": "cpp"
+        "2.C": "cpp",
+        "cmath": "c"
     }
 }
