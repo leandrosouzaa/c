@@ -1,10 +1,10 @@
 #include <stdio.h>
 
 int main() {
-   printf("Vetor de Elementos - Leandro Ribeiro de Souza \n\n");
+   printf("Vetor de Elementos - Leandro Ribeiro de Souza \n");
 
    float num[30], menorElemento, maiorElemento, media, soma; 
-   int tl = 0, i = 0;
+   int tl = 0, i = 0, opcao;
    char continua;
 
    do {
@@ -33,15 +33,46 @@ int main() {
 
    media = (soma / tl) * 1.0;
 
-   printf("\nRELATÓRIO FINAL\n");
-   printf("Maior Elemento: %0.2f.\n", maiorElemento);
-   printf("Menor Elemento: %0.2f.\n", menorElemento);
-   printf("Soma dos Elementos: %0.2f.\n", soma);
-   printf("Média dos Elementos: %0.2f.\n", media);
-   printf("Vetor Completo: \n");
-   for (i=0; i < tl; i++) {
-      printf("Vetor[%d] = %0.2f.\n", i, num[i]);
-   }
+   do {
+      printf("\n\nOpções disponveis:\n");
+      printf("1 - Maior e Menor Elemento\n");
+      printf("2 - Soma e Média do vetor\n");
+      printf("3 - Vetor Completo\n");
+      printf("4 - Finalizar Programa\n");
+
+      printf("Escolha um item: ");
+      scanf("%d", &opcao);
+
+      switch (opcao) {
+      case 1:
+         printf("Maior Elemento: %0.2f.\n", maiorElemento);
+         printf("Menor Elemento: %0.2f.\n", menorElemento);
+
+         break;
+      
+      case 2:
+         printf("Soma dos Elementos: %0.2f.\n", soma);
+         printf("Média dos Elementos: %0.2f.\n", media);
+
+         break;
+
+      case 3:
+         printf("Vetor Completo: \n");
+         for (i=0; i < tl; i++) {
+            printf("Vetor[%d] = %0.2f.\n", i, num[i]);
+         }
+         break;
+      
+      case 4: 
+         printf("Finalizando programa...");
+         
+         break;      
+      
+      default:
+         printf("Item inválido, tente novamente.");
+         break;
+      }
+   } while(opcao != 3);
 
    return 0;
 }
