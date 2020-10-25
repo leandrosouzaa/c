@@ -21,7 +21,7 @@ int main() {
             indexPrimeiro = i;
          }
          indexUltimo = i;
-      } else {
+      } else if ((placa[i] > 64 && placa[i] < 91 )||(placa[i] > 96 && placa[i] < 123)) {
          qtdLetras++;
       }
    }
@@ -37,7 +37,7 @@ int main() {
    }
    printf("\nLetras da placa: ");
    for(i=0; i < tl; i++) {
-      if (!(placa[i] >='0' && placa[i] <= '9')) 
+      if ((placa[i] > 64 && placa[i] < 91 )||(placa[i] > 96 && placa[i] < 123)) 
          printf("%c ", placa[i]);
    }
 
