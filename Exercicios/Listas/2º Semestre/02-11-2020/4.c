@@ -68,15 +68,15 @@ int main() {
    }
    
    printf("\nPOSCIONAMENTO DOS PACOTES\n\n");
-   printf("   | 1  | 2  | 3  | 4  | 5  |\n");
-   printf("———+————+————+————+————+————+\n");
+   printf("    | 1  | 2  | 3  | 4  | 5  |\n");
+   printf("————+————+————+————+————+————+\n");
    for(i=0; i < 10; i++) {
-      printf(" %d%s|", i + 1, i > 8 ? "" : " ");
+      printf(" %s%d |",i < 9 ? "0" : "", i + 1);
       for(j=0; j <  5; j++) {
-         printf(" %d%s |", escaninho[i][j], escaninho[i][j] > 9 ? "" : " ");
+         printf(" %s%d |", escaninho[i][j] < 9 ? "0" : "",escaninho[i][j]);
       }
       printf("\n");
-      printf("———+————+————+————+————+————+\n");
+      printf("————+————+————+————+————+————+\n");
    }
 
    return 0;
