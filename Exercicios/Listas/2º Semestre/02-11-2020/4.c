@@ -15,29 +15,29 @@ int main() {
       } while(escaninho[temp[0]][temp[1]]);
       escaninho[temp[0]][temp[1]] = i + 1;
       printf("\nPacote %i:\n", i +1);
-      printf("Posição: \n");
+      printf("Posicao: \n");
       printf("   Linha: %i.\n", temp[0]);
       printf("   Coluna: %i.\n", temp[1]);   
    }   
 
-   printf("\nRELATÓRIO POR LINHA\n");
+   printf("\nRELATORIO POR LINHA\n");
    for(i=0; i < 10; i++) {
       printf("Pacotes na linha %i:", i + 1);
 
       for(j=0; j < 5; j++) {
-         if(escaninho[i][j] != 0) {
+         if(escaninho[i][j]) {
             printf(" %d", escaninho[i][j]);
          }
       }
       printf(".\n");
    }
 
-   printf("\nRELATÓRIO POR COLUNA\n");
+   printf("\nRELATORIO POR COLUNA\n");
       for(i=0; i < 5; i++) {
          printf("Pacotes na COLUNA %i:", i + 1);
 
          for(j=0; j < 10; j++) {
-            if(escaninho[j][i] != 0) {
+            if(escaninho[j][i]) {
                printf(" %d", escaninho[j][i]);
             }
          }
@@ -63,17 +63,21 @@ int main() {
    } else {
       printf("Pacote encontrado!\n");
       printf("Posição: \n");
-      printf("   Linha: %i.\n", temp[0]);
-      printf("   Coluna: %i.\n", temp[1]);   
+      printf("   Linha: %i.\n", temp[0] + 1);
+      printf("   Coluna: %i.\n", temp[1] + 1);   
    }
    
    printf("\nPOSCIONAMENTO DOS PACOTES\n\n");
-   printf("    | 1  | 2  | 3  | 4  | 5  |\n");
+   printf("    | 01 | 02 | 03 | 04 | 05 |\n");
    printf("————+————+————+————+————+————+\n");
    for(i=0; i < 10; i++) {
       printf(" %s%d |",i < 9 ? "0" : "", i + 1);
       for(j=0; j <  5; j++) {
-         printf(" %s%d |", escaninho[i][j] < 9 ? "0" : "",escaninho[i][j]);
+         if (escaninho[i][j]) {
+            printf(" %s%d |", escaninho[i][j] < 10 ? "0" : "",escaninho[i][j]);
+         } else {
+            printf("    |");
+         }
       }
       printf("\n");
       printf("————+————+————+————+————+————+\n");
