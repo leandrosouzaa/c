@@ -2,7 +2,7 @@
 
 int alunos[10] = {0}, qtdAbonos;
 
-int readAndCalculate() {
+void readAndCalculate() {
    int i,j;
    char situacao;
 
@@ -35,10 +35,9 @@ int readAndCalculate() {
          }
       }
    }
-   return 1;
 }
 
-int generateReports() {
+void generateReports() {
    int i,presenca, qtdAprovados = 0;
    printf("\n\nRELATÓRIO INDIVIDUAL");
    for(i=0;i<10;i++) {
@@ -57,10 +56,6 @@ int generateReports() {
    printf("Quantidade de APROVADOS: %d.\n", qtdAprovados);
    printf("Quantidade de REPROVADOS: %d.\n", 10 - qtdAprovados);
    printf("Faltas ABONADAS: %d.\n", qtdAbonos);
-
-   return 0;
-
-   return 1;
 }
 
 int main() {
