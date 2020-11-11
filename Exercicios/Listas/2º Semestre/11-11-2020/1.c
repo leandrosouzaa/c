@@ -2,7 +2,7 @@
 
 float numeros[5][5];
 
-int readMatriz() {
+void readMatriz() {
    int i, j;
    for(i=0; i < 5; i++) {
       for(j=0; j < 5; j++) {
@@ -10,8 +10,6 @@ int readMatriz() {
          scanf("%f", &numeros[i][j]);
       }
    }
-
-   return 1;
 }
 
 int scrollMatrix() {
@@ -63,8 +61,6 @@ int scrollMatrix() {
    printf("Soma da segunda diagonal: %0.2f.\n\n", somaDiags[1]);
 
    printf("Soma total da Matriz: %0.2f.", total);
-
-   return 1;
 }
 
 
