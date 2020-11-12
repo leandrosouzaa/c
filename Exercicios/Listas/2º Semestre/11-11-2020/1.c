@@ -69,6 +69,5 @@ int main() {
 
    readMatriz();
    scrollMatrix();
-
    return 0;
 }

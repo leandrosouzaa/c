@@ -42,7 +42,7 @@ void generateReports() {
    printf("\n\nRELATÓRIO INDIVIDUAL");
    for(i=0;i<10;i++) {
       printf("\n\nALUNO %d\n", i + 1);
-      presenca = alunos[i] * 5;
+      presenca = (alunos[i]*(100/20));
       printf("Percentual de presença: %d%%.\n", presenca);
       if (presenca >= 75) {
          printf("SITUAÇÃO FINAL: APROVADO");
