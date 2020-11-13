@@ -1,11 +1,11 @@
 #include <stdio.h>
 
-int readAndCalculate(int array[3], int abonos) {
-   int i,j;
+int readAndCalculate(int array[10]) {
+   int i,j, abonos = 0;
    char situacao;
 
-   for(i=0;i<5;i++) {
-      for (j=0;j<3;j++) {
+   for(i=0;i<20;i++) {
+      for (j=0;j<10;j++) {
          printf("\n\nCHAMADA DA AULA %d\n", i+1);
          printf("Situação do Aluno %d: ", j + 1);
          scanf(" %c", &situacao);
@@ -37,12 +37,12 @@ int readAndCalculate(int array[3], int abonos) {
    return abonos;
 }
 
-void generateReports(int vetor[3], int abonos) {
+void generateReports(int vetor[10], int abonos) {
    int i,presenca, qtdAprovados = 0;
    printf("\n\nRELATÓRIO INDIVIDUAL");
-   for(i=0;i<3;i++) {
+   for(i=0;i<10;i++) {
       printf("\n\nALUNO %d\n", i + 1);
-      presenca = (vetor[i]*(100/5));
+      presenca = (vetor[i]*(100/20));
       printf("Percentual de presença: %d%%.\n", presenca);
       if (presenca >= 75) {
          printf("SITUAÇÃO FINAL: APROVADO");
@@ -54,15 +54,15 @@ void generateReports(int vetor[3], int abonos) {
 
    printf("\n\nRELATÓRIO FINAL\n");
    printf("Quantidade de APROVADOS: %d.\n", qtdAprovados);
-   printf("Quantidade de REPROVADOS: %d.\n", 3 - qtdAprovados);
+   printf("Quantidade de REPROVADOS: %d.\n", 10 - qtdAprovados);
    printf("Faltas ABONADAS: %d.\n", abonos);
 }
 
 int main() {
-   int alunos[3] = {0}, qtdAbonos = 0;
+   int alunos[10] = {0}, qtdAbonos;
 
    printf("Controle de Frequência - Leandro Ribeiro de Souza");
 
-   qtdAbonos = readAndCalculate(alunos, qtdAbonos);
+   qtdAbonos = readAndCalculate(alunos);
    generateReports(alunos, qtdAbonos);
 }

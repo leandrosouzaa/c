@@ -2,7 +2,7 @@
 
 int alunos[10] = {0}, qtdAbonos;
 
-void readAndCalculate() {
+void read() {
    int i,j;
    char situacao;
 
@@ -61,6 +61,6 @@ void generateReports() {
 int main() {
    printf("Controle de Frequência - Leandro Ribeiro de Souza");
 
-   readAndCalculate();
+   read();
    generateReports();
 }
