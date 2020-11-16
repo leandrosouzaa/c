@@ -27,7 +27,6 @@ Architecture setArchitecture() {
 
 ArchitectureValues generateArchitectureValues(Architecture architecture) {
    ArchitectureValues architectureValues;
-   int significand[256], exponent[256], i;
 
    int excess = pow(2, architecture.exponent - 1);
    long double floatingNumber = 0;
@@ -39,7 +38,7 @@ ArchitectureValues generateArchitectureValues(Architecture architecture) {
 
    int exponentValue = pow(2, architecture.exponent);
    int elevateNumber = exponentValue - excess;
-   architectureValues.bigPositive = floatingNumber * pow(2, elevateNumber);
+   architectureValues.bigPositive = floatingNumber * pow(2, elevateNumber -1);
 
    // Calcula menor negativo.
    architectureValues.smallNegative = architectureValues.bigPositive * -1;
@@ -61,7 +60,7 @@ void generateArchitectureReports(Architecture architecture, ArchitectureValues a
 
    printf("Arquitetura de %db de expoente e %db de significando.", architecture.exponent, architecture.significand);
 
-   printf("\n\nMaior Número Positivo (base 10): %Lf\n", architectureValues.bigPositive);
+   printf("\n\nMaior Número Positivo (base 10): %Lg\n", architectureValues.bigPositive);
    printf("Maior Número Positivo (base 2):");
    printf("0");
    for(i=0; i < architecture.exponent; i++) {
@@ -71,7 +70,7 @@ void generateArchitectureReports(Architecture architecture, ArchitectureValues a
       printf("1");
    };
 
-   printf("\n\nMenor Número Positivo (base 10): %Lf\n", architectureValues.smallPositve);
+   printf("\n\nMenor Número Positivo (base 10): %Lg\n", architectureValues.smallPositve);
    printf("Menor Número Positivo (base 2):");
    printf("0");
    for(i=0; i < architecture.exponent; i++) {
@@ -82,7 +81,7 @@ void generateArchitectureReports(Architecture architecture, ArchitectureValues a
       printf("0");
    };
 
-   printf("\n\nMaior Número Negativo (base 10): %Lf\n", architectureValues.bigNegative);
+   printf("\n\nMaior Número Negativo (base 10): %Lg\n", architectureValues.bigNegative);
    printf("Maior Número Negativo (base 2):");
    printf("1");
    for(i=0; i < architecture.exponent; i++) {
@@ -92,7 +91,7 @@ void generateArchitectureReports(Architecture architecture, ArchitectureValues a
       printf("0");
    };
 
-   printf("\n\nMenor Número Negativo (base 10): %Lf\n", architectureValues.smallNegative);
+   printf("\n\nMenor Número Negativo (base 10): %Lg\n", architectureValues.smallNegative);
    printf("Menor Número Negativo (base 2):");
    printf("1");
    for(i=0; i < architecture.exponent; i++) {
@@ -105,9 +104,12 @@ void generateArchitectureReports(Architecture architecture, ArchitectureValues a
    getchar();
 }
 
+
+
 int main() {
    printf("Conversor para Ponto Flutuante - Leandro Ribeiro de Souza \n\n");
    int option = 1;
+   long double numberToConvert;
    
    Architecture architecture = setArchitecture();
    clrscr();
@@ -119,8 +121,8 @@ int main() {
       printf("Menu de Seleção\n\n");
       printf("1 - Modificar Arquitetura\n");
       printf("2 - Visualizar valores da Arquitetura.\n");
-      printf("3 - Conversão: Decimal - Binário.\n");
-      printf("4 - Conversão: Binário - Decimal.\n");
+      printf("3 - Conversão: Decimal - Ponto Flutuante.\n");
+      printf("4 - Conversão: Ponto Flutuante - Decimal.\n");
       printf("5 - Finalizar programa.\n");
       printf("Escolha um item do menu: ");
       scanf("%d", &option);
@@ -141,12 +143,28 @@ int main() {
             break;
 
          case 3:
+            do {
+               clrscr();
+               printf("\nInforme um número binário respeitando os limites: ");
+               scanf("%Lg", &numberToConvert);
+               if((numberToConvert > architectureValues.bigNegative && numberToConvert < architectureValues.smallPositve) || numberToConvert < architectureValues.smallNegative || numberToConvert > architectureValues.bigPositive) {
+                  printf("\nEntrada inválida (overflow ou underflow). Tente novamente.\n");
+                  printf("Para mais informações acesse os valores da arquitetura.\n");
+                  printf("Voltar ao menu[S/N]: ");
+                  getchar();
+                  if (getchar() == 'N') {
+                     break;
+                  }
+               }
+            } while(((numberToConvert > architectureValues.bigNegative && numberToConvert < architectureValues.smallPositve) || numberToConvert < architectureValues.smallNegative || numberToConvert > architectureValues.bigPositive));
             break;
 
          case 4:
+            clrscr();
             break;
 
          case 5:
+            clrscr();
             break;
 
          default:
