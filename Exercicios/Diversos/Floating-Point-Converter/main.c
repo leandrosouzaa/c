@@ -8,6 +8,10 @@ typedef struct {
 } Architecture;
 
 typedef struct {
+   int integer[128], floating[128], integerSize, floatingSize;
+} Binary;
+
+typedef struct {
    long double bigPositive, bigNegative, smallNegative, smallPositve; 
 } ArchitectureValues;
 
@@ -27,6 +31,7 @@ Architecture setArchitecture() {
 
 ArchitectureValues generateArchitectureValues(Architecture architecture) {
    ArchitectureValues architectureValues;
+   int i;
 
    int excess = pow(2, architecture.exponent - 1);
    long double floatingNumber = 0;
@@ -104,7 +109,26 @@ void generateArchitectureReports(Architecture architecture, ArchitectureValues a
    getchar();
 }
 
+Binary convertToBinary(long double number) {
+   int i;
+   Binary binary = {0};
 
+   int integerNumber = number;
+   int rest = number - integerNumber;
+
+   for(i=0; integerNumber > 0; i++) {
+      binary.integerSize = i+1;
+      binary.integer[127 - i] = integerNumber % 2;
+      integerNumber = integerNumber / 2;
+   }
+
+   for(i=0; i < binary.integerSize; i++) {
+      printf("%d", binary.integer[127 - i]);
+   }
+
+   getchar();
+   getchar();
+}
 
 int main() {
    printf("Conversor para Ponto Flutuante - Leandro Ribeiro de Souza \n\n");
@@ -152,11 +176,12 @@ int main() {
                   printf("Para mais informações acesse os valores da arquitetura.\n");
                   printf("Voltar ao menu[S/N]: ");
                   getchar();
-                  if (getchar() == 'N') {
+                  if (getchar() == 'S') {
                      break;
                   }
                }
             } while(((numberToConvert > architectureValues.bigNegative && numberToConvert < architectureValues.smallPositve) || numberToConvert < architectureValues.smallNegative || numberToConvert > architectureValues.bigPositive));
+            convertToBinary(numberToConvert);
             break;
 
          case 4:
