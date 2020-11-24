@@ -49,8 +49,8 @@ void showFirstName(char name[30], int logicalSize) {
 
 void generateReports(char name[30], int logicalSize,int lettersQuantity, int wordsQuantity) {
    printf("\nRELATÓRIO FINAL\n");
-   printf("Quantidade de Palavras: %i.\n", lettersQuantity);
-   printf("Quantidade de Espaços: %i.\n", wordsQuantity);
+   printf("Quantidade de Palavras: %i.\n", wordsQuantity);
+   printf("Quantidade de Letras: %i.\n", lettersQuantity);
    printf("Nome completo: ");
    showName(name, logicalSize);
    printf("\nPrimeiro Nome: ");
