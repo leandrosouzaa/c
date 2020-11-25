@@ -8,6 +8,13 @@ int tamanho_string(char str[]) {
    return i;
 };
 
+void readString(char str[], int size) {
+   fgets(str, size, stdin);
+   int ultimaPosicao = tamanho_string(str) - 1;
+   if(str[ultimaPosicao] == '\n')
+      str[ultimaPosicao] = '\0';
+};
+
 void incializa_string(char str[]) {
    str[0] = '\0';
 }
@@ -32,8 +39,6 @@ void concatena_string(char str[], char str2[]) {
    };
    
    str[i + tamanho_str1] = '\0';
-   
-   puts(str);
 }
 
 void separa_email(char email[], char usuario[], char endereco[]) {
@@ -103,8 +108,8 @@ void pega_ultima_palavra(char str[], char str2[]) {
          ultimo_espaco = i;
       i++;
    };
-
    if(ultimo_espaco != -1) {
+      ultimo_espaco++;
       while (str[ultimo_espaco + j] != '\0') {
          str2[j] = str[ultimo_espaco + j];
          j++;
@@ -118,8 +123,6 @@ void pega_ultima_palavra(char str[], char str2[]) {
    }
 
    str[j] = '\0';
-
-   printf("%s", str2);
 }
 
 void pega_primeira_palavra(char str[], char str2[]) {
@@ -131,8 +134,6 @@ void pega_primeira_palavra(char str[], char str2[]) {
       i++;
    }
    str2[i] = '\0';
-
-   puts(str2);
 }
 
 void retorna_iniciais(char str[], char str2[]) {
@@ -145,9 +146,8 @@ void retorna_iniciais(char str[], char str2[]) {
       }
       i++;
    };
-   
 
-   puts(str2);
+   str2[j] = '\0';
 }
 
 // Se não encontra retorna -1
