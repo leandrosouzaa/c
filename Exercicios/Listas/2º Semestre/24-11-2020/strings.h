@@ -12,42 +12,51 @@ void incializa_string(char str[]) {
    str[0] = '\0';
 }
 
-char* copia_string(char str[], char str2[]) {
-   int i;
-   
-   for(i=0; str[i]!='\0'; i++) {
+void copia_string(char str[], char str2[]) {
+   int i=0;
+   while(str[i] != '\0') {
       str2[i]=str[i];
-   }
-
-   return str;
+      i++;
+   };
+   str[i] = '\0';
 }
 
 void concatena_string(char str[], char str2[]) {
-   int i;
+   int i = 0;
 
    int tamanho_str1 = tamanho_string(str);
-   for(i=0;str2[i]!='\0'; i++) {
-      str[i + tamanho_str1] = str2[i];    
+   
+   while(str2[i] != '\0') {
+       str[i + tamanho_str1] = str2[i];   
+       i++;
    };
+   
+   str[i + tamanho_str1] = '\0';
+   
+   puts(str);
 }
 
 void separa_email(char email[], char usuario[], char endereco[]) {
-   int i,j;
+   int i = 0,j;
 
-   for(i=0; email[i]!='\0'; i++) {
-      if(email[i] == '@') {
-         for(j=i - 1; j >= 0; j--){
-            usuario[j] = email[j];
-         }
-         usuario[i] = '\0';
-         for(j=0; email[i+j+1] != '\0'; j++) {
-            endereco[j] = email[i+j+1];
-         }
-         endereco[j] = '\0';
-      }
+    while(email[i] != '@') {
+        usuario[i] = email[i];
+        printf("%d x %i\n", i, i);
+        i++;
+    }
+    usuario[i] = '\0';
+   
+   i++;
+   j = 0;
+   printf("Loop do Email\n");
+   while(email[i] != '\0') {
+       endereco[j] = email[i];
+       printf("%d x %i\n", i, j);
+       i++;j++;
    }
+   endereco[j] = '\0';
+   
    puts(usuario);
    printf("\n");
    puts(endereco);
 };
-
