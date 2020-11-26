@@ -11,7 +11,6 @@ int tamanho_string(char str[]) {
 void readString(char str[], int size) {
    fgets(str, size, stdin);
    int ultimaPosicao = tamanho_string(str) - 1;
-   printf("%d", ultimaPosicao);
    if(str[ultimaPosicao] == '\n')
       str[ultimaPosicao] = '\0';
 };
@@ -68,7 +67,7 @@ int conta_palavras(char str[]) {
    int i = 0, quantidade_palavras = 0;
    
    while(str[i] != '\0') {
-      if ((str[i] != ' ' && str[i + 1] == ' ')) {
+      if ((str[i] != ' ' && (str[i + 1] == ' ' || str[i + 1] == '\0'))) {
          quantidade_palavras++;
       }
       i++;
