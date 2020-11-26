@@ -3,6 +3,21 @@
 #include "strings.h"
 #include <stdlib.h>
 
+void printa_cabecalho(int tl) {
+   system("clear");
+   printf("SISTEMA DE GERENCIAMENTO DE ALUNOS - 1.0\n\n");
+   
+   printf("1 - Cadastrar Alunos.\n");
+   printf("2 - Procurar Aluno.\n");
+   printf("3 - Relação de Alunos.\n");
+   printf("4 - Relação de Alunos por letra.\n");
+   printf("5 - Relação de Alunos por sequência (inicio).\n");
+   printf("6 - Relação de Alunos por sequeência (qualquer).\n");
+   printf("7 - Encerrar Sistema.\n");
+   printf("\nAlunos cadastrados: %d.\n", tl);
+
+}
+
 int cadastra_alunos(char alunos[256][100], int tl) {
    setbuf(stdin, NULL);
    char continua;
@@ -27,20 +42,18 @@ void mostra_alunos(char alunos[256][100], int tl) {
    if(tl == 0) {
       printf("O sistema não possui alunos cadastrado. Pressione Enter para Continuar.");
       getchar();
-
-      return;
-   }
-
-   int i;
-   printf(" Nº | Nome do Aluno\n");
-   printf("————+——————————————————————————————————————————————————\n");
-   for(i=0; i < tl; i++) {
-      printf("%s%s%d ", i < 99 ? "0" : "", i < 9 ? "0" : "",i + 1);
-      printf("| ");
-      puts(alunos[i]);
+   } else {
+      int i;
+      printf(" Nº | Nome do Aluno\n");
       printf("————+——————————————————————————————————————————————————\n");
+      for(i=0; i < tl; i++) {
+         printf("%s%s%d ", i < 99 ? "0" : "", i < 9 ? "0" : "",i + 1);
+         printf("| ");
+         puts(alunos[i]);
+         printf("————+——————————————————————————————————————————————————\n");
+      }
+      getchar();
    }
-   getchar();
 }
 
 void mostra_alunos_letra(char alunos[256][100], int tl) {
@@ -50,34 +63,92 @@ void mostra_alunos_letra(char alunos[256][100], int tl) {
    if(tl == 0) {
       printf("O sistema não possui alunos cadastrado. Pressione Enter para Continuar.");
       getchar();
+   } else {
+      char letra[1];
+      printf("Informe uma letra para buscar: ");
+      scanf(" %c", &letra[0]);
+      system("clear");
 
-      return;
-   }
-   char letra;
-   printf("Informe uma letra para buscar: ");
-   scanf("%c", &letra);
-   char teste[1];
-   teste[0] = letra;
-   system("clear");
+      printf("ALUNOS COM A LETRA %s.\n\n", letra);
 
-   printf("ALUNOS COM A LETRA %c.\n\n", letra);
-
-   int i;
-   printf(" Nº | Nome do Aluno\n");
-   printf("————+——————————————————————————————————————————————————\n");
-   for(i=0; i < tl; i++) {
-      if(strncasecmp(alunos[i],teste, 1) >= 0) {
-         printf("%s%s%d ", i < 99 ? "0" : "", i < 9 ? "0" : "",i + 1);
-         printf("| ");
-         puts(alunos[i]);
-         printf("————+——————————————————————————————————————————————————\n");
-
+      int i;
+      printf(" Nº | Nome do Aluno\n");
+      printf("————+——————————————————————————————————————————————————\n");
+      for(i=0; i < tl; i++) {
+         if(strncasecmp(alunos[i],letra, 1) >= 0) {
+            printf("%s%s%d ", i < 99 ? "0" : "", i < 9 ? "0" : "",i + 1);
+            printf("| ");
+            puts(alunos[i]);
+            printf("————+——————————————————————————————————————————————————\n");
+         }
       }
+      getchar();
+      getchar();
    }
-   getchar();
-   getchar();
-
 }
+
+void mostra_alunos_sequencia(char alunos[256][100], int tl) {
+   system("clear");
+   setbuf(stdin, NULL);
+   
+   if(tl == 0) {
+      printf("O sistema não possui alunos cadastrado. Pressione Enter para Continuar.");
+      getchar();
+   } else {
+      char sequencia[30];
+
+      printf("Digite uma sequência de até 30 caracters: ");
+      readString(sequencia, 30);
+      int tamanho_sequencia = strlen(sequencia);
+      system("clear");
+
+      printf("ALUNOS COM A SEQUÊNCIA: ");
+      puts(sequencia);
+
+      int i;
+      printf("\n\n Nº | Nome do Aluno\n");
+      printf("————+——————————————————————————————————————————————————\n");
+      for(i=0; i < tl; i++) {
+         if(strncasecmp(alunos[i],sequencia, tamanho_sequencia) == 0) {
+            printf("%s%s%d ", i < 99 ? "0" : "", i < 9 ? "0" : "",i + 1);
+            printf("| ");
+            puts(alunos[i]);
+            printf("————+——————————————————————————————————————————————————\n");
+         }
+      }
+      getchar();
+   }
+}
+
+void mostra_aluno_nome(char alunos[256][100], int tl) {
+   system("clear");
+   setbuf(stdin, NULL);
+   
+   if(tl == 0) {
+      printf("O sistema não possui alunos cadastrado. Pressione Enter para Continuar.");
+      getchar();
+   } else {
+      char nome[30];
+
+      printf("Digite o nome do aluno: ");
+      readString(nome, 100);
+      int tamanho_nome = strlen(nome);
+      system("clear");
+
+      printf("NOME DO ALUNO: ");
+      puts(nome);
+
+      int i;
+      for(i=0; i < tl; i++) {
+         if(strncasecmp(alunos[i],nome, tamanho_nome) == 0) {
+            printf("Código do Aluno: %d", i + 1);
+         }
+      }
+      getchar();
+   }
+}
+
+
 
 
 int main() {
@@ -87,52 +158,40 @@ int main() {
    int opcao, tl = 0;
 
    do {
-      system("clear");
-      printf("SISTEMA DE GERENCIAMENTO DE ALUNOS - 1.0\n\n");
-      
-      printf("1 - Cadastrar Alunos.\n");
-      printf("2 - Procurar Aluno.\n");
-      printf("3 - Relação de Alunos.\n");
-      printf("4 - Relação de Alunos por letra.\n");
-      printf("5 - Relação de Alunos por sequência (inicio).\n");
-      printf("6 - Relação de Alunos por sequeência (qualquer).\n");
-      printf("7 - Encerrar Sistema.\n");
-      printf("\nAlunos cadastrados: %d.\n", tl);
+      printa_cabecalho(tl);
 
       printf("\nEscolha uma opção: ");
       scanf("%d", &opcao);
 
       switch (opcao) {
-      case 1:
-         // tl = cadastra_alunos(alunos, tl);]
-         system("clear");
-         setbuf(stdin, NULL);
-         printf("Informe o nome do aluno: ");
-         readString(alunos[tl], 100);
-         tl++;
-         break;
-      case 2:
-         break;
-      case 3:
-         mostra_alunos(alunos, tl);
-         break;
-      case 4:
-         mostra_alunos_letra(alunos, tl);
-         break;
-      case 5:
-         
-         break;
-      case 6:
-         
-         break;
-      case 7:
-         printf("Encerrando sistema...");
-         break;
-      default:
-         break;
+         case 1:
+            // tl = cadastra_alunos(alunos, tl);]
+            system("clear");
+            setbuf(stdin, NULL);
+            printf("Informe o nome do aluno: ");
+            readString(alunos[tl], 100);
+            tl++;
+            break;
+         case 2:
+            mostra_aluno_nome(alunos, tl);
+            break;
+         case 3:
+            mostra_alunos(alunos, tl);
+            break;
+         case 4:
+            mostra_alunos_letra(alunos, tl);
+            break;
+         case 5:
+            mostra_alunos_sequencia(alunos, tl);
+            break;
+         case 6:
+            break;
+         case 7:
+            printf("Encerrando sistema...");
+            break;
+         default:
+            break;
       }
-
-
    } while(opcao != 7);
 
    return 0;
