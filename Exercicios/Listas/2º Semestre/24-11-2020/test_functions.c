@@ -15,7 +15,9 @@ int main() {
    // separa_email(email, usuario, endereco);
    // printf("%d", localiza_caracter(str, ' '));
    // pega_ultima_palavra(str, str2);
-   retorna_iniciais(str, str2);
+   // retorna_iniciais(str, str2);
+   excluir_posicao(str, 1);
+   puts(str);
 
    return 0;
 }

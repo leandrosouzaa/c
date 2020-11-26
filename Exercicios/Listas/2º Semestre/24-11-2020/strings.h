@@ -11,6 +11,7 @@ int tamanho_string(char str[]) {
 void readString(char str[], int size) {
    fgets(str, size, stdin);
    int ultimaPosicao = tamanho_string(str) - 1;
+   printf("%d", ultimaPosicao);
    if(str[ultimaPosicao] == '\n')
       str[ultimaPosicao] = '\0';
 };
@@ -122,7 +123,7 @@ void pega_ultima_palavra(char str[], char str2[]) {
       }
    }
 
-   str[j] = '\0';
+   str2[j] = '\0';
 }
 
 void pega_primeira_palavra(char str[], char str2[]) {
@@ -152,6 +153,7 @@ void retorna_iniciais(char str[], char str2[]) {
 
 // Se não encontra retorna -1
 void excluir_posicao(char str[], int index) {
+   // puts(str);
    while (str[index] != '\0') {
       str[index] = str[index+1];
       index++;
