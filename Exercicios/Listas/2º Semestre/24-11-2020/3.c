@@ -75,7 +75,7 @@ void mostra_alunos_letra(char alunos[256][100], int tl) {
       printf(" Nº | Nome do Aluno\n");
       printf("————+——————————————————————————————————————————————————\n");
       for(i=0; i < tl; i++) {
-         if(strncasecmp(alunos[i],letra, 1) >= 0) {
+         if(strncasecmp(alunos[i],letra, 1) == 0) {
             printf("%s%s%d ", i < 99 ? "0" : "", i < 9 ? "0" : "",i + 1);
             printf("| ");
             puts(alunos[i]);
@@ -120,6 +120,40 @@ void mostra_alunos_sequencia(char alunos[256][100], int tl) {
    }
 }
 
+void mostra_alunos_sequencia_str(char alunos[256][100], int tl) {
+   system("clear");
+   setbuf(stdin, NULL);
+   
+   if(tl == 0) {
+      printf("O sistema não possui alunos cadastrado. Pressione Enter para Continuar.");
+      getchar();
+   } else {
+      char sequencia[30];
+
+      printf("Digite uma sequência de até 30 caracters: ");
+      readString(sequencia, 30);
+      int tamanho_sequencia = strlen(sequencia);
+      system("clear");
+
+      printf("ALUNOS COM A SEQUÊNCIA: ");
+      puts(sequencia);
+
+      int i;
+      printf("\n\n Nº | Nome do Aluno\n");
+      printf("————+——————————————————————————————————————————————————\n");
+      for(i=0; i < tl; i++) {
+         if(strstr(alunos[i],sequencia)) {
+            printf("%s%s%d ", i < 99 ? "0" : "", i < 9 ? "0" : "",i + 1);
+            printf("| ");
+            puts(alunos[i]);
+            printf("————+——————————————————————————————————————————————————\n");
+         }
+      }
+      getchar();
+   }
+}
+
+
 void mostra_aluno_nome(char alunos[256][100], int tl) {
    system("clear");
    setbuf(stdin, NULL);
@@ -141,9 +175,10 @@ void mostra_aluno_nome(char alunos[256][100], int tl) {
       int i;
       for(i=0; i < tl; i++) {
          if(strncasecmp(alunos[i],nome, tamanho_nome) == 0) {
-            printf("Código do Aluno: %d", i + 1);
+            printf("Código do Aluno: %d.\n", i + 1);
          }
       }
+      getchar();
       getchar();
    }
 }
@@ -185,11 +220,13 @@ int main() {
             mostra_alunos_sequencia(alunos, tl);
             break;
          case 6:
+            mostra_alunos_sequencia_str(alunos, tl);
             break;
          case 7:
             printf("Encerrando sistema...");
             break;
          default:
+
             break;
       }
    } while(opcao != 7);

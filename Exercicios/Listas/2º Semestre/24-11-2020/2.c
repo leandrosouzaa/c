@@ -1,9 +1,9 @@
 #include <stdio.h>
+#include <iostream.h>
 #include "strings.h"
 
 void generateEmail(char email[], char primeiroNome[], char ultimoNome[]) {
    concatena_string(email, primeiroNome);
-   concatena_string(email, ".");
    concatena_string(email, ultimoNome);
    concatena_string(email, "@gmail.com");
 }
@@ -18,7 +18,7 @@ int main() {
    // fgets(nome, 100, stdin);
 
    int quantidadePalavras = conta_palavras(nome);
-   int quantidadeCaracters = conta_caracter(nome);
+   int quantidadeCaracters = tamanho_string(nome);
    
    pega_primeira_palavra(nome, primeiroNome);
    pega_ultima_palavra(nome, ultimoNome);

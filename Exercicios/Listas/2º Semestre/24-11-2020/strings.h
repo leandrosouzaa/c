@@ -76,16 +76,16 @@ int conta_palavras(char str[]) {
    return quantidade_palavras;
 }
 
-int conta_caracter(char str[]) {
-   int i=0, quantidade_letras=0;
+int conta_caracter(char str[], char caracter) {
+   int i=0, quantidade_caracters=0;
 
    while(str[i] != '\0') {
-      if(str[i] != ' ')
-         quantidade_letras++;
+      if(str[i] != caracter)
+         quantidade_caracters++;
       i++;
    }
 
-   return quantidade_letras;
+   return quantidade_caracters;
 }
 
 int localiza_caracter(char str[], char caracter) {
