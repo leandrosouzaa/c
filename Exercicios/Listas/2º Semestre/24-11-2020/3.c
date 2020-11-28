@@ -4,6 +4,7 @@
 #include <stdlib.h>
 
 void printa_cabecalho(int tl) {
+   setbuf(stdin, NULL);
    system("clear");
    printf("SISTEMA DE GERENCIAMENTO DE ALUNOS - 1.0\n\n");
    
@@ -12,18 +13,17 @@ void printa_cabecalho(int tl) {
    printf("3 - Relação de Alunos.\n");
    printf("4 - Relação de Alunos por letra.\n");
    printf("5 - Relação de Alunos por sequência (inicio).\n");
-   printf("6 - Relação de Alunos por sequeência (qualquer).\n");
+   printf("6 - Relação de Alunos por sequência (qualquer).\n");
    printf("7 - Encerrar Sistema.\n");
    printf("\nAlunos cadastrados: %d.\n", tl);
 
 }
 
 int cadastra_alunos(char alunos[256][100], int tl) {
-   setbuf(stdin, NULL);
    char continua;
    do {
-      system("clear");
       setbuf(stdin, NULL);
+      system("clear");
       printf("Informe o nome do aluno: ");
       readString(alunos[tl], 100);
 
@@ -41,7 +41,6 @@ void mostra_alunos(char alunos[256][100], int tl) {
    
    if(tl == 0) {
       printf("O sistema não possui alunos cadastrado. Pressione Enter para Continuar.");
-      getchar();
    } else {
       int i;
       printf(" Nº | Nome do Aluno\n");
@@ -52,13 +51,13 @@ void mostra_alunos(char alunos[256][100], int tl) {
          puts(alunos[i]);
          printf("————+——————————————————————————————————————————————————\n");
       }
-      getchar();
    }
+   getchar();
 }
 
-void mostra_alunos_letra(char alunos[256][100], int tl) {
-   system("clear");
+void procura_alunos_letra(char alunos[256][100], int tl) {
    setbuf(stdin, NULL);
+   system("clear");
    
    if(tl == 0) {
       printf("O sistema não possui alunos cadastrado. Pressione Enter para Continuar.");
@@ -83,13 +82,12 @@ void mostra_alunos_letra(char alunos[256][100], int tl) {
          }
       }
       getchar();
-      getchar();
    }
 }
 
 void mostra_alunos_sequencia(char alunos[256][100], int tl) {
-   system("clear");
    setbuf(stdin, NULL);
+   system("clear");
    
    if(tl == 0) {
       printf("O sistema não possui alunos cadastrado. Pressione Enter para Continuar.");
@@ -106,7 +104,7 @@ void mostra_alunos_sequencia(char alunos[256][100], int tl) {
       puts(sequencia);
 
       int i;
-      printf("\n\n Nº | Nome do Aluno\n");
+      printf("\n Nº | Nome do Aluno\n");
       printf("————+——————————————————————————————————————————————————\n");
       for(i=0; i < tl; i++) {
          if(strncasecmp(alunos[i],sequencia, tamanho_sequencia) == 0) {
@@ -121,8 +119,8 @@ void mostra_alunos_sequencia(char alunos[256][100], int tl) {
 }
 
 void mostra_alunos_sequencia_str(char alunos[256][100], int tl) {
-   system("clear");
    setbuf(stdin, NULL);
+   system("clear");
    
    if(tl == 0) {
       printf("O sistema não possui alunos cadastrado. Pressione Enter para Continuar.");
@@ -139,7 +137,7 @@ void mostra_alunos_sequencia_str(char alunos[256][100], int tl) {
       puts(sequencia);
 
       int i;
-      printf("\n\n Nº | Nome do Aluno\n");
+      printf("\n Nº | Nome do Aluno\n");
       printf("————+——————————————————————————————————————————————————\n");
       for(i=0; i < tl; i++) {
          if(strstr(alunos[i],sequencia)) {
@@ -154,15 +152,16 @@ void mostra_alunos_sequencia_str(char alunos[256][100], int tl) {
 }
 
 
-void mostra_aluno_nome(char alunos[256][100], int tl) {
-   system("clear");
+void procura_aluno_nome(char alunos[256][100], int tl) {
    setbuf(stdin, NULL);
+   system("clear");
    
    if(tl == 0) {
       printf("O sistema não possui alunos cadastrado. Pressione Enter para Continuar.");
       getchar();
    } else {
       char nome[30];
+      int index = -1, i;
 
       printf("Digite o nome do aluno: ");
       readString(nome, 100);
@@ -172,13 +171,15 @@ void mostra_aluno_nome(char alunos[256][100], int tl) {
       printf("NOME DO ALUNO: ");
       puts(nome);
 
-      int i;
       for(i=0; i < tl; i++) {
          if(strncasecmp(alunos[i],nome, tamanho_nome) == 0) {
             printf("Código do Aluno: %d.\n", i + 1);
+            index = i;
          }
       }
-      getchar();
+      if(index== -1)
+         printf("Nenhum Aluno enontrado. Escolha outro nome.");
+
       getchar();
    }
 }
@@ -200,21 +201,21 @@ int main() {
 
       switch (opcao) {
          case 1:
-            // tl = cadastra_alunos(alunos, tl);]
-            system("clear");
             setbuf(stdin, NULL);
+            system("clear");
             printf("Informe o nome do aluno: ");
             readString(alunos[tl], 100);
             tl++;
+            cadastra_alunos(alunos, tl);
             break;
          case 2:
-            mostra_aluno_nome(alunos, tl);
+            procura_aluno_nome(alunos, tl);
             break;
          case 3:
             mostra_alunos(alunos, tl);
             break;
          case 4:
-            mostra_alunos_letra(alunos, tl);
+            procura_alunos_letra(alunos, tl);
             break;
          case 5:
             mostra_alunos_sequencia(alunos, tl);

@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <iostream.h>
 #include "strings.h"
 
 void generateEmail(char email[], char primeiroNome[], char ultimoNome[]) {
