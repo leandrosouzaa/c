@@ -3,7 +3,9 @@
 #include "strings.h"
 #include <stdlib.h>
 
-void printa_cabecalho(int tl) {
+int menu(int tl) {
+   int opcao;
+
    setbuf(stdin, NULL);
    system("clear");
    printf("SISTEMA DE GERENCIAMENTO DE ALUNOS - 1.0\n\n");
@@ -17,22 +19,23 @@ void printa_cabecalho(int tl) {
    printf("7 - Encerrar Sistema.\n");
    printf("\nAlunos cadastrados: %d.\n", tl);
 
+   printf("\nEscolha uma opção: ");
+   scanf("%d", &opcao);
+
+   return opcao;
 }
 
-int cadastra_alunos(char alunos[256][100], int tl) {
-   char continua;
-   do {
-      setbuf(stdin, NULL);
-      system("clear");
+void cadastra_aluno(char alunos[256][100], int *tl) {
+   system("clear");
+   setbuf(stdin, NULL);
+   if(*tl > 255) {
+      printf("Número máximo de alunos atingidos. Pressione Enter para continuar.");
+      getchar();
+   } else {
       printf("Informe o nome do aluno: ");
-      readString(alunos[tl], 100);
-
-      tl++;
-      printf("Cadastrar mais alunos[S/N]: ");
-      scanf(" %c", &continua);
-   } while(tl < 256 && continua == 'S');
-
-   return tl;
+      readString(alunos[*tl], 100);
+      *tl+=1;
+   }
 }
 
 void mostra_alunos(char alunos[256][100], int tl) {
@@ -81,6 +84,10 @@ void procura_alunos_letra(char alunos[256][100], int tl) {
             printf("————+——————————————————————————————————————————————————\n");
          }
       }
+      // não adiantou limpar o buffer.
+      // setbuf(stdin, NULL);
+
+      getchar();
       getchar();
    }
 }
@@ -151,7 +158,6 @@ void mostra_alunos_sequencia_str(char alunos[256][100], int tl) {
    }
 }
 
-
 void procura_aluno_nome(char alunos[256][100], int tl) {
    setbuf(stdin, NULL);
    system("clear");
@@ -184,29 +190,17 @@ void procura_aluno_nome(char alunos[256][100], int tl) {
    }
 }
 
-
-
-
 int main() {
    printf("Gerenciamento de Alunos - Leandro Ribeiro de Souza \n\n");
 
-   char alunos[256][100], continua, letra;
+   char alunos[256][100];
    int opcao, tl = 0;
 
    do {
-      printa_cabecalho(tl);
-
-      printf("\nEscolha uma opção: ");
-      scanf("%d", &opcao);
-
+      opcao = menu(tl);
       switch (opcao) {
          case 1:
-            setbuf(stdin, NULL);
-            system("clear");
-            printf("Informe o nome do aluno: ");
-            readString(alunos[tl], 100);
-            tl++;
-            cadastra_alunos(alunos, tl);
+            cadastra_aluno(alunos, &tl);
             break;
          case 2:
             procura_aluno_nome(alunos, tl);
