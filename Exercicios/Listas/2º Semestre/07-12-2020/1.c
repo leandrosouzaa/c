@@ -14,6 +14,29 @@ void readString(char str[], int size) {
       str[ultimaPosicao] = '\0';
 };
 
+void preenche_tabela(Disciplina disciplinas[]) {
+   strcpy(disciplinas[0].nome, "Matematica");
+   disciplinas[0].frequencia=100;
+   disciplinas[0].nota1 = 4;
+   disciplinas[0].nota2 = 4;
+
+   strcpy(disciplinas[1].nome, "Portugues");
+   disciplinas[1].frequencia=70;
+   disciplinas[1].nota1 = 8;
+   disciplinas[1].nota2 = 8;
+
+   strcpy(disciplinas[2].nome, "Historia");
+   disciplinas[2].frequencia=60;
+   disciplinas[2].nota1 = 4;
+   disciplinas[2].nota2 = 3;
+
+   strcpy(disciplinas[3].nome, "Geografia");
+   disciplinas[3].frequencia=80;
+   disciplinas[3].nota1 = 7;
+   disciplinas[3].nota2 = 8;
+
+}
+
 int menu(int tl) {
    int opcao;
  
@@ -194,11 +217,12 @@ void apresenta_aprovadas(Disciplina disciplinas[10], int tl) {
 
       printf("RELATÓRIO DE DISCIPLINAS: \n");
       for(i=0; i < tl; i++) {
+         media = calcula_media(disciplinas[i]);
+
          if(media >= 6 && disciplinas[i].frequencia >= 75) {
             printf("\n");
             apresenta_disciplina(disciplinas[i]);
 
-            media = calcula_media(disciplinas[i]);
             printf("Media: %0.2f.\n", media);
 
             printf("-------------------------------------");
@@ -210,8 +234,9 @@ void apresenta_aprovadas(Disciplina disciplinas[10], int tl) {
 
 int main() {
    printf("Boletim Escolar - Leandro Ribeiro de Souza \n\n");
-   int opcao, tl = 0;
+   int opcao, tl = 4;
    Disciplina disciplinas[10];
+   preenche_tabela(disciplinas);
 
    do {
       opcao = menu(tl);
