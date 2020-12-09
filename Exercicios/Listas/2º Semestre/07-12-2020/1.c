@@ -41,7 +41,7 @@ int menu(int tl) {
    int opcao;
  
    setbuf(stdin, NULL);
-   system("clear");
+   system("cls");
    printf("GESTÃO DE BOLETINS - 1.0\n\n");
    printf("1 - Incluir Disciplinas.\n");
    printf("2 - Apresentar Relatório.\n");
@@ -63,7 +63,7 @@ float calcula_media(Disciplina disciplina) {
 }
 
 void cadastra_disciplina(Disciplina *disciplina,int *tl) {
-   system("clear");
+   system("cls");
    setbuf(stdin, NULL);
    if (*tl>9) {
       printf("Quantidade máxima de disciplinas atingida. Reinicie o sistema e tente novamente.\n");
@@ -92,7 +92,7 @@ void apresenta_disciplina(Disciplina disciplina) {
 }
 
 void gera_relatorio(Disciplina disciplinas[10], int tl) {
-   system("clear");  
+   system("cls");  
    setbuf(stdin, NULL);
    if(tl == 0) {
       printf("Nenhuma disciplina cadastrada. Pressione enter para retornar.");
@@ -126,7 +126,7 @@ void gera_relatorio(Disciplina disciplinas[10], int tl) {
 }
 
 void localiza_disciplina(Disciplina disciplinas[10], int tl) {
-   system("clear");
+   system("cls");
    setbuf(stdin, NULL);
 
    if(tl==0) {
@@ -138,7 +138,7 @@ void localiza_disciplina(Disciplina disciplinas[10], int tl) {
       printf("Nome da disciplina desejada: ");
       readString(busca, 50);
 
-      system("clear");
+      system("cls");
 
       printf("Disciplinas com a sequencia:");
       puts(busca);
@@ -155,7 +155,7 @@ void localiza_disciplina(Disciplina disciplinas[10], int tl) {
 }
 
 void procura_maior(Disciplina disciplinas[10], int tl) {
-   system("clear");  
+   system("cls");  
    setbuf(stdin, NULL);
 
    if(tl == 0) {
@@ -181,7 +181,7 @@ void procura_maior(Disciplina disciplinas[10], int tl) {
 }
 
 void procura_menor(Disciplina disciplinas[10], int tl) {
-   system("clear");  
+   system("cls");  
    setbuf(stdin, NULL);
    
    if(tl == 0) {
@@ -207,7 +207,7 @@ void procura_menor(Disciplina disciplinas[10], int tl) {
 }
 
 void apresenta_aprovadas(Disciplina disciplinas[10], int tl) {
-   system("clear");  
+   system("cls");  
    setbuf(stdin, NULL);
    if(tl == 0) {
       printf("Nenhuma disciplina cadastrada. Pressione enter para retornar.");

@@ -80,7 +80,7 @@ int menu(int tlProdutos, int tlFornecedores) {
    int opcao;
  
    setbuf(stdin, NULL);
-   system("clear");
+   system("cls");
    printf("GESTÃO DE PRODUTOS - 1.0\n\n");
    printf("1 - Cadastrar Produtos.\n");
    printf("2 - Apresentar Produtos.\n");
@@ -124,8 +124,8 @@ void apresenta_fornecedores(Fornecedor fornecedores[], int tl) {
    }
 }
 
-void cadastra_produto(Produto *produto ,int *tl, Fornecedor fornecedores[], int tlFornecedor) {
-   system("clear");
+void cadastra_produto(Produto *produto ,int *tl, Fornecedor fornecedores[], int tlFornecedores) {
+   system("cls");
    setbuf(stdin, NULL);
    if (*tl>9) {
       printf("Quantidade máxima de produtos atingida. Reinicie o sistema e tente novamente.\n");
@@ -140,12 +140,12 @@ void cadastra_produto(Produto *produto ,int *tl, Fornecedor fornecedores[], int 
       scanf("%d", &produto->qtdEstoque);
       printf("Informe a quantidade minima permitida em estoque: ");
       scanf("%d", &produto->qtdMinima);
-      printf("\nFornecedores Cadastrados: ");
-      apresenta_fornecedores(fornecedores, tlFornecedor);
+      printf("\nFornecedores Cadastrados: \n");
+      apresenta_fornecedores(fornecedores, tlFornecedores);
       do {
          printf("Informe um fornecedor válido: ");
          scanf("%d", &produto->fornecedor);
-      } while(procuraFornecedorId(fornecedores, tlFornecedor, produto->fornecedor) == -1);
+      } while(procuraFornecedorId(fornecedores, tlFornecedores, produto->fornecedor) == -1);
 
       *tl+=1;
       printf("PRODUTO CADASTRADA COM SUCESSO.");
@@ -161,7 +161,7 @@ void apresenta_produto(Produto produto) {
 }
 
 void apresenta_produtos(Produto produtos[], int tl) {
-   system("clear");
+   system("cls");
    setbuf(stdin, NULL);
 
    int i;
@@ -175,7 +175,7 @@ void apresenta_produtos(Produto produtos[], int tl) {
 
 
 void apresenta_produtos_fornecedor(Produto produtos[], int tlProdutos, Fornecedor fornecedores[], int tlFornecedores) {
-   system("clear");
+   system("cls");
    setbuf(stdin, NULL);
 
    int i;
@@ -189,8 +189,42 @@ void apresenta_produtos_fornecedor(Produto produtos[], int tlProdutos, Fornecedo
    getchar();
 }
 
+void apresenta_produtos_fornecedor_codigo(Produto produtos[], int tlProdutos, Fornecedor fornecedores[], int tlFornecedores) {
+   system("cls");
+   setbuf(stdin, NULL);
+   int codigo, i;
+
+   printf("\nFornecedores Cadastrados: \n");
+   apresenta_fornecedores(fornecedores, tlFornecedores);
+
+   printf("Informe o código do fornecedor: ");
+   scanf("%d", &codigo);
+
+   system("cls");
+
+   int indexFornecedor = procuraFornecedorId(fornecedores, tlFornecedores, codigo);
+   
+   setbuf(stdin, NULL);
+
+   if(indexFornecedor == -1) {
+      printf("Fornecedor com código %d não encontrado. Pressione enter para retornar ao menu.", codigo);
+   } else {
+      for(i=0; i < tlProdutos; i++) {
+         if(codigo == produtos[i].fornecedor) {
+            apresenta_produto(produtos[i]);
+            printf("\nFORNECEDOR:\n");
+            apresenta_fornecedor(fornecedores[indexFornecedor]);
+            printf("\n--------------------------------\n\n");
+         }
+      }
+   }
+   getchar();
+}
+
+
+
 void apresenta_produtos_estoqueBaixo(Produto produtos[], int tl) {
-   system("clear");
+   system("cls");
    setbuf(stdin, NULL);
    printf("PRODUTOS COM BAIXO ESTOQUE: \n\n");
    int i;
@@ -204,14 +238,14 @@ void apresenta_produtos_estoqueBaixo(Produto produtos[], int tl) {
 };
 
 void procura_produto(Produto produtos[], int tlProdutos, Fornecedor fornecedores[], int tlFornecedores) {
-   system("clear");
+   system("cls");
    setbuf(stdin, NULL); 
    
    char busca[50];
    printf("Informe um nome de produto para ser buscado: ");
    readString(busca,50);
    
-   system("clear");
+   system("cls");
    printf("Produtos que tem o nome compativel com ");
    puts(busca);
    printf("\n");
@@ -232,7 +266,7 @@ float calcula_valorEstoque(Produto produto) {
 }
 
 void balanco_estoque(Produto produtos[], int tl) {
-   system("clear");
+   system("cls");
    setbuf(stdin, NULL); 
 
    int i;
@@ -270,6 +304,7 @@ int main() {
             apresenta_produtos_fornecedor(produtos, tlProdutos, fornecedores, tlFornecedores);
             break;
          case 4:
+            apresenta_produtos_fornecedor_codigo(produtos, tlProdutos, fornecedores, tlFornecedores);
             break;
          case 5:
             apresenta_produtos_estoqueBaixo(produtos, tlProdutos);
