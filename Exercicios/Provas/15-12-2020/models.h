@@ -21,3 +21,9 @@ typedef struct {
    char codigo_aluno[8];
    char situacao;
 } Emprestimo;
+
+typedef struct {
+   Aluno alunos[50];
+   Livro livros[50];
+   Emprestimo emprestimos[100];
+} Banco;
