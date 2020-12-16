@@ -1,7 +1,7 @@
 typedef struct {
    int prontuario;
    char nome[100];
-   char curso[3];
+   char curso[4];
 } Aluno;
 
 typedef struct {
@@ -18,6 +18,6 @@ typedef struct {
    int dia_devolucao;
    int mes_devolucao;
    int codigo_livro;
-   char codigo_aluno[8];
+   int codigo_aluno;
    char situacao;
 } Emprestimo;
