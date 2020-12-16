@@ -1,7 +1,7 @@
 typedef struct {
-   char prontuario[8];
+   int prontuario;
    char nome[100];
-   char curso[4];
+   char curso[3];
 } Aluno;
 
 typedef struct {
@@ -9,7 +9,7 @@ typedef struct {
    char titulo[100];
    char autores[150];
    int ano;
-   char sit;
+   char situacao;
 } Livro;
 
 typedef struct {
@@ -21,9 +21,3 @@ typedef struct {
    char codigo_aluno[8];
    char situacao;
 } Emprestimo;
-
-typedef struct {
-   Aluno alunos[50];
-   Livro livros[50];
-   Emprestimo emprestimos[100];
-} Banco;
