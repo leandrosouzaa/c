@@ -137,6 +137,7 @@ void preencher_dados(Aluno alunos[50], Livro livros[50], Emprestimo emprestimos[
    }
 };
 
+
 int menu(int tlAlunos, int tlLivros, int tlEmprestimos) {
    setbuf(stdin, NULL);
    system("clear");
@@ -153,14 +154,15 @@ int menu(int tlAlunos, int tlLivros, int tlEmprestimos) {
    printf("\nRelatórios:\n");
    printf("  05 - Emprestimos em atraso.\n");
    printf("  06 - Emprestimo por aluno.\n");
-   printf("  07 - Procurar Emprestimo.\n");
-   printf("  08 - Livros por situação (D/E).\n");
+   printf("  07 - Livros por situação (D/E).\n");
 
-   printf("\n  09 - Geral de Alunos.\n");
-   printf("  10 - Geral de Livros.\n");
-   printf("  11 - Geral de Emprestimos.\n");
+   printf("\n  08 - Geral de Alunos.\n");
+   printf("  09 - Geral de Livros.\n");
+   printf("  10 - Geral de Emprestimos.\n");
    
-   printf("\n  12 - Quantidade de Emprestimos por curso (BCC/ADS/TII).\n");
+   printf("\n  11 - Quantidade de Emprestimos por curso (BCC/ADS/TII).\n");
+   printf("  12 - Quantidade de Emprestimos por livro.\n");
+
    printf("\n13 - Finalizar sessão.\n");
 
    printf("\nQuantidade de Alunos: %d.\n", tlAlunos);
@@ -172,6 +174,154 @@ int menu(int tlAlunos, int tlLivros, int tlEmprestimos) {
 
    return opcao;
 };
+
+void devolucao_emprestimo(Aluno alunos[], Livro livros[], Emprestimo emprestimos[], int *tlEmprestimos, int tlAlunos, int tlLivros) {
+   setbuf(stdin, NULL);
+   system("clear");
+
+   if(tlEmprestimos == 0) {
+      printf("Dados insfucientes. Pressione ENTER para retornar ao menu.\n");
+   } else {
+      int i, tombo, indexTombo, cont;
+
+      for(i=0; i < tlLivros; i++) {
+         if(livros[i].situacao == 'E') {
+            cont++;
+            printf("\n");
+            apresenta_livro(livros[i]);
+            printf("\n-------------------------------\n");
+         }
+      }
+      if(cont == 0) {
+         printf("Nenhum livro disponível. Aguarde a finalização de algum empréstimo.");
+         setbuf(stdin, NULL);
+         getchar();
+      } else {
+         int indexEmprestimo;
+
+         do {
+            printf("Informe o tombo do livro que deseja devolver: ");
+            scanf("%d", &tombo);
+            indexTombo = procura_tombo(tombo, livros, tlLivros);
+            if(indexTombo == -1) {
+               printf("Tombo Invalido. Verifique a lista e escolha novamente.\n");
+            }
+            if(indexTombo != -1 && livros[indexTombo].situacao == 'D') {
+               printf("Nao e possivel devolver um livro que nao foi emprestado. Verifique a lista e escolha novamente.\n");
+            }
+         } while(indexTombo == -1 || livros[indexTombo].situacao == 'D');
+
+         system("clear");
+         setbuf(stdin, NULL);
+
+         indexEmprestimo = procura_emprestimo_pendente_tombo(tombo, emprestimos, *tlEmprestimos);
+         apresenta_emprestimo_completo(emprestimos[indexEmprestimo], alunos[procura_prontuario(emprestimos[indexEmprestimo].codigo_aluno , alunos, *tlEmprestimos)], livros[procura_tombo(emprestimos[indexEmprestimo].codigo_livro,livros, tlAlunos)]);
+
+         printf("\n\nDevolver emprestimo [S/N]: ");
+         if(getchar() == 'S') {
+            emprestimos[indexEmprestimo].situacao = 'F';
+            livros[procura_tombo(emprestimos[indexEmprestimo].codigo_livro,livros, tlAlunos)].situacao = 'D';
+         };
+
+      }
+   }
+}
+
+
+void cadastra_emprestimo(Aluno alunos[], Livro livros[], Emprestimo emprestimos[], int *tlEmprestimos, int tlAlunos, int tlLivros) {
+   system("clear");
+   setbuf(stdin, NULL);
+
+   if(tlAlunos == 0 || tlEmprestimos == 0) {
+      printf("Dados insfucientes. Pressione ENTER para retornar ao menu.\n");
+   } else {
+      int prontuario, indexAluno, i, tombo, indexTombo, cont = 0;
+
+      for(i=0; i < tlAlunos; i++) {
+         printf("\n");
+         apresenta_aluno(alunos[i]);
+         printf("\n-------------------------------\n");
+      }
+
+      do {
+         printf("Informe um prontuario valido: PE");
+         scanf("%d", &prontuario);
+
+         indexAluno = procura_prontuario(prontuario, alunos, tlAlunos);
+         if(indexAluno == -1) {
+            printf("Prontuario Invalido. Verifique a lista e escolha novamente.\n");
+         }
+      } while(indexAluno == -1);
+
+      system("clear");
+
+      for(i=0; i < tlLivros; i++) {
+         if(livros[i].situacao == 'D') {
+            cont++;
+            printf("\n");
+            apresenta_livro(livros[i]);
+            printf("\n-------------------------------\n");
+         }
+      }
+      if(cont == 0) {
+         printf("Nenhum livro disponível. Aguarde a finalização de algum empréstimo.");
+         setbuf(stdin, NULL);
+         getchar();
+      } else {
+         do {
+            printf("Informe um tombo valido: ");
+            scanf("%d", &tombo);
+
+            indexTombo = procura_tombo(tombo, livros, tlLivros);
+            if(indexTombo == -1) {
+               printf("Tombo Invalido. Verifique a lista e escolha novamente.\n");
+            }
+            if(indexTombo != -1 && livros[indexTombo].situacao == 'E') {
+               printf("Livro emprestado. Verifique a lista e escolha novamente.\n");
+            }
+         } while(indexAluno == -1 || livros[indexTombo].situacao == 'E');
+
+         system("clear");
+
+         printf("Aluno:\n");
+         apresenta_aluno(alunos[indexAluno]);
+         printf("\nLivro: \n");
+         apresenta_livro(livros[indexTombo]);
+
+         printf("\nInforme o dia do emprestimo: ");
+         scanf("%d", &emprestimos[*tlEmprestimos].dia);
+         printf("Informe o mes do emprestimo: ");
+         scanf("%d", &emprestimos[*tlEmprestimos].mes);
+
+         system("clear");
+         emprestimos[*tlEmprestimos].dia_devolucao = emprestimos[*tlEmprestimos].dia + 7;
+         if(emprestimos[*tlEmprestimos].dia_devolucao > 30) {
+            emprestimos[*tlEmprestimos].dia_devolucao-=30;
+            emprestimos[*tlEmprestimos].mes_devolucao = emprestimos[*tlEmprestimos].mes + 1;
+         } else {
+            emprestimos[*tlEmprestimos].mes_devolucao = emprestimos[*tlEmprestimos].mes;
+         }
+
+         printf("Aluno:\n");
+         apresenta_aluno(alunos[indexAluno]);
+         printf("\nLivro: \n");
+         apresenta_livro(livros[indexTombo]);
+         printf("\nData do emprestimo: %s%d/%s%d/2020.\n",emprestimos[*tlEmprestimos].dia < 10 ? "0" : "" , emprestimos[*tlEmprestimos].dia, emprestimos[*tlEmprestimos].mes < 10 ? "0" : "", emprestimos[*tlEmprestimos].mes);
+         printf("Data de devolução: %s%d/%s%d/2020.\n",emprestimos[*tlEmprestimos].dia_devolucao < 10 ? "0" : "" , emprestimos[*tlEmprestimos].dia_devolucao, emprestimos[*tlEmprestimos].mes < 10 ? "0" : "", emprestimos[*tlEmprestimos].mes_devolucao);
+         printf("\nConfirmar Emprestimo [S/N]:");
+
+         setbuf(stdin, NULL);
+         if(getchar() == 'S') {
+            emprestimos[*tlEmprestimos].codigo_aluno = prontuario;
+            emprestimos[*tlEmprestimos].codigo_livro = tombo;
+            emprestimos[*tlEmprestimos].situacao = 'P';
+            livros[indexTombo].situacao = 'E';
+
+            *tlEmprestimos+=1;
+         }
+      }
+   }
+}
 
 void cadastra_aluno(Aluno alunos[], int *tl) {
    system("clear");
@@ -193,7 +343,7 @@ void cadastra_aluno(Aluno alunos[], int *tl) {
          }
          // prontuario pode ter no maximo 7 digitos.
          if(temp > 9999999 || temp < 0) {
-            printf("Prontuário inválido. Tente novamente.\n");
+            printf("Prontuario invalido. Tente novamente.\n");
             valido = 0;
          }
       } while(valido != -1);
@@ -267,6 +417,7 @@ void relatorio_alunos(Aluno alunos[], int tl) {
          printf("\n-------------------------------\n");
       }
    }
+
    getchar();
 }
 
@@ -285,6 +436,7 @@ void relatorio_livros(Livro livros[], int tl) {
          printf("\n-------------------------------\n");
       }
    }
+
    getchar();
 }
 
@@ -314,9 +466,9 @@ void relatorio_livros_situacao(Livro livros[], int tl) {
       }
    }
    setbuf(stdin, NULL);
-   getchar();
-   getchar();
 
+   getchar();
+   getchar();
 }
 
 void relatorio_emprestimos(Aluno alunos[], Livro livros[], Emprestimo emprestimos[], int tlEmprestimos, int tlAlunos, int tlLivros) {
@@ -329,10 +481,11 @@ void relatorio_emprestimos(Aluno alunos[], Livro livros[], Emprestimo emprestimo
       int i;
       for(i=0; i < tlEmprestimos; i++) {
          printf("\n");
-         apresenta_emprestimo(emprestimos[i], alunos[procura_prontuario(emprestimos[i].codigo_aluno , alunos, tlEmprestimos)], livros[procura_tombo(emprestimos[i].codigo_livro,livros, tlAlunos)]);
+         apresenta_emprestimo_completo(emprestimos[i], alunos[procura_prontuario(emprestimos[i].codigo_aluno , alunos, tlEmprestimos)], livros[procura_tombo(emprestimos[i].codigo_livro,livros, tlAlunos)]);
          printf("\n-------------------------------\n");
       }
    }
+
    getchar();
 };
 
@@ -348,8 +501,107 @@ void emprestimos_por_curso(Emprestimo emprestimos[], int tlEmprestimos, Aluno al
       printf("ADS: %d.\n", calcula_emprestimos_curso(emprestimos, tlEmprestimos, alunos,tlAlunos, "ADS"));
       printf("TII: %d.\n", calcula_emprestimos_curso(emprestimos, tlEmprestimos, alunos,tlAlunos, "TII"));
    }
+
    getchar();
 }
+
+void relatorio_emprestimos_aluno(Aluno alunos[], Livro livros[], Emprestimo emprestimos[], int tlEmprestimos, int tlAlunos, int tlLivros) {
+   system("clear");
+   setbuf(stdin, NULL);
+
+   if(tlAlunos == 0 || tlEmprestimos == 0) {
+      printf("Dados insfucientes. Pressione ENTER para retornar ao menu.\n");
+   } else {
+      int prontuario, indexAluno, i;
+
+      for(i=0; i < tlAlunos; i++) {
+         printf("\n");
+         apresenta_aluno(alunos[i]);
+         printf("\n-------------------------------\n");
+      }
+
+      do {
+         printf("Informe um prontuario valido para busca: PE");
+         scanf("%d", &prontuario);
+
+         indexAluno = procura_prontuario(prontuario, alunos, tlAlunos);
+         if(indexAluno == -1) {
+            printf("Prontuario Invalido. Verifique a lista e escolha novamente.\n");
+         }
+      } while(indexAluno == -1);
+      system("clear");
+      
+      printf("ALUNO:\n");
+      apresenta_aluno(alunos[indexAluno]);
+      
+      printf("\nEMPRESTIMOS:\n");
+      for(i=0; i < tlEmprestimos; i++) {
+         if(emprestimos[i].codigo_aluno == prontuario) {
+            printf("\n");
+            printf("LIVRO\n");
+            apresenta_livro(livros[procura_tombo(emprestimos[i].codigo_livro, livros, tlLivros)]);
+            printf("\nEMPRESTIMO");
+            apresenta_emprestimo(emprestimos[i]);
+            printf("\n-------------------------------\n");
+         }
+      }
+   }
+
+   getchar();
+}
+
+void relatorio_emprestimos_atraso(Aluno alunos[], Livro livros[], Emprestimo emprestimos[], int tlEmprestimos, int tlAlunos, int tlLivros) {
+   system("clear");
+   setbuf(stdin, NULL);
+
+   if(tlEmprestimos == 0) {
+      printf("Nenhum livro cadastrado. Pressione ENTER para retornar ao menu.\n");
+   } else {
+      int i, dia, mes;
+
+      printf("Informe o dia de hoje: ");
+      scanf("%d", &dia);
+      printf("Informe o mes de hoje: ");
+      scanf("%d", &mes);
+
+      system("clear");
+
+      printf("Emprestimos em atraso a partida da data %s%d/%s%d/2020.\n",dia < 10 ? "0" : "" , dia, mes < 10 ? "0" : "", mes);
+
+      for(i=0; i < tlEmprestimos; i++) {
+         if( emprestimos[i].situacao == 'P' && (mes > emprestimos[i].mes_devolucao ||(dia > emprestimos[dia].dia_devolucao && (mes >= emprestimos[i].mes_devolucao)))) {
+            printf("\n");
+            apresenta_emprestimo_completo(emprestimos[i], alunos[procura_prontuario(emprestimos[i].codigo_aluno , alunos, tlEmprestimos)], livros[procura_tombo(emprestimos[i].codigo_livro,livros, tlAlunos)]);
+            printf("\n-------------------------------\n");
+         }
+      }
+   }
+
+   setbuf(stdin, NULL);
+   getchar();
+};
+
+void emprestimos_por_livro(Emprestimo emprestimos[], int tlEmprestimos, Livro livros[], int tlLivros) {
+   system("clear");
+   setbuf(stdin, NULL);
+
+   if(tlEmprestimos == 0 || tlLivros == 0) {
+      printf("Dados insuficientes. Pressione ENTER para retornar ao menu.\n");
+   } else {
+      int i;
+      printf("Quantidade de Emprestimos realizados por livro:\n");
+      for(i=0; i < tlLivros; i++) {
+         printf("\n");
+         apresenta_livro(livros[i]);
+         printf("Quantidade de Emprestimos: %d.\n", quantidade_emprestimos(livros[i].tombo, emprestimos, tlEmprestimos));
+         printf("\n-------------------------------\n");
+      }
+   }
+
+   getchar();
+}
+
+
 
 int main() {
    int tlAlunos = 6, tlLivros = 5, tlEmprestimos = 9, opcao;
@@ -363,37 +615,61 @@ int main() {
       opcao = menu(tlAlunos, tlLivros, tlEmprestimos);
 
       switch(opcao) {
-      case 3:
-         cadastra_aluno(alunos, &tlAlunos);
-         break;
+         case 1:
+            cadastra_emprestimo(alunos, livros, emprestimos, &tlEmprestimos, tlAlunos, tlLivros);
+            break;
 
-      case 4:
-         cadastra_livro(livros, &tlLivros);
-         break;
+         case 2:
+            devolucao_emprestimo(alunos, livros, emprestimos, &tlEmprestimos, tlAlunos, tlLivros);
+            break;
 
-      case 8:
-         relatorio_livros_situacao(livros, tlLivros);
-         break;
+         case 3:
+            cadastra_aluno(alunos, &tlAlunos);
+            break;
 
-      case 9:
-         relatorio_alunos(alunos, tlAlunos);
-         break;
+         case 4:
+            cadastra_livro(livros, &tlLivros);
+            break;
 
-      case 10:
-         relatorio_livros(livros, tlLivros);
-         break;
-      
-      case 11:
-         relatorio_emprestimos(alunos, livros, emprestimos, tlEmprestimos, tlAlunos, tlLivros);
-         break;
+         case 5:
+            relatorio_emprestimos_atraso(alunos, livros, emprestimos, tlEmprestimos, tlAlunos, tlLivros);
+            break;
 
-      case 12:
-         emprestimos_por_curso(emprestimos, tlEmprestimos, alunos, tlAlunos);
-         break;
+         case 6:
+            relatorio_emprestimos_aluno(alunos, livros, emprestimos, tlEmprestimos, tlAlunos, tlLivros);
+            break;
 
-      default:
-         break;
-      }      
+         case 7:
+            relatorio_livros_situacao(livros, tlLivros);
+            break;
+
+         case 8:
+            relatorio_alunos(alunos, tlAlunos);
+            break;
+
+         case 9:
+            relatorio_livros(livros, tlLivros);
+            break;
+
+         case 10:
+            relatorio_emprestimos(alunos, livros, emprestimos, tlEmprestimos, tlAlunos, tlLivros);
+            break;
+
+         case 11:
+            emprestimos_por_curso(emprestimos, tlEmprestimos, alunos, tlAlunos);
+            break;
+
+         case 12:
+            emprestimos_por_livro(emprestimos, tlEmprestimos, livros, tlLivros);
+            break;
+
+         case 13:
+            printf("Finalizando programa...");
+            break;
+
+         default:
+            break;
+         }      
    } while(opcao != 13);
 
    return 0;
