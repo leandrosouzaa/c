@@ -78,14 +78,6 @@ Produto
            <td>24</td>
            <td>10</td>
           </tr>
-          <tr>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-          </tr>
          </table>
 O Zé, dono do bar, é um exímio otimizados de dados, e resolveu retirar as repetições de dados, dessa formar ele separou essa tabela em duas outras:
 
