@@ -10,7 +10,7 @@
 Obs. Implementar um menu, que permita ao usuário selecionar uma dessas opções, seria importante a implementação de uma função para preenche a tabela de disciplinas com dados iniciais. 
 Obs2. Em vários locais é necessária a apresentação dos dados de uma disciplina, poderia ser implementada uma função para isso, onde é passada um registro como parâmetro.
 
-- [x] 1. O Bar do Zé precisa de um controle dos produtos e seus respectivos fornecedores para poder realizar suas compras. O Zé, proprietário do bar, fez uma tabela no excel com o seguinte formato:
+- [x] 2. O Bar do Zé precisa de um controle dos produtos e seus respectivos fornecedores para poder realizar suas compras. O Zé, proprietário do bar, fez uma tabela no excel com o seguinte formato:
 
 Produto
          <table>
@@ -89,7 +89,7 @@ Produto
          </table>
 O Zé, dono do bar, é um exímio otimizados de dados, e resolveu retirar as repetições de dados, dessa formar ele separou essa tabela em duas outras:
 
-         <table>
+  <table>
           <tr>
            <td>Nome do Produto</td>
            <td>Código Fornecedor</td>
