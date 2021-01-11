@@ -46,13 +46,13 @@ void apresenta_livro(Livro livro) {
    printf("Autore(s): ");
    puts(livro.autores);
    printf("Ano de Publicacao: %d.\n", livro.ano);
-   printf("Situação: %s (%c).\n", livro.situacao == 'D' ? "Disponivel" : "Emprestado", livro.situacao);
+   printf("Situacao: %s (%c).\n", livro.situacao == 'D' ? "Disponivel" : "Emprestado", livro.situacao);
 }
 
 void apresenta_emprestimo(Emprestimo emprestimo) {
    printf("\nData do emprestimo: %s%d/%s%d/2020.\n",emprestimo.dia < 10 ? "0" : "" , emprestimo.dia, emprestimo.mes < 10 ? "0" : "", emprestimo.mes);
-   printf("Data de devolução: %s%d/%s%d/2020.\n",emprestimo.dia_devolucao < 10 ? "0" : "" , emprestimo.dia_devolucao, emprestimo.mes < 10 ? "0" : "", emprestimo.mes_devolucao);
-   printf("\nSITUAÇÃO: %s (%c).\n", emprestimo.situacao == 'P' ? "PENDENTE" : "FINALIZADO", emprestimo.situacao);
+   printf("Data de devolucao: %s%d/%s%d/2020.\n",emprestimo.dia_devolucao < 10 ? "0" : "" , emprestimo.dia_devolucao, emprestimo.mes < 10 ? "0" : "", emprestimo.mes_devolucao);
+   printf("\nSITUACAO: %s (%c).\n", emprestimo.situacao == 'P' ? "PENDENTE" : "FINALIZADO", emprestimo.situacao);
 }
 
 

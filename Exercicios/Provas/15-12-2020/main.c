@@ -26,7 +26,7 @@ void preencher_dados(Aluno alunos[50], Livro livros[50], Emprestimo emprestimos[
       strcpy(alunos[4].curso, "BCC");
 
       alunos[5].prontuario = 1764562;
-      strcpy(alunos[5].nome, "João Carlos de Souza");
+      strcpy(alunos[5].nome, "Joao Carlos de Souza");
       strcpy(alunos[5].curso, "TII");
    }
 
@@ -38,7 +38,7 @@ void preencher_dados(Aluno alunos[50], Livro livros[50], Emprestimo emprestimos[
       livros[0].situacao = 'D';
 
       livros[1].tombo = 2;
-      strcpy(livros[1].titulo, "Tropeçando no código fonte em C");
+      strcpy(livros[1].titulo, "Tropecando no código fonte em C");
       strcpy(livros[1].autores, "Melissa");
       livros[1].ano = 2018;
       livros[1].situacao = 'E';
@@ -56,7 +56,7 @@ void preencher_dados(Aluno alunos[50], Livro livros[50], Emprestimo emprestimos[
       livros[3].situacao = 'D';
 
       livros[4].tombo = 5;
-      strcpy(livros[4].titulo, "Orientação a Objetos: o que e isso");
+      strcpy(livros[4].titulo, "Orientacao a Objetos: o que e isso");
       strcpy(livros[4].autores, "Andre e Vilson");
       livros[4].ano = 2017;
       livros[4].situacao = 'E';
@@ -140,21 +140,21 @@ void preencher_dados(Aluno alunos[50], Livro livros[50], Emprestimo emprestimos[
 
 int menu(int tlAlunos, int tlLivros, int tlEmprestimos) {
    setbuf(stdin, NULL);
-   system("clear");
+   system("cls");
 
    int opcao;
 
    printf("CONTROLE DE EMPRESTIMOS 1.0 - BIBLOTECA IFSP PEP\n\n");
-   printf("Cadastros e Devoluções:\n");
+   printf("Cadastros e Devolucoes:\n");
    printf("  01 - CADASTRAR NOVO EMPRESTIMO.\n");
-   printf("  02 - DEVOLUÇÃO.\n");
+   printf("  02 - DEVOLUCAO.\n");
    printf("  03 - Cadastrar Novo Aluno.\n");
    printf("  04 - Cadastrar Novo Livro.\n");
 
    printf("\nRelatórios:\n");
    printf("  05 - Emprestimos em atraso.\n");
    printf("  06 - Emprestimo por aluno.\n");
-   printf("  07 - Livros por situação (D/E).\n");
+   printf("  07 - Livros por situacao (D/E).\n");
 
    printf("\n  08 - Geral de Alunos.\n");
    printf("  09 - Geral de Livros.\n");
@@ -163,13 +163,13 @@ int menu(int tlAlunos, int tlLivros, int tlEmprestimos) {
    printf("\n  11 - Quantidade de Emprestimos por curso (BCC/ADS/TII).\n");
    printf("  12 - Quantidade de Emprestimos por livro.\n");
 
-   printf("\n13 - Finalizar sessão.\n");
+   printf("\n13 - Finalizar sessao.\n");
 
    printf("\nQuantidade de Alunos: %d.\n", tlAlunos);
    printf("Quantidade de Livros: %d.\n", tlLivros);
    printf("Quantidade de Emprestimos: %d.\n", tlEmprestimos);
 
-   printf("\nEscolha uma operação: ");
+   printf("\nEscolha uma operacao: ");
    scanf("%d", &opcao);
 
    return opcao;
@@ -177,7 +177,7 @@ int menu(int tlAlunos, int tlLivros, int tlEmprestimos) {
 
 void devolucao_emprestimo(Aluno alunos[], Livro livros[], Emprestimo emprestimos[], int *tlEmprestimos, int tlAlunos, int tlLivros) {
    setbuf(stdin, NULL);
-   system("clear");
+   system("cls");
 
    if(tlEmprestimos == 0) {
       printf("Dados insfucientes. Pressione ENTER para retornar ao menu.\n");
@@ -193,7 +193,7 @@ void devolucao_emprestimo(Aluno alunos[], Livro livros[], Emprestimo emprestimos
          }
       }
       if(cont == 0) {
-         printf("Nenhum livro disponível. Aguarde a finalização de algum empréstimo.");
+         printf("Nenhum livro disponivel. Aguarde a finalizacao de algum emprestimo.");
          setbuf(stdin, NULL);
          getchar();
       } else {
@@ -211,7 +211,7 @@ void devolucao_emprestimo(Aluno alunos[], Livro livros[], Emprestimo emprestimos
             }
          } while(indexTombo == -1 || livros[indexTombo].situacao == 'D');
 
-         system("clear");
+         system("cls");
          setbuf(stdin, NULL);
 
          indexEmprestimo = procura_emprestimo_pendente_tombo(tombo, emprestimos, *tlEmprestimos);
@@ -229,7 +229,7 @@ void devolucao_emprestimo(Aluno alunos[], Livro livros[], Emprestimo emprestimos
 
 
 void cadastra_emprestimo(Aluno alunos[], Livro livros[], Emprestimo emprestimos[], int *tlEmprestimos, int tlAlunos, int tlLivros) {
-   system("clear");
+   system("cls");
    setbuf(stdin, NULL);
 
    if(tlAlunos == 0 || tlEmprestimos == 0) {
@@ -253,7 +253,7 @@ void cadastra_emprestimo(Aluno alunos[], Livro livros[], Emprestimo emprestimos[
          }
       } while(indexAluno == -1);
 
-      system("clear");
+      system("cls");
 
       for(i=0; i < tlLivros; i++) {
          if(livros[i].situacao == 'D') {
@@ -264,7 +264,7 @@ void cadastra_emprestimo(Aluno alunos[], Livro livros[], Emprestimo emprestimos[
          }
       }
       if(cont == 0) {
-         printf("Nenhum livro disponível. Aguarde a finalização de algum empréstimo.");
+         printf("Nenhum livro disponivel. Aguarde a finalizacao de algum emprestimo.");
          setbuf(stdin, NULL);
          getchar();
       } else {
@@ -281,7 +281,7 @@ void cadastra_emprestimo(Aluno alunos[], Livro livros[], Emprestimo emprestimos[
             }
          } while(indexAluno == -1 || livros[indexTombo].situacao == 'E');
 
-         system("clear");
+         system("cls");
 
          printf("Aluno:\n");
          apresenta_aluno(alunos[indexAluno]);
@@ -293,7 +293,7 @@ void cadastra_emprestimo(Aluno alunos[], Livro livros[], Emprestimo emprestimos[
          printf("Informe o mes do emprestimo: ");
          scanf("%d", &emprestimos[*tlEmprestimos].mes);
 
-         system("clear");
+         system("cls");
          emprestimos[*tlEmprestimos].dia_devolucao = emprestimos[*tlEmprestimos].dia + 7;
          if(emprestimos[*tlEmprestimos].dia_devolucao > 30) {
             emprestimos[*tlEmprestimos].dia_devolucao-=30;
@@ -307,7 +307,7 @@ void cadastra_emprestimo(Aluno alunos[], Livro livros[], Emprestimo emprestimos[
          printf("\nLivro: \n");
          apresenta_livro(livros[indexTombo]);
          printf("\nData do emprestimo: %s%d/%s%d/2020.\n",emprestimos[*tlEmprestimos].dia < 10 ? "0" : "" , emprestimos[*tlEmprestimos].dia, emprestimos[*tlEmprestimos].mes < 10 ? "0" : "", emprestimos[*tlEmprestimos].mes);
-         printf("Data de devolução: %s%d/%s%d/2020.\n",emprestimos[*tlEmprestimos].dia_devolucao < 10 ? "0" : "" , emprestimos[*tlEmprestimos].dia_devolucao, emprestimos[*tlEmprestimos].mes < 10 ? "0" : "", emprestimos[*tlEmprestimos].mes_devolucao);
+         printf("Data de devolucao: %s%d/%s%d/2020.\n",emprestimos[*tlEmprestimos].dia_devolucao < 10 ? "0" : "" , emprestimos[*tlEmprestimos].dia_devolucao, emprestimos[*tlEmprestimos].mes < 10 ? "0" : "", emprestimos[*tlEmprestimos].mes_devolucao);
          printf("\nConfirmar Emprestimo [S/N]:");
 
          setbuf(stdin, NULL);
@@ -324,7 +324,7 @@ void cadastra_emprestimo(Aluno alunos[], Livro livros[], Emprestimo emprestimos[
 }
 
 void cadastra_aluno(Aluno alunos[], int *tl) {
-   system("clear");
+   system("cls");
    setbuf(stdin, NULL);
 
    if (*tl>49) {
@@ -362,7 +362,7 @@ void cadastra_aluno(Aluno alunos[], int *tl) {
 };
 
 void cadastra_livro(Livro livros[], int *tl) {
-   system("clear");
+   system("cls");
    setbuf(stdin, NULL);
 
    if (*tl>49) {
@@ -402,7 +402,7 @@ void cadastra_livro(Livro livros[], int *tl) {
 };
 
 void relatorio_alunos(Aluno alunos[], int tl) {
-   system("clear");
+   system("cls");
    setbuf(stdin, NULL);
 
    
@@ -422,7 +422,7 @@ void relatorio_alunos(Aluno alunos[], int tl) {
 }
 
 void relatorio_livros(Livro livros[], int tl) {
-   system("clear");
+   system("cls");
    setbuf(stdin, NULL);
    
    if(tl == 0) {
@@ -441,22 +441,22 @@ void relatorio_livros(Livro livros[], int tl) {
 }
 
 void relatorio_livros_situacao(Livro livros[], int tl) {
-   system("clear");
+   system("cls");
    setbuf(stdin, NULL);
    
    char situacao;
    do {
-      printf("Informe uma situação para buscar (E/D): ");
+      printf("Informe uma situacao para buscar (E/D): ");
       scanf(" %c", &situacao);
    } while(!(situacao == 'D' || situacao == 'E'));
 
-   system("clear");
+   system("cls");
    
    if(tl == 0) {
       printf("Nenhum livro cadastrado. Pressione ENTER para retornar ao menu.\n");
    } else {
       int i;
-      printf("Livros com situação %s (%c).", situacao == 'D' ? "DISPONIVEL" : "EMPRESTADO", situacao);
+      printf("Livros com situacao %s (%c).", situacao == 'D' ? "DISPONIVEL" : "EMPRESTADO", situacao);
       for(i=0; i < tl; i++) {
          if(livros[i].situacao == situacao) {
             printf("\n");
@@ -472,7 +472,7 @@ void relatorio_livros_situacao(Livro livros[], int tl) {
 }
 
 void relatorio_emprestimos(Aluno alunos[], Livro livros[], Emprestimo emprestimos[], int tlEmprestimos, int tlAlunos, int tlLivros) {
-   system("clear");
+   system("cls");
    setbuf(stdin, NULL);
 
    if(tlEmprestimos == 0) {
@@ -490,7 +490,7 @@ void relatorio_emprestimos(Aluno alunos[], Livro livros[], Emprestimo emprestimo
 };
 
 void emprestimos_por_curso(Emprestimo emprestimos[], int tlEmprestimos, Aluno alunos[], int tlAlunos) {
-   system("clear");
+   system("cls");
    setbuf(stdin, NULL);
 
    if(tlEmprestimos == 0 || tlAlunos == 0) {
@@ -506,7 +506,7 @@ void emprestimos_por_curso(Emprestimo emprestimos[], int tlEmprestimos, Aluno al
 }
 
 void relatorio_emprestimos_aluno(Aluno alunos[], Livro livros[], Emprestimo emprestimos[], int tlEmprestimos, int tlAlunos, int tlLivros) {
-   system("clear");
+   system("cls");
    setbuf(stdin, NULL);
 
    if(tlAlunos == 0 || tlEmprestimos == 0) {
@@ -529,7 +529,7 @@ void relatorio_emprestimos_aluno(Aluno alunos[], Livro livros[], Emprestimo empr
             printf("Prontuario Invalido. Verifique a lista e escolha novamente.\n");
          }
       } while(indexAluno == -1);
-      system("clear");
+      system("cls");
       
       printf("ALUNO:\n");
       apresenta_aluno(alunos[indexAluno]);
@@ -551,7 +551,7 @@ void relatorio_emprestimos_aluno(Aluno alunos[], Livro livros[], Emprestimo empr
 }
 
 void relatorio_emprestimos_atraso(Aluno alunos[], Livro livros[], Emprestimo emprestimos[], int tlEmprestimos, int tlAlunos, int tlLivros) {
-   system("clear");
+   system("cls");
    setbuf(stdin, NULL);
 
    if(tlEmprestimos == 0) {
@@ -564,7 +564,7 @@ void relatorio_emprestimos_atraso(Aluno alunos[], Livro livros[], Emprestimo emp
       printf("Informe o mes de hoje: ");
       scanf("%d", &mes);
 
-      system("clear");
+      system("cls");
 
       printf("Emprestimos em atraso a partida da data %s%d/%s%d/2020.\n",dia < 10 ? "0" : "" , dia, mes < 10 ? "0" : "", mes);
 
@@ -582,7 +582,7 @@ void relatorio_emprestimos_atraso(Aluno alunos[], Livro livros[], Emprestimo emp
 };
 
 void emprestimos_por_livro(Emprestimo emprestimos[], int tlEmprestimos, Livro livros[], int tlLivros) {
-   system("clear");
+   system("cls");
    setbuf(stdin, NULL);
 
    if(tlEmprestimos == 0 || tlLivros == 0) {
