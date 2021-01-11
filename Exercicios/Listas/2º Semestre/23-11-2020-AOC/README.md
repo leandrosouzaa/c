@@ -1,0 +1,4 @@
+# Lista da Semana 24/08/2020
+
+- [x] 1. Crie um programa em C que imprima uma variável do tipo Float com o valor 34.000.000.000. Você verá que o número impresso não corresponde ao valor da variável. Represente o valor binário 11111101010100011101101010000000000 (34.000.000.000) no padrão IEEE-754 (32 bits) e explique o por que ocorreu essa impressão diferente de 34.000.000.000.
+- [x] 2. Demonstre os passos, como apresentado no vídeo, para o cálculo do maior e menor valor que uma variável double pode representar. O exercício deve ter a representação dos valores em binário no formato de ponto flutuante, todos os passos da transformação de binário para decimal devem ser apresentados e um programa, como o exemplo do vídeo, deve ser criado para imprimir o menor e maior valor para double. Envie os cálculos e as telas impressos em .pdf, com provocações de erros de overflow e underflow.
