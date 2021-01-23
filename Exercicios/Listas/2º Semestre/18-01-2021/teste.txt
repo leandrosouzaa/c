@@ -1,0 +1,5 @@
+Esse arquivo eh um arquivo de texto padrao
+Contem algumas palavras
+Algumas Linhas
+e 1234 numeros
+E foi criado para teste do programa
