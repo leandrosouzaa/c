@@ -26,34 +26,37 @@ int main(int argc, char* argv[]) {
 
    c = fgetc(arquivo);
    while (c != EOF) {
-      while(c != 123 && c != EOF) {
-         printf("%c", c);
-         if(c == '#') {
-            identificadores++;
+      if(c == '#') {
+         identificadores++;
+      } else {
+         if(c == '.') {
+            classes++;
          } else {
-            if(c == '.') {
-               classes++;
-            } else {
-               if((c > 64 && c < 91)||(c > 96 && c < 123)) {
-                  redefinicoes++;
-                  printf("%c", c);
-               }
-            }
+            redefinicoes++;
          }
+      }
+
+      while(c != EOF && c != '{') {
+         printf("%c", c);
+         
          c = fgetc(arquivo);
       }
 
-      while(c != 125 && c != EOF) {
+      while(c != EOF && c != '}') {
          c = fgetc(arquivo);
+         
       }
+
       c = fgetc(arquivo);
+      c = fgetc(arquivo);
+      printf("\n");
 
    }
 
-   printf("RELATÓRIO FINAL: \n");
+   printf("\nRELATÓRIO FINAL: \n");
    printf("Quantidade de redefinicoes:%d.\n", redefinicoes);
    printf("Quantidade de identificadores:%d.\n", identificadores);
-   printf("Quantidade de :%d.\n", classes);
+   printf("Quantidade de classes:%d.\n", classes);
 
    fclose(arquivo);
 
