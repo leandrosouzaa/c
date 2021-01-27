@@ -28,10 +28,14 @@ int main(int argc, char* argv[]) {
    while (c != EOF) {
       if(c == '#') {
          identificadores++;
+         printf("Identificador: ");
       } else {
          if(c == '.') {
             classes++;
+            printf("Classe: ");
+
          } else {
+            printf("Redefinição: ");
             redefinicoes++;
          }
       }
