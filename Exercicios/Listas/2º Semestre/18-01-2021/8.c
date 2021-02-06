@@ -48,8 +48,8 @@ int main(int argc, char* argv[]) {
    fclose(arquivo);
 
    printf("\nRELATÓRIO FINAL:\n");
-   printf("Quantidade de linhas..............:%d.\n",linhas);
-   printf("Arquivo criptografado para %s... Encerrando programa.", nome);
+   printf("Quantidade de palavras..............:%d.\n",linhas);
+   printf("Arquivo alterado para %s... Encerrando programa.", nome);
 
 
    exit(0);
