@@ -2,6 +2,7 @@ typedef struct {
    int prontuario;
    char nome[100];
    char curso[4];
+   char status;
 } Aluno;
 
 typedef struct {
@@ -10,6 +11,7 @@ typedef struct {
    char autores[150];
    int ano;
    char situacao;
+   char status;
 } Livro;
 
 typedef struct {
@@ -20,4 +22,5 @@ typedef struct {
    int codigo_livro;
    int codigo_aluno;
    char situacao;
+   char status;
 } Emprestimo;

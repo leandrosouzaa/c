@@ -1,6 +1,6 @@
 Aluno read_aluno() {
       Aluno aluno;
-      aluno.prontuario = -1;
+      aluno.status = 'A';
       
       int temp, isValid;
 
@@ -11,9 +11,6 @@ Aluno read_aluno() {
          isValid = find_by_pront(temp);
          if(isValid != -1 && isValid != -2) {
             printf("Prontuario duplicado. Verifique e tente novamente.\n");
-         }
-         if(isValid == -2) {
-            return aluno;
          }
          if(temp > 9999999 || temp < 0) {
             printf("Prontuario invalido. Tente novamente.\n");
