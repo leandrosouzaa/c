@@ -4,8 +4,7 @@ void save_aluno(Aluno aluno) {
    file = fopen("alunos.dat", "ab");
    if(file == NULL)
    {
-      printf("ERRO INTERNO: NÃO FOI POSSÍVEL MANIPULAR O ARQUIVO SOLICITADO \"alunos.dat\".\n ENCERRANDO SISTEMA");
-      exit(1);
+      internalError("Criacao de Arquivo", "Nao foi possivel manipular o arquivo solicitado \"alunos.dat\". Finalizando o sistema...");
    }
 
    fwrite(&aluno, sizeof(Aluno), 1, file);
@@ -25,8 +24,7 @@ int find_by_pront(int prontuario)
    }
 
    if(file == NULL) {
-      printf("ERRO INTERNO: NÃO FOI POSSÍVEL MANIPULAR O ARQUIVO SOLICITADO \"alunos.dat\".\n ENCERRANDO SISTEMA");
-      posicao = -2;
+      internalError("Leitura de Arquivo", "Nao foi possivel acessar o arquivo solicitado \"alunos.dat\". Finalizando o sistema...");
    }
    else {
       fread(&aluno, sizeof(Aluno), 1, file);

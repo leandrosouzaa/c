@@ -1,5 +1,5 @@
 # Sistema
-   - [ ] Ao encontrar um erro interno, o programa deve ser finalizado.
+   - [X] Ao encontrar um erro interno, o programa deve ser finalizado.
 
 # Alunos
    - [X] Deve ser pertmitido o cadastro de alunos.

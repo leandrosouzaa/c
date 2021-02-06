@@ -13,6 +13,6 @@ int cfileexists(const char* filename){
    int exist = stat(filename,&buffer);
    if(exist == 0)
       return 1;
-   else // -1
+   else
       return 0;
 }
