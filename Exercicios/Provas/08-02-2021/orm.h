@@ -66,9 +66,10 @@ void list_alunos() {
       
       while(!feof(file))
       {
-         printf("| PE%-7d | %-50s | %-6s |", aluno.prontuario , aluno.nome, aluno.curso);
-         printf("\n+-----------+----------------------------------------------------+--------+\n");
-
+         if(aluno.status == 'A') {
+            printf("| PE%-7d | %-50s | %-6s |", aluno.prontuario , aluno.nome, aluno.curso);
+            printf("\n+-----------+----------------------------------------------------+--------+\n");
+         }
          fread(&aluno, sizeof(Aluno), 1, file);
       }
       fclose(file);
