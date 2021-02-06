@@ -5,7 +5,7 @@ Aluno read_aluno() {
       int temp, isValid;
 
       do {
-         printf("Informe o prontuario do aluno: ");
+         printf("Informe o prontuario do aluno..: PE");
          scanf("%d", &temp);
 
          isValid = find_by_pront(temp);
@@ -21,11 +21,11 @@ Aluno read_aluno() {
       aluno.prontuario = temp;
       setbuf(stdin, NULL);
 
-      printf("Informe o nome do aluno: ");
+      printf("Informe o nome do aluno........: ");
       readString(aluno.nome, 100);
       setbuf(stdin, NULL);
       
-      printf("Infome o curso do aluno: ");
+      printf("Infome o curso do aluno........: ");
       readString(aluno.curso, 4);
 
       return aluno;

@@ -43,3 +43,34 @@ int find_by_pront(int prontuario)
    }
    return posicao;
 }
+
+void list_alunos() {
+   FILE *file;
+
+   Aluno aluno;
+
+   if(!cfileexists("alunos.dat")) {
+      internalError("Leitura de Arquivo", "Nao foi possivel acessar o arquivo solicitado \"alunos.dat\". Finalizando o sistema...");
+   }
+
+   file = fopen("alunos.dat", "rb");
+
+   if(file == NULL) {
+      printf("Não existem alunos para serem exibidos.\n");
+   } else {
+      fread(&aluno, sizeof(Aluno), 1, file);
+      
+      printf("+-----------+----------------------------------------------------+--------+\n");
+      printf("| %-9s | %-50s | %-6s |", "Pront.", "Nome", "Curso");
+      printf("\n+-----------+----------------------------------------------------+--------+\n");
+      
+      while(!feof(file))
+      {
+         printf("| PE%-7d | %-50s | %-6s |", aluno.prontuario , aluno.nome, aluno.curso);
+         printf("\n+-----------+----------------------------------------------------+--------+\n");
+
+         fread(&aluno, sizeof(Aluno), 1, file);
+      }
+      fclose(file);
+   }
+}

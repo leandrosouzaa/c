@@ -11,7 +11,7 @@
    - [ ] Deve ser pertmido atualizar os dados de cadastro.
    - [ ] Não deve ser permitido alterar os dados de um aluno excluído.
    - [ ] Não deve ser permitido alterar o prontuário do aluno para um já utilizado.
-   - [ ] Deve ser permitido listar todos os alunos.
+   - [X] Deve ser permitido listar todos os alunos.
    - [ ] Deve ser permitido pesquisar um aluno pelo prontuário.
 
 # Livros

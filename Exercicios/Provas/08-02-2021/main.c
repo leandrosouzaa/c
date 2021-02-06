@@ -5,7 +5,7 @@ int main() {
 
    Aluno aluno = create_aluno();
 
-   printf("%d", aluno.prontuario);
+   index_aluno();
 
    return 0;
 }
