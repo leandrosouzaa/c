@@ -61,6 +61,7 @@ int main(int argc, char* argv[]) {
    printf("Quantidade de redefinicoes:%d.\n", redefinicoes);
    printf("Quantidade de identificadores:%d.\n", identificadores);
    printf("Quantidade de classes:%d.\n", classes);
+   printf("Total de Regras: %d.", classes + identificadores + redefinicoes);
 
    fclose(arquivo);
 
