@@ -23,7 +23,6 @@ int main() {
       tamanho = strlen(frase);
       if(frase[tamanho - 1] == 10) {
          frase[tamanho-1] = '\0';
-         printf("%c", frase[tamanho-1]);
          tamanho--;
       }
       for(i= tamanho - 1; i >= 0; i--) {
@@ -33,6 +32,8 @@ int main() {
 
       lidos = fgets(frase, 199, arquivo);
    }
+
+   printf("Arquivo invertido para \"invertido.txt\"");
 
    exit(0);
 }
