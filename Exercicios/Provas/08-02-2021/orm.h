@@ -2,8 +2,7 @@ void save_aluno(Aluno aluno) {
    FILE * file;
 
    file = fopen("alunos.dat", "ab");
-   if(file == NULL)
-   {
+   if(file == NULL) {
       internalError("Criacao de Arquivo", "Nao foi possivel manipular o arquivo solicitado \"alunos.dat\". Finalizando o sistema...");
    }
 
@@ -89,13 +88,13 @@ int list_alunos(char filter) {
    Aluno aluno;
 
    if(!cfileexists("alunos.dat")) {
-      internalError("Leitura de Arquivo", "Nao foi possivel acessar o arquivo solicitado \"alunos.dat\". Finalizando o sistema...");
+      // printf("Não existem alunos para serem exibidos.\n");
    }
 
    file = fopen("alunos.dat", "rb");
 
    if(file == NULL) {
-      printf("Não existem alunos para serem exibidos.\n");
+      // internalError("Leitura de Arquivo", "Nao foi possivel acessar o arquivo solicitado \"alunos.dat\". Finalizando o sistema...");
    } else {
       int i = 0;
 
@@ -125,5 +124,42 @@ int list_alunos(char filter) {
 
       return i;
    }
+
+   return -1;
 }
 
+void clear_alunos() {
+   FILE *file, *destiny;
+
+   Aluno aluno;
+
+   file = fopen("alunos.dat", "rb");
+   destiny = fopen("novo.dat", "wb");
+
+   if(!cfileexists("alunos.dat")) {
+      printf("Não existem alunos para serem lidos.");   
+   }
+
+   if(file == NULL) {
+      internalError("Leitura de Arquivo", "Nao foi possivel acessar o arquivo solicitado \"alunos.dat\". Finalizando o sistema...");
+   }
+
+   if(destiny == NULL) {
+      internalError("Criacao de Arquivo", "Nao foi possivel criar o arquivo solicitado \"novo.dat\". Finalizando o sistema...");
+   } else {
+      fread(&aluno, sizeof(Aluno), 1, file);
+
+      while(!feof(file)) {
+         if (aluno.status == 'A')
+            fwrite(&aluno, sizeof(Aluno), 1, destiny);
+
+         fread(&aluno, sizeof(Aluno), 1, file);
+      }
+
+      fclose(file);
+      fclose(destiny);
+
+      remove("alunos.dat"); /// remover o arquivo original
+      rename("novo.dat", "alunos.dat"); /// troca o nome do arquivo novo.dat  para alunos.dat
+   }
+}
