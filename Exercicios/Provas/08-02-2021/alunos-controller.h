@@ -47,7 +47,7 @@ void invalidate_aluno() {
          printf("Nome........: %s.\n", aluno.nome);
          printf("Curso.......: %s.\n", aluno.curso);
 
-         printf("\nExcluir aluno? [S/N]: ");
+         printf("\nExcluir aluno [S/N]: ");
          char continua;
 
          scanf(" %c", &continua);
@@ -118,7 +118,7 @@ void recover_aluno() {
             printf("Nome........: %s.\n", aluno.nome);
             printf("Curso.......: %s.\n", aluno.curso);
 
-            printf("\nReativar aluno? [S/N]: ");
+            printf("\nReativar aluno [S/N]: ");
             char continua;
 
             scanf(" %c", &continua);
@@ -131,5 +131,19 @@ void recover_aluno() {
    } else {
       printf("Não existem alunos para serem recuperados.\n");
    }
+}
 
+void remove_alunos() {
+   system("clear");
+
+   printf("ALUNOS DISPONÍVEIS QUE SERAM EXCLUIDOS\n\n");
+   int i = list_alunos('I');
+
+   char continua;
+   printf("\nDeseja realmente excluir DEFINITVAMENTE esses registros [S/N]: ");
+   scanf(" %c", &continua);
+
+   if(continua == 'S') {
+      clear_alunos();
+   }
 }
