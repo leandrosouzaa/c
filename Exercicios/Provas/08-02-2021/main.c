@@ -3,9 +3,9 @@
 int main() {
    printf("Sistemas\n\n");
 
-   Aluno aluno = create_aluno();
+   // list_alunos();
 
-   index_aluno();
+   show_aluno();
 
    return 0;
 }

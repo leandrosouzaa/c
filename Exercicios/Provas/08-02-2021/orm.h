@@ -11,8 +11,24 @@ void save_aluno(Aluno aluno) {
    fclose(file);
 }
 
-int find_by_pront(int prontuario)
-{
+Aluno find_by_index(int posicao) {
+   FILE *file;
+   Aluno aluno;
+
+   file = fopen("alunos.dat", "rb");
+   if (file == NULL) {
+      internalError("Leitura de Arquivo", "Nao foi possivel acessar o arquivo solicitado \"alunos.dat\". Finalizando o sistema...");
+   } else {
+      fseek(file, posicao*sizeof(Aluno), SEEK_SET);
+      fread(&aluno, sizeof(Aluno), 1, file);
+
+      fclose(file);
+   }
+
+   return aluno;
+};
+
+int find_by_pront(int prontuario) {
    FILE *file;
    Aluno aluno;
    int posicao = -1, i = 0;
@@ -75,3 +91,4 @@ void list_alunos() {
       fclose(file);
    }
 }
+
