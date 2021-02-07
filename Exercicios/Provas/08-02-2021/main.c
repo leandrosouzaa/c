@@ -3,12 +3,15 @@
 int main() {
    printf("Sistemas\n\n");
 
-   // index_aluno();
-   // create_aluno();
-   // clear_alunos();
-   // invalidate_aluno();
    // remove_alunos();
+   // update_aluno();
+
+
    // recover_aluno();
-   update_aluno();
+   // invalidate_aluno();
+   // create_aluno();
+   index_aluno();
+
+
    return 0;
 }

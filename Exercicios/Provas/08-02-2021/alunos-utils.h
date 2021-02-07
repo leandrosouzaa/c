@@ -33,7 +33,6 @@ Aluno read_aluno(int pront) {
 
          aluno.prontuario = temp;
          setbuf(stdin, NULL);
-         scanf("%d", &temp);
 
          printf("Informe o nome do aluno........: ");
          readString(aluno.nome, 100);

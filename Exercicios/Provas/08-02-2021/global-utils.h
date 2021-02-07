@@ -16,3 +16,8 @@ int cfileexists(const char* filename){
    else
       return 0;
 }
+
+void print_header(const char* title) {
+   printf("%s\n", title);
+   printf("+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n\n");
+}
