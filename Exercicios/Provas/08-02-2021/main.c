@@ -5,7 +5,7 @@ int main() {
 
    // list_alunos();
 
-   show_aluno();
+   invalidate_aluno();
 
    return 0;
 }

@@ -11,6 +11,29 @@ void save_aluno(Aluno aluno) {
    fclose(file);
 }
 
+int delete_aluno(int index) {
+   FILE *file;
+   Aluno aluno;
+
+   file = fopen("alunos.dat", "rb+");
+
+   if (file == NULL) {
+      internalError("Abertura de Arquivo", "Nao foi possivel manipular o arquivo solicitado \"alunos.dat\". Finalizando o sistema...");
+      return 0;
+
+   } 
+   fseek(file, index*sizeof(Aluno), SEEK_SET);
+   fread(&aluno, sizeof(Aluno), 1, file);
+   
+   aluno.status = 'I';
+   
+   fseek(file, index*sizeof(Aluno), SEEK_SET);
+   fwrite(&aluno, sizeof(Aluno), 1, file);
+   fclose(file);
+   
+   return 1;
+}
+
 Aluno find_by_index(int posicao) {
    FILE *file;
    Aluno aluno;

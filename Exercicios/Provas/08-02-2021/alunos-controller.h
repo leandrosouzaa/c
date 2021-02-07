@@ -12,6 +12,44 @@ void index_aluno() {
    getchar();
 }
 
+void invalidate_aluno() {
+   system("clear");
+   printf("REMOÇÃO DE ALUNO\n\n");
+   int pront;
+
+   printf("Prontuario para exclusao: PE");
+   scanf("%d", &pront);
+
+   int index = find_by_pront(pront);
+
+   system("clear");
+   if(index == -1) {
+      printf("Não foi encontrado nenhum aluno com o prontuario PE%d.\n", pront);
+      printf("Pressione Enter para continuar...");
+
+   } else {
+      Aluno aluno = find_by_index(index);
+
+      if(aluno.status != 'A') {
+         printf("Este Aluno ja foi desativado. Para excluir da base de dados volte ao menu e escolha a opcao REMOCAO FISICA.\n");
+      } else {
+         printf("ALUNO ENCONTRADO:\n\n");
+         printf("Prontuario..: PE%d.\n",aluno.prontuario);
+         printf("Nome........: %s.\n", aluno.nome);
+         printf("Curso.......: %s.\n", aluno.curso);
+
+         printf("\nExcluir aluno? [S/N]: ");
+         char continua;
+
+         scanf(" %c", &continua);
+
+         if(continua == 'S') {
+            delete_aluno(index);
+         }
+      }
+   }
+}
+
 void show_aluno() {
    system("clear");
    printf("BUSCA DE ALUNO POR PRONTUÁRIO\n\n");
@@ -24,14 +62,14 @@ void show_aluno() {
 
    system("clear");
    if(index == -1) {
-      printf("Não foi encontrado nenhum aluno com o prontuário PE%d.\n", pront);
+      printf("Não foi encontrado nenhum aluno com o prontuario PE%d.\n", pront);
       printf("Pressione Enter para continuar...");
 
    } else {
       Aluno aluno = find_by_index(index);
 
       printf("ALUNO ENCONTRADO:\n\n");
-      printf("Prontuário..: PE%d.\n",aluno.prontuario);
+      printf("Prontuario..: PE%d.\n",aluno.prontuario);
       printf("Nome........: %s.\n", aluno.nome);
       printf("Curso.......: %s.\n", aluno.curso);
       
@@ -42,6 +80,8 @@ void show_aluno() {
 }
 
 Aluno create_aluno() {
+   system("clear");
+
    Aluno aluno = read_aluno();
    save_aluno(aluno);
    
