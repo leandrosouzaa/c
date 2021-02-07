@@ -9,10 +9,10 @@
    - [X] Primeiro deve ser feito a exclusão lógica e por fim a física.
    - [X] A exclusão física é uma rotina que deve ser executada toda vez que solicitada.
    - [X] Deve ser permitido recuperar o registro de um aluno o qual não foi realizado exclusão fisica.
-   - [ ] Deve ser pertmido atualizar os dados de cadastro.
-   - [ ] Não deve ser permitido alterar os dados de um aluno excluído.
-   - [ ] Não deve ser permitido alterar o prontuário do aluno para um já utilizado.
+   - [X] Deve ser pertmido atualizar os dados de cadastro.
+   - [X] Não deve ser permitido alterar os dados de um aluno excluído.
+   - [X] Não deve ser permitido alterar o prontuário do aluno.
    - [X] Deve ser permitido listar todos os alunos.
    - [X] Deve ser permitido pesquisar um aluno pelo prontuário.
-
+   
 # Livros

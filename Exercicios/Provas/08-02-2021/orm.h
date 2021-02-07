@@ -33,6 +33,23 @@ int update_status(int index, char status) {
    return 1;
 }
 
+int save_update_aluno(int index, Aluno aluno) {
+   FILE *file;
+
+   file = fopen("alunos.dat", "rb+");
+
+   if (file == NULL) {
+      internalError("Abertura de Arquivo", "Nao foi possivel manipular o arquivo solicitado \"alunos.dat\". Finalizando o sistema...");
+      return 0;
+   } 
+
+   fseek(file, index*sizeof(Aluno), SEEK_SET);
+   fwrite(&aluno, sizeof(Aluno), 1, file);
+   fclose(file);
+
+   return 1;
+}
+
 Aluno find_by_index(int posicao) {
    FILE *file;
    Aluno aluno;
@@ -110,6 +127,7 @@ int list_alunos(char filter) {
                printf("| PE%-7d | %-50s | %-6s |", aluno.prontuario , aluno.nome, aluno.curso);
                printf("\n+-----------+----------------------------------------------------+--------+\n");
                fread(&aluno, sizeof(Aluno), 1, file);
+               i++;
             }
          break;
       default:

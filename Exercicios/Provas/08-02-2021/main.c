@@ -8,6 +8,7 @@ int main() {
    // clear_alunos();
    // invalidate_aluno();
    // remove_alunos();
-   recover_aluno();
+   // recover_aluno();
+   update_aluno();
    return 0;
 }

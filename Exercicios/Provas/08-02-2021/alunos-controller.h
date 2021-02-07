@@ -15,13 +15,12 @@ void index_aluno() {
    getchar();
 }
 
-Aluno create_aluno() {
+void create_aluno() {
    system("clear");
+   printf("REGISTRO DE ALUNOS\n\n");
 
-   Aluno aluno = read_aluno();
+   Aluno aluno = read_aluno(NULL);
    save_aluno(aluno);
-   
-   return aluno;
 }
 
 void invalidate_aluno() {
@@ -138,6 +137,47 @@ void recover_aluno() {
 
       setbuf(stdin, NULL);
       getchar();
+   }
+}
+
+void update_aluno() {
+   system("clear");
+   printf("ATUALIZACAO DE ALUNO\n\n");
+   int pront;
+
+   printf("Prontuario para atualizacao: PE");
+   scanf("%d", &pront);
+
+   int index = find_by_pront(pront);
+
+   system("clear");
+   if(index == -1) {
+      printf("Não foi encontrado nenhum aluno com o prontuario PE%d.\n", pront);
+      printf("Pressione Enter para continuar...");
+
+   } else {
+      Aluno aluno = find_by_index(index);
+
+      if(aluno.status != 'A') {
+         printf("Este Aluno esta desativado. Para atualizar os dados do mesmo reative o registro na opcao de RECUPERACAO.\n");
+      } else {
+         printf("ALUNO ENCONTRADO:\n\n");
+         printf("Prontuario..: PE%d.\n",aluno.prontuario);
+         printf("Nome........: %s.\n", aluno.nome);
+         printf("Curso.......: %s.\n", aluno.curso);
+
+         printf("\nAtualizar aluno[S/N]: ");
+         char continua;
+
+         scanf(" %c", &continua);
+
+         if(continua == 'S') {
+            system("clear");
+            printf("ATUALIZACAO DE ALUNO\n\n");
+            aluno = read_aluno(aluno.prontuario);
+            save_update_aluno(index, aluno);
+         }
+      }
    }
 }
 
