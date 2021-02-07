@@ -3,12 +3,15 @@ void index_aluno() {
    system("clear");
 
    printf("RELATÓRIO DE ALUNOS\n\n");
-   list_alunos('T');
+   int i = list_alunos('T');
+
+   if(i==0) {
+      printf("Não existem alunos para serem listados.\n");
+   }
 
    printf("\nPressione Enter para finalizar...");
    
    setbuf(stdin, NULL);
-   getchar();
    getchar();
 }
 
@@ -130,6 +133,11 @@ void recover_aluno() {
       }
    } else {
       printf("Não existem alunos para serem recuperados.\n");
+      printf("\nPressione Enter para finalizar...");
+
+
+      setbuf(stdin, NULL);
+      getchar();
    }
 }
 

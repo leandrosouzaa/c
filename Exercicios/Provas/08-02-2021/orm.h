@@ -88,13 +88,13 @@ int list_alunos(char filter) {
    Aluno aluno;
 
    if(!cfileexists("alunos.dat")) {
-      // printf("Não existem alunos para serem exibidos.\n");
+      printf("Não existem alunos para serem exibidos.\n");
    }
 
    file = fopen("alunos.dat", "rb");
 
    if(file == NULL) {
-      // internalError("Leitura de Arquivo", "Nao foi possivel acessar o arquivo solicitado \"alunos.dat\". Finalizando o sistema...");
+      internalError("Leitura de Arquivo", "Nao foi possivel acessar o arquivo solicitado \"alunos.dat\". Finalizando o sistema...");
    } else {
       int i = 0;
 
@@ -103,14 +103,16 @@ int list_alunos(char filter) {
       printf("+-----------+----------------------------------------------------+--------+\n");
       printf("| %-9s | %-50s | %-6s |", "Pront.", "Nome", "Curso");
       printf("\n+-----------+----------------------------------------------------+--------+\n");
-      
-      if(filter == 'T') {
-         while(!feof(file)) {
+
+      switch (filter) {
+      case 'T':
+            while(!feof(file)) {
                printf("| PE%-7d | %-50s | %-6s |", aluno.prontuario , aluno.nome, aluno.curso);
                printf("\n+-----------+----------------------------------------------------+--------+\n");
                fread(&aluno, sizeof(Aluno), 1, file);
-         }
-      } else {
+            }
+         break;
+      default:
          while(!feof(file)) {
             if(aluno.status == filter) {
                   i++;
@@ -119,9 +121,10 @@ int list_alunos(char filter) {
                }
             fread(&aluno, sizeof(Aluno), 1, file);
          }
+         break;
       }
-      fclose(file);
 
+      fclose(file);
       return i;
    }
 
@@ -159,7 +162,7 @@ void clear_alunos() {
       fclose(file);
       fclose(destiny);
 
-      remove("alunos.dat"); /// remover o arquivo original
-      rename("novo.dat", "alunos.dat"); /// troca o nome do arquivo novo.dat  para alunos.dat
+      remove("alunos.dat");
+      rename("novo.dat", "alunos.dat");
    }
 }

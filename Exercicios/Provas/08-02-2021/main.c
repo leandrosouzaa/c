@@ -3,8 +3,10 @@
 int main() {
    printf("Sistemas\n\n");
 
-   // list_alunos();
-
+   // index_aluno();
+   // create_aluno();
+   // clear_alunos();
+   // invalidate_aluno();
    // remove_alunos();
    recover_aluno();
    return 0;
