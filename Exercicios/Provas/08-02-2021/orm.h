@@ -11,7 +11,7 @@ void save_aluno(Aluno aluno) {
    fclose(file);
 }
 
-int delete_aluno(int index) {
+int update_status(int index, char status) {
    FILE *file;
    Aluno aluno;
 
@@ -25,7 +25,7 @@ int delete_aluno(int index) {
    fseek(file, index*sizeof(Aluno), SEEK_SET);
    fread(&aluno, sizeof(Aluno), 1, file);
    
-   aluno.status = 'I';
+   aluno.status = status;
    
    fseek(file, index*sizeof(Aluno), SEEK_SET);
    fwrite(&aluno, sizeof(Aluno), 1, file);
@@ -56,11 +56,11 @@ int find_by_pront(int prontuario) {
    Aluno aluno;
    int posicao = -1, i = 0;
 
-   file = fopen("alunos.dat", "rb");
-
    if(!cfileexists("alunos.dat")) {
       return -1;
    }
+
+   file = fopen("alunos.dat", "rb");
 
    if(file == NULL) {
       internalError("Leitura de Arquivo", "Nao foi possivel acessar o arquivo solicitado \"alunos.dat\". Finalizando o sistema...");
@@ -83,7 +83,7 @@ int find_by_pront(int prontuario) {
    return posicao;
 }
 
-void list_alunos() {
+int list_alunos(char filter) {
    FILE *file;
 
    Aluno aluno;
@@ -97,21 +97,33 @@ void list_alunos() {
    if(file == NULL) {
       printf("Não existem alunos para serem exibidos.\n");
    } else {
+      int i = 0;
+
       fread(&aluno, sizeof(Aluno), 1, file);
       
       printf("+-----------+----------------------------------------------------+--------+\n");
       printf("| %-9s | %-50s | %-6s |", "Pront.", "Nome", "Curso");
       printf("\n+-----------+----------------------------------------------------+--------+\n");
       
-      while(!feof(file))
-      {
-         if(aluno.status == 'A') {
-            printf("| PE%-7d | %-50s | %-6s |", aluno.prontuario , aluno.nome, aluno.curso);
-            printf("\n+-----------+----------------------------------------------------+--------+\n");
+      if(filter == 'T') {
+         while(!feof(file)) {
+               printf("| PE%-7d | %-50s | %-6s |", aluno.prontuario , aluno.nome, aluno.curso);
+               printf("\n+-----------+----------------------------------------------------+--------+\n");
+               fread(&aluno, sizeof(Aluno), 1, file);
          }
-         fread(&aluno, sizeof(Aluno), 1, file);
+      } else {
+         while(!feof(file)) {
+            if(aluno.status == filter) {
+                  i++;
+                  printf("| PE%-7d | %-50s | %-6s |", aluno.prontuario , aluno.nome, aluno.curso);
+                  printf("\n+-----------+----------------------------------------------------+--------+\n");
+               }
+            fread(&aluno, sizeof(Aluno), 1, file);
+         }
       }
       fclose(file);
+
+      return i;
    }
 }
 
