@@ -118,16 +118,12 @@ int list_alunos(char filter) {
       int i = 0;
 
       fread(&aluno, sizeof(Aluno), 1, file);
-      
-      printf("+-----------+----------------------------------------------------+--------+\n");
-      printf("| %-9s | %-50s | %-6s |", "Pront.", "Nome", "Curso");
-      printf("\n+-----------+----------------------------------------------------+--------+\n");
+      print_aluno_header();
 
       switch (filter) {
       case 'T':
             while(!feof(file)) {
-               printf("| PE%-7d | %-50s | %-6s |", aluno.prontuario , aluno.nome, aluno.curso);
-               printf("\n+-----------+----------------------------------------------------+--------+\n");
+               print_aluno_linha(aluno);
                fread(&aluno, sizeof(Aluno), 1, file);
                i++;
             }
@@ -135,9 +131,9 @@ int list_alunos(char filter) {
       default:
          while(!feof(file)) {
             if(aluno.status == filter) {
+                  print_aluno_linha(aluno);
+                  fread(&aluno, sizeof(Aluno), 1, file);
                   i++;
-                  printf("| PE%-7d | %-50s | %-6s |", aluno.prontuario , aluno.nome, aluno.curso);
-                  printf("\n+-----------+----------------------------------------------------+--------+\n");
                }
             fread(&aluno, sizeof(Aluno), 1, file);
          }

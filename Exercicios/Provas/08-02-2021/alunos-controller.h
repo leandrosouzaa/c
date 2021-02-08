@@ -59,9 +59,7 @@ void invalidate_aluno() {
             getchar();
          } else {
             printf("ALUNO ENCONTRADO:\n\n");
-            printf("Prontuario..: PE%d.\n",aluno.prontuario);
-            printf("Nome........: %s.\n", aluno.nome);
-            printf("Curso.......: %s.\n", aluno.curso);
+            print_aluno(aluno);
 
             printf("\nExcluir aluno [S/N]: ");
             char continua;
@@ -135,9 +133,7 @@ void recover_aluno() {
             printf("Este Aluno não está desativado. Para desativar volte ao menu e escolha a opcao REMOVER ALUNO.\n");
          } else {
             printf("ALUNO ENCONTRADO:\n\n");
-            printf("Prontuario..: PE%d.\n",aluno.prontuario);
-            printf("Nome........: %s.\n", aluno.nome);
-            printf("Curso.......: %s.\n", aluno.curso);
+            print_aluno(aluno);
 
             printf("\nReativar aluno [S/N]: ");
             char continua;
@@ -196,9 +192,7 @@ void update_aluno() {
             getchar();
          } else {
             printf("ALUNO ENCONTRADO:\n\n");
-            printf("Prontuario..: PE%d.\n",aluno.prontuario);
-            printf("Nome........: %s.\n", aluno.nome);
-            printf("Curso.......: %s.\n", aluno.curso);
+            print_aluno(aluno);
 
             printf("\nAtualizar aluno[S/N]: ");
             char continua;
