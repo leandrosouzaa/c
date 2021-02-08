@@ -106,6 +106,8 @@ int list_alunos(char filter) {
 
    if(!cfileexists("alunos.dat")) {
       printf("Não existem alunos para serem exibidos.\n");
+
+      return -1;
    }
 
    file = fopen("alunos.dat", "rb");
