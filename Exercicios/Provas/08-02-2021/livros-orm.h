@@ -157,7 +157,6 @@ int list_livros(char status, char filter) {
                      fread(&livro, sizeof(Livro), 1, file);
                      i++;
                   }
-                  fread(&livro, sizeof(Livro), 1, file);
                }
                break;
          }

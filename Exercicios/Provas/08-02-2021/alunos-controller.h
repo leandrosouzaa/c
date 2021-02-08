@@ -1,4 +1,4 @@
-void index_aluno() {
+void index_alunos() {
    int limpa;
    system("clear");
    print_header("RELATÓRIO DE ALUNOS");

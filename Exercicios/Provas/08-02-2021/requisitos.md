@@ -27,3 +27,4 @@
    - [ ] Não deve ser permitido alterar os dados de um livro excluído.
    - [ ] Não deve ser permitido alterar o tombo do livro.
    - [X] Deve ser permitido listar todos os livros.
+   - [X] Deve ser permitido filtrar os livros.

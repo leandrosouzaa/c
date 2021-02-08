@@ -1,4 +1,4 @@
-void index_livro() {
+void index_livros() {
    int limpa;
    system("clear");
    print_header("RELATÓRIO DE LIVROS");
@@ -21,6 +21,35 @@ void create_livro() {
 
    Livro livro = read_livro(NULL);
    save_livro(livro);
+}
+
+void filter_livros() {
+   int limpa;
+   char type;
+
+   system("clear");
+   print_header("RELATÓRIO DE LIVROS");
+
+   printf("Selecione um tipo para ser listado: \n");
+   printf("D - Disponível\n");
+   printf("E - Emprestado\n");
+   printf("Tipo desejado: ");
+   scanf("%c", &type);
+
+   system("clear");
+   type == 'D' ? print_header("RELATÓRIO DE LIVROS DISPONIVEIS") : print_header("RELATORIO DE LIVROS EMPRESTADOS");
+   
+
+   int i = list_livros('A',type);
+
+   if(i==0) {
+      printf("Não existem livros para serem listados.\n");
+   }
+
+   printf("Pressione Enter para continuar...");
+   
+   setbuf(stdin, NULL);
+   getchar();
 }
 
 // void invalidate_aluno() {

@@ -8,10 +8,11 @@ int main() {
    // recover_aluno();
    // invalidate_aluno();
    // create_aluno();
-   // index_aluno();
+   // index_alunos();
 
    // create_livro();
-   index_livro();
+   // index_livros();
+   filter_livros();
 
 
    return 0;
