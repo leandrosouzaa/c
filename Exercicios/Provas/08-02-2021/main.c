@@ -11,8 +11,9 @@ int main() {
    // index_alunos();
 
    // create_livro();
-   // index_livros();
-   filter_livros();
+   index_livros();
+   // invalidate_livro();
+   // filter_livros();
 
 
    return 0;

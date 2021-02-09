@@ -10,62 +10,62 @@ void save_livro(Livro livro) {
    fclose(file);
 }
 
-// int update_status(int index, char status) {
-//    FILE *file;
-//    Aluno aluno;
+int update_livro_status(int index, char status) {
+   FILE *file;
+   Livro livro;
 
-//    file = fopen("alunos.dat", "rb+");
+   file = fopen("livros.dat", "rb+");
 
-//    if (file == NULL) {
-//       internalError("Abertura de Arquivo", "Nao foi possivel manipular o arquivo solicitado \"alunos.dat\". Finalizando o sistema...");
-//       return 0;
+   if (file == NULL) {
+      internalError("Abertura de Arquivo", "Nao foi possivel manipular o arquivo solicitado \"livros.dat\". Finalizando o sistema...");
+      return 0;
 
-//    } 
-//    fseek(file, index*sizeof(Aluno), SEEK_SET);
-//    fread(&aluno, sizeof(Aluno), 1, file);
+   } 
+   fseek(file, index*sizeof(Livro), SEEK_SET);
+   fread(&livro, sizeof(Livro), 1, file);
    
-//    aluno.status = status;
+   livro.status = status;
    
-//    fseek(file, index*sizeof(Aluno), SEEK_SET);
-//    fwrite(&aluno, sizeof(Aluno), 1, file);
-//    fclose(file);
+   fseek(file, index*sizeof(Livro), SEEK_SET);
+   fwrite(&livro, sizeof(Livro), 1, file);
+   fclose(file);
    
-//    return 1;
-// }
+   return 1;
+}
 
-// int save_update_aluno(int index, Aluno aluno) {
-//    FILE *file;
+int save_update_livro(int index, Livro livro) {
+   FILE *file;
 
-//    file = fopen("alunos.dat", "rb+");
+   file = fopen("livros.dat", "rb+");
 
-//    if (file == NULL) {
-//       internalError("Abertura de Arquivo", "Nao foi possivel manipular o arquivo solicitado \"alunos.dat\". Finalizando o sistema...");
-//       return 0;
-//    } 
+   if (file == NULL) {
+      internalError("Abertura de Arquivo", "Nao foi possivel manipular o arquivo solicitado \"livros.dat\". Finalizando o sistema...");
+      return 0;
+   } 
 
-//    fseek(file, index*sizeof(Aluno), SEEK_SET);
-//    fwrite(&aluno, sizeof(Aluno), 1, file);
-//    fclose(file);
+   fseek(file, index*sizeof(Livro), SEEK_SET);
+   fwrite(&livro, sizeof(Livro), 1, file);
+   fclose(file);
 
-//    return 1;
-// }
+   return 1;
+}
 
-// Aluno find_by_index(int posicao) {
-//    FILE *file;
-//    Aluno aluno;
+Livro find_livro_by_index(int posicao) {
+   FILE *file;
+   Livro livro;
 
-//    file = fopen("alunos.dat", "rb");
-//    if (file == NULL) {
-//       internalError("Leitura de Arquivo", "Nao foi possivel acessar o arquivo solicitado \"alunos.dat\". Finalizando o sistema...");
-//    } else {
-//       fseek(file, posicao*sizeof(Aluno), SEEK_SET);
-//       fread(&aluno, sizeof(Aluno), 1, file);
+   file = fopen("livros.dat", "rb");
+   if (file == NULL) {
+      internalError("Leitura de Arquivo", "Nao foi possivel acessar o arquivo solicitado \"livros.dat\". Finalizando o sistema...");
+   } else {
+      fseek(file, posicao*sizeof(Livro), SEEK_SET);
+      fread(&livro, sizeof(Livro), 1, file);
 
-//       fclose(file);
-//    }
+      fclose(file);
+   }
 
-//    return aluno;
-// };
+   return livro;
+};
 
 int find_by_tombo(int tombo) {
    FILE *file;
@@ -79,7 +79,7 @@ int find_by_tombo(int tombo) {
    file = fopen("livros.dat", "rb");
 
    if(file == NULL) {
-      internalError("Leitura de Arquivo", "Nao foi possivel acessar o arquivo solicitado \"livro.dat\". Finalizando o sistema...");
+      internalError("Leitura de Arquivo", "Nao foi possivel acessar o arquivo solicitado \"livros.dat\". Finalizando o sistema...");
    }
    else {
       fread(&livro, sizeof(Livro), 1, file);
@@ -144,9 +144,10 @@ int list_livros(char status, char filter) {
                while(!feof(file)) {
                   if(livro.status == status) {
                      print_livro(livro);
-                     fread(&livro, sizeof(Livro), 1, file);
                      i++;
                   }
+                  fread(&livro, sizeof(Livro), 1, file);
+
                }
                break;
 
@@ -170,38 +171,38 @@ int list_livros(char status, char filter) {
    return -1;
 }
 
-// void clear_alunos() {
-//    FILE *file, *destiny;
+void clear_livros() {
+   FILE *file, *destiny;
 
-//    Aluno aluno;
+   Livro livro;
 
-//    file = fopen("alunos.dat", "rb");
-//    destiny = fopen("novo.dat", "wb");
+   file = fopen("livros.dat", "rb");
+   destiny = fopen("novo.dat", "wb");
 
-//    if(!cfileexists("alunos.dat")) {
-//       printf("Não existem alunos para serem lidos.");   
-//    }
+   if(!cfileexists("livros.dat")) {
+      printf("Não existem livros para serem lidos.");   
+   }
 
-//    if(file == NULL) {
-//       internalError("Leitura de Arquivo", "Nao foi possivel acessar o arquivo solicitado \"alunos.dat\". Finalizando o sistema...");
-//    }
+   if(file == NULL) {
+      internalError("Leitura de Arquivo", "Nao foi possivel acessar o arquivo solicitado \"livros.dat\". Finalizando o sistema...");
+   }
 
-//    if(destiny == NULL) {
-//       internalError("Criacao de Arquivo", "Nao foi possivel criar o arquivo solicitado \"novo.dat\". Finalizando o sistema...");
-//    } else {
-//       fread(&aluno, sizeof(Aluno), 1, file);
+   if(destiny == NULL) {
+      internalError("Criacao de Arquivo", "Nao foi possivel criar o arquivo solicitado \"novo.dat\". Finalizando o sistema...");
+   } else {
+      fread(&livro, sizeof(Livro), 1, file);
 
-//       while(!feof(file)) {
-//          if (aluno.status == 'A')
-//             fwrite(&aluno, sizeof(Aluno), 1, destiny);
+      while(!feof(file)) {
+         if (livro.status == 'A')
+            fwrite(&livro, sizeof(Livro), 1, destiny);
 
-//          fread(&aluno, sizeof(Aluno), 1, file);
-//       }
+         fread(&livro, sizeof(Livro), 1, file);
+      }
 
-//       fclose(file);
-//       fclose(destiny);
+      fclose(file);
+      fclose(destiny);
 
-//       remove("alunos.dat");
-//       rename("novo.dat", "alunos.dat");
-//    }
-// }
+      remove("livros.dat");
+      rename("novo.dat", "livros.dat");
+   }
+}

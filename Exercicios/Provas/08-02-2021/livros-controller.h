@@ -5,7 +5,7 @@ void index_livros() {
 
    int i = list_livros('A','T');
 
-   if(i==0) {
+   if(i<=0) {
       printf("Não existem livros para serem listados.\n");
    }
 
@@ -52,58 +52,57 @@ void filter_livros() {
    getchar();
 }
 
-// void invalidate_aluno() {
-//    system("clear");
-//    print_header("REMOCAO DE ALUNOS");
-//    int pront;
+void invalidate_livro() {
+   system("clear");
+   print_header("REMOCAO DE LIVROS");
+   int tombo;
 
-//    int i = list_alunos('A');
-//    if(i==0) {
-//       printf("Não existem alunos para serem excluidos.\n");         
-//       printf("\nPressione Enter para continuar...");
+   int i = list_livros('A','T');
+   if(i<=0) {
+      printf("\nPressione Enter para continuar...");
 
-//       setbuf(stdin, NULL);
-//       getchar();
+      setbuf(stdin, NULL);
+      getchar();
       
-//    } else {
-//       printf("\nProntuario para exclusao: PE");
-//       scanf("%d", &pront);
+   } else {
+      printf("\nTombo do livro para exclusao: ");
+      scanf("%d", &tombo);
 
-//       int index = find_by_pront(pront);
+      int index = find_by_tombo(tombo);
 
-//       system("clear");
-//       if(index == -1) {
-//          printf("Não foi encontrado nenhum aluno com o prontuario PE%d.\n", pront);
-//          printf("\nPressione Enter para continuar...");
+      system("clear");
+      if(index == -1) {
+         printf("Não foi encontrado nenhum livro com o tombo %d.\n", tombo);
+         printf("\nPressione Enter para continuar...");
 
-//          setbuf(stdin, NULL);
-//          getchar();
+         setbuf(stdin, NULL);
+         getchar();
 
-//       } else {
-//          Aluno aluno = find_by_index(index);
+      } else {
+         Livro livro = find_livro_by_index(index);
 
-//          if(aluno.status != 'A') {
-//             printf("Este Aluno ja foi desativado. Para excluir da base de dados volte ao menu e escolha a opcao REMOCAO FISICA.\n");
-//             printf("Pressione enter para continuar.");
-//             getchar();
-//          } else {
-//             printf("ALUNO ENCONTRADO:\n\n");
-//             printf("Prontuario..: PE%d.\n",aluno.prontuario);
-//             printf("Nome........: %s.\n", aluno.nome);
-//             printf("Curso.......: %s.\n", aluno.curso);
+         if(livro.status != 'A') {
+            printf("Este livro ja foi desativado. Para excluir da base de dados volte ao menu e escolha a opcao REMOCAO FISICA.\n");
+            printf("Pressione enter para continuar.");
 
-//             printf("\nExcluir aluno [S/N]: ");
-//             char continua;
+            setbuf(stdin, NULL);
+            getchar();
+         } else {
+            printf("LIVRO ENCONTRADO:\n\n");
+            print_livro(livro);
 
-//             scanf(" %c", &continua);
+            printf("\nExcluir livro [S/N]: ");
+            char continua;
 
-//             if(continua == 'S') {
-//                update_status(index, 'I');
-//             }
-//          }
-//       }
-//    }
-// }
+            scanf(" %c", &continua);
+
+            if(continua == 'S') {
+               update_livro_status(index, 'I');
+            }
+         }
+      }
+   }
+}
 
 // void show_aluno() {
 //    system("clear");
@@ -134,58 +133,58 @@ void filter_livros() {
 //    getchar();
 // }
 
-// void recover_aluno() {
-//    system("clear");
+void recover_aluno() {
+   system("clear");
 
-//    print_header("RECUPERACAO DE ALUNOS");
+   print_header("RECUPERACAO DE ALUNOS");
 
-//    printf("Alunos disponiveis:\n");
-//    int i = list_alunos('I');
+   printf("Alunos disponiveis:\n");
+   int i = list_alunos('I');
 
-//    if(i != 0) {
-//       int pront;
+   if(i != 0) {
+      int pront;
 
-//       printf("Prontuario para recuperacao: PE");
-//       scanf("%d", &pront);
+      printf("Prontuario para recuperacao: PE");
+      scanf("%d", &pront);
 
-//       int index = find_by_pront(pront);
+      int index = find_by_pront(pront);
 
-//       system("clear");
-//       if(index == -1) {
-//          printf("Não foi encontrado nenhum aluno com o prontuario PE%d.\n", pront);
-//          printf("Pressione Enter para continuar...");
+      system("clear");
+      if(index == -1) {
+         printf("Não foi encontrado nenhum aluno com o prontuario PE%d.\n", pront);
+         printf("Pressione Enter para continuar...");
 
-//          setbuf(stdin, NULL);
-//          getchar();
-//       } else {
-//          Aluno aluno = find_by_index(index);
+         setbuf(stdin, NULL);
+         getchar();
+      } else {
+         Aluno aluno = find_by_index(index);
 
-//          if(aluno.status != 'I') {
-//             printf("Este Aluno não está desativado. Para desativar volte ao menu e escolha a opcao REMOVER ALUNO.\n");
-//          } else {
-//             printf("ALUNO ENCONTRADO:\n\n");
-//             printf("Prontuario..: PE%d.\n",aluno.prontuario);
-//             printf("Nome........: %s.\n", aluno.nome);
-//             printf("Curso.......: %s.\n", aluno.curso);
+         if(aluno.status != 'I') {
+            printf("Este Aluno não está desativado. Para desativar volte ao menu e escolha a opcao REMOVER ALUNO.\n");
+         } else {
+            printf("ALUNO ENCONTRADO:\n\n");
+            printf("Prontuario..: PE%d.\n",aluno.prontuario);
+            printf("Nome........: %s.\n", aluno.nome);
+            printf("Curso.......: %s.\n", aluno.curso);
 
-//             printf("\nReativar aluno [S/N]: ");
-//             char continua;
+            printf("\nReativar aluno [S/N]: ");
+            char continua;
 
-//             scanf(" %c", &continua);
+            scanf(" %c", &continua);
 
-//             if(continua == 'S') {
-//                update_status(index, 'A');
-//             }
-//          }
-//       }
-//    } else {
-//       printf("Não existem alunos para serem recuperados.\n");
-//       printf("\nPressione Enter para continuar...");
+            if(continua == 'S') {
+               update_status(index, 'A');
+            }
+         }
+      }
+   } else {
+      printf("Não existem alunos para serem recuperados.\n");
+      printf("\nPressione Enter para continuar...");
 
-//       setbuf(stdin, NULL);
-//       getchar();
-//    }
-// }
+      setbuf(stdin, NULL);
+      getchar();
+   }
+}
 
 // void update_aluno() {
 //    system("clear");

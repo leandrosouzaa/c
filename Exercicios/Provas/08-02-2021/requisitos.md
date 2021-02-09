@@ -19,7 +19,7 @@
    - [X] Deve ser permitido cadastrar um livro.
    - [X] Não deve ser permitido cadastrar dois livros com o mesmo tombo.
    - [X] Por padrão todo livro deve ser registrado de maneira livre.
-   - [ ] Deve ser permitido a exclusão de um livro.
+   - [X] Deve ser permitido a exclusão de um livro.
    - [ ] Primeiro deve ser feito a exclusão lógica e por fim a física.
    - [ ] A exclusão física é uma rotina que deve ser executada toda vez que solicitada.
    - [ ] Deve ser permitido recuperar o registro de um livro o qual não foi realizado exclusão fisica.

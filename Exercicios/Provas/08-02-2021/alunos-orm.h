@@ -10,7 +10,7 @@ void save_aluno(Aluno aluno) {
    fclose(file);
 }
 
-int update_status(int index, char status) {
+int update_aluno_status(int index, char status) {
    FILE *file;
    Aluno aluno;
 
@@ -50,7 +50,7 @@ int save_update_aluno(int index, Aluno aluno) {
    return 1;
 }
 
-Aluno find_by_index(int posicao) {
+Aluno find_aluno_by_index(int posicao) {
    FILE *file;
    Aluno aluno;
 

@@ -29,7 +29,7 @@ void invalidate_aluno() {
    int pront;
 
    int i = list_alunos('A');
-   if(i==0) {
+   if(i<=0) {
       printf("Não existem alunos para serem excluidos.\n");         
       printf("\nPressione Enter para continuar...");
 
@@ -51,7 +51,7 @@ void invalidate_aluno() {
          getchar();
 
       } else {
-         Aluno aluno = find_by_index(index);
+         Aluno aluno = find_aluno_by_index(index);
 
          if(aluno.status != 'A') {
             printf("Este Aluno ja foi desativado. Para excluir da base de dados volte ao menu e escolha a opcao REMOCAO FISICA.\n");
@@ -67,7 +67,7 @@ void invalidate_aluno() {
             scanf(" %c", &continua);
 
             if(continua == 'S') {
-               update_status(index, 'I');
+               update_aluno_status(index, 'I');
             }
          }
       }
@@ -90,13 +90,10 @@ void show_aluno() {
       printf("Pressione Enter para continuar...");
 
    } else {
-      Aluno aluno = find_by_index(index);
+      Aluno aluno = find_aluno_by_index(index);
 
       printf("ALUNO ENCONTRADO:\n\n");
-      printf("Prontuario..: PE%d.\n",aluno.prontuario);
-      printf("Nome........: %s.\n", aluno.nome);
-      printf("Curso.......: %s.\n", aluno.curso);
-      
+      print_aluno(aluno);
    }
 
    getchar();
@@ -127,7 +124,7 @@ void recover_aluno() {
          setbuf(stdin, NULL);
          getchar();
       } else {
-         Aluno aluno = find_by_index(index);
+         Aluno aluno = find_aluno_by_index(index);
 
          if(aluno.status != 'I') {
             printf("Este Aluno não está desativado. Para desativar volte ao menu e escolha a opcao REMOVER ALUNO.\n");
@@ -141,7 +138,7 @@ void recover_aluno() {
             scanf(" %c", &continua);
 
             if(continua == 'S') {
-               update_status(index, 'A');
+               update_aluno_status(index, 'A');
             }
          }
       }
@@ -182,7 +179,7 @@ void update_aluno() {
          setbuf(stdin, NULL);
          getchar();
       } else {
-         Aluno aluno = find_by_index(index);
+         Aluno aluno = find_aluno_by_index(index);
 
          if(aluno.status != 'A') {
             printf("Este Aluno esta desativado. Para atualizar os dados do mesmo reative o registro na opcao de RECUPERACAO.\n");
