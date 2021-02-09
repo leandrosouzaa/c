@@ -11,7 +11,9 @@ int main() {
    // index_alunos();
 
    // create_livro();
-   index_livros();
+   // index_livros();
+   update_livro();
+   // remove_livros();
    // invalidate_livro();
    // recover_livro();
    // filter_livros();

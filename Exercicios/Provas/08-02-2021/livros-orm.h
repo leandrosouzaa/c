@@ -83,9 +83,7 @@ int find_by_tombo(int tombo) {
    }
    else {
       fread(&livro, sizeof(Livro), 1, file);
-
-      while(!feof(file))
-      {
+      while(!feof(file)) {
          if (livro.tombo == tombo) {
             posicao = i;
             fseek(file, 0, SEEK_END);

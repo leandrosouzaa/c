@@ -1,25 +1,27 @@
-Livro read_livro(int tombo) {
+Livro read_livro(int tombo, char situacao) {
       Livro livro;
-      livro.situacao = 'D';
       livro.status = 'A';
 
-      if(tombo) {
+      if(tombo && situacao) {
          livro.tombo = tombo;
-         printf("Tombo do livro..: %d.\n", livro.tombo);
+         livro.situacao = situacao;
+         printf("Tombo do livro............: %d.\n", livro.tombo);
          setbuf(stdin, NULL);
 
-         printf("Novo nome do livro...: ");
+         printf("Novo nome do livro........: ");
          readString(livro.titulo, 99);
          setbuf(stdin, NULL);
 
-         printf("Novos autores do livro...: ");
+         printf("Novos autore(s) do livro..: ");
          readString(livro.autores, 149);
          setbuf(stdin, NULL);
 
-         printf("Nova data do livro..: ");
+         printf("Nova data do livro........: ");
          scanf("%d", &livro.ano);
 
       } else {
+         livro.situacao = 'D';
+
          int temp, isValid;
 
          do {
@@ -35,15 +37,15 @@ Livro read_livro(int tombo) {
          livro.tombo = temp;
          setbuf(stdin, NULL);
 
-         printf("Informe o titulo do livro....: ");
+         printf("Informe o titulo do livro......: ");
          readString(livro.titulo, 99);
          setbuf(stdin, NULL);
 
-         printf("Informe os autores do livro..: ");
+         printf("Informe os autore(s) do livro..: ");
          readString(livro.autores, 149);
          setbuf(stdin, NULL);
          
-         printf("Infome o ano do livro........: ");
+         printf("Infome o ano do livro..........: ");
          scanf("%d", &livro.ano);
       }
 

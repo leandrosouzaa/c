@@ -158,7 +158,7 @@ void update_aluno() {
    printf("Alunos disponiveis:\n");
    int i = list_alunos('A');
 
-   if(i==0) {
+   if(i<=0) {
       printf("Não existem alunos para serem atualizados.\n");
       printf("\nPressione Enter para continuar...");
 

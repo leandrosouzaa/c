@@ -19,7 +19,7 @@ void create_livro() {
    system("clear");
    print_header("REGISTRO DE LIVROS");
 
-   Livro livro = read_livro(NULL);
+   Livro livro = read_livro(NULL, NULL);
    save_livro(livro);
 }
 
@@ -184,76 +184,75 @@ void recover_livro() {
    }
 }
 
-// void update_aluno() {
-//    system("clear");
-//    print_header("ATUALIZACAO DE ALUNOS");
+void update_livro() {
+   system("clear");
+   print_header("ATUALIZACAO DE LIVROS");
 
-//    printf("Alunos disponiveis:\n");
-//    int i = list_alunos('A');
+   printf("Livros disponiveis:\n");
+   int i = list_livros('A', 'T');
 
-//    if(i==0) {
-//       printf("Não existem alunos para serem atualizados.\n");
-//       printf("\nPressione Enter para continuar...");
+   if(i<=0) {
+      printf("Não existem livros para serem atualizados.\n");
+      printf("\nPressione Enter para continuar...");
 
-//       getchar();
-//    } else {
-//       int pront;
+      getchar();
+   } else {
+      int tombo;
 
-//       printf("Prontuario para atualizacao: PE");
-//       scanf("%d", &pront);
+      printf("Tombo para atualizacao: ");
+      scanf("%d", &tombo);
+         
+      int index = find_by_tombo(tombo);
 
-//       int index = find_by_pront(pront);
+      system("clear");
+      if(index == -1) {
+         printf("Não foi encontrado nenhum livro com o tombo %d.\n", tombo);
+         printf("\nPressione Enter para continuar...");
 
-//       system("clear");
-//       if(index == -1) {
-//          printf("Não foi encontrado nenhum aluno com o prontuario PE%d.\n", pront);
-//          printf("\nPressione Enter para continuar...");
+         setbuf(stdin, NULL);
+         getchar();
+      } else {
 
-//          setbuf(stdin, NULL);
-//          getchar();
-//       } else {
-//          Aluno aluno = find_by_index(index);
+         Livro livro = find_livro_by_index(index);
 
-//          if(aluno.status != 'A') {
-//             printf("Este Aluno esta desativado. Para atualizar os dados do mesmo reative o registro na opcao de RECUPERACAO.\n");
-//             printf("\nPressione Enter para continuar...");
+         if(livro.status != 'A') {
+            printf("Este livro esta desativado. Para atualizar os dados do mesmo reative o registro na opcao de RECUPERACAO.\n");
+            printf("\nPressione Enter para continuar...");
 
-//             setbuf(stdin, NULL);
-//             getchar();
-//          } else {
-//             printf("ALUNO ENCONTRADO:\n\n");
-//             printf("Prontuario..: PE%d.\n",aluno.prontuario);
-//             printf("Nome........: %s.\n", aluno.nome);
-//             printf("Curso.......: %s.\n", aluno.curso);
+            setbuf(stdin, NULL);
+            getchar();
+         } else {
+            printf("LIVRO ENCONTRADO:\n\n");
+            print_livro(livro);
 
-//             printf("\nAtualizar aluno[S/N]: ");
-//             char continua;
+            printf("\nAtualizar Livro[S/N]: ");
+            char continua;
 
-//             scanf(" %c", &continua);
+            scanf(" %c", &continua);
 
-//             if(continua == 'S') {
-//                system("clear");
-//                printf("ATUALIZACAO DE ALUNO\n\n");
-//                aluno = read_aluno(aluno.prontuario);
-//                save_update_aluno(index, aluno);
-//             }
-//          }
-//       }
-//    }
-// }
+            if(continua == 'S') {
+               system("clear");
+               printf("ATUALIZACAO DE LIVRO\n\n");
+               livro = read_livro(livro.tombo, livro.situacao);
+               save_update_livro(index, livro);
+            }
+         }
+      }
+   }
+}
 
-// void remove_alunos() {
-//    system("clear");
+void remove_livros() {
+   system("clear");
 
-//    print_header("EXCLUSAO DE ALUNOS");
+   print_header("EXCLUSAO DE LIVROS");
 
-//    int i = list_alunos('I');
+   int i = list_livros('I','T');
 
-//    char continua;
-//    printf("\nDeseja realmente excluir DEFINITVAMENTE esses registros [S/N]: ");
-//    scanf(" %c", &continua);
+   char continua;
+   printf("\nDeseja realmente excluir DEFINITVAMENTE esses registros [S/N]: ");
+   scanf(" %c", &continua);
 
-//    if(continua == 'S') {
-//       clear_alunos();
-//    }
-// }
+   if(continua == 'S') {
+      clear_livros();
+   }
+}
