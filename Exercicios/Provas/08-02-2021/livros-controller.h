@@ -133,52 +133,50 @@ void invalidate_livro() {
 //    getchar();
 // }
 
-void recover_aluno() {
+void recover_livro() {
    system("clear");
 
-   print_header("RECUPERACAO DE ALUNOS");
+   print_header("RECUPERACAO DE LIVROS");
 
-   printf("Alunos disponiveis:\n");
-   int i = list_alunos('I');
+   printf("Livros disponiveis:\n");
+   int i = list_livros('I', 'T');
 
-   if(i != 0) {
-      int pront;
+   if(i > 0) {
+      int tombo;
 
-      printf("Prontuario para recuperacao: PE");
-      scanf("%d", &pront);
+      printf("Tombo para recuperacao: ");
+      scanf("%d", &tombo);
 
-      int index = find_by_pront(pront);
+      int index = find_by_tombo(tombo);
 
       system("clear");
       if(index == -1) {
-         printf("Não foi encontrado nenhum aluno com o prontuario PE%d.\n", pront);
+         printf("Não foi encontrado nenhum livro com o tombo %d.\n", tombo);
          printf("Pressione Enter para continuar...");
 
          setbuf(stdin, NULL);
          getchar();
       } else {
-         Aluno aluno = find_by_index(index);
+         Livro livro = find_livro_by_index(index);
 
-         if(aluno.status != 'I') {
-            printf("Este Aluno não está desativado. Para desativar volte ao menu e escolha a opcao REMOVER ALUNO.\n");
+         if(livro.status != 'I') {
+            printf("Este livro não está desativado. Para desativar volte ao menu e escolha a opcao REMOVER ALUNO.\n");
          } else {
-            printf("ALUNO ENCONTRADO:\n\n");
-            printf("Prontuario..: PE%d.\n",aluno.prontuario);
-            printf("Nome........: %s.\n", aluno.nome);
-            printf("Curso.......: %s.\n", aluno.curso);
+            printf("LIVRO ENCONTRADO:\n\n");
+            print_livro(livro);
 
-            printf("\nReativar aluno [S/N]: ");
+            printf("\nReativar livro [S/N]: ");
             char continua;
 
             scanf(" %c", &continua);
 
             if(continua == 'S') {
-               update_status(index, 'A');
+               update_livro_status(index, 'A');
             }
          }
       }
    } else {
-      printf("Não existem alunos para serem recuperados.\n");
+      printf("Não existem livros para serem recuperados.\n");
       printf("\nPressione Enter para continuar...");
 
       setbuf(stdin, NULL);
