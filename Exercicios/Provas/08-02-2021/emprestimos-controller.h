@@ -9,3 +9,19 @@ void create_emprestimo() {
       save_emprestimo(emprestimo);
    } 
 }
+
+void index_emprestimos() {
+   system("clear");
+   print_header("LISTAGEM DE EMPRESTIMOS");
+
+   int i = list_emprestimos('T');
+
+   if(i<=0) {
+      printf("Não existem emprestimos para serem listados.\n");
+   }
+
+   printf("Pressione Enter para continuar...");
+   
+   setbuf(stdin, NULL);
+   getchar();
+}

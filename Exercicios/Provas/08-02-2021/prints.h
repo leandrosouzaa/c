@@ -21,5 +21,5 @@ void print_livro(Livro livro, int dashed) {
    printf("Autore(s)..........: %s.\n", livro.autores);
    printf("Ano de Publicacao..: %d.\n", livro.ano);
    printf("Situacao...........: %s (%c).\n\n", livro.situacao == 'D' ? "Disponivel" : "Emprestado", livro.situacao);
-   dashed ? printf("+-+-+-+-+-+-+-+-+-+-+\n\n") : printf(" ");
+   dashed ? printf("+-+-+-+-+-+-+-+-+-+-+\n\n") : printf("\0");
 }

@@ -9,3 +9,44 @@ void save_emprestimo(Emprestimo emprestimo) {
    fwrite(&emprestimo, sizeof(Emprestimo), 1, file);
    fclose(file);
 }
+
+int list_emprestimos(char filter) {
+   FILE *file;
+   int i = 0;
+
+   Emprestimo emprestimo;
+
+   if(!cfileexists("emprestimos.dat")) {
+      printf("Não existem emprestimos para serem exibidos.\n");
+
+      return -1;
+   }
+
+   file = fopen("emprestimos.dat", "rb");
+
+   if(file == NULL) {
+      internalError("Leitura de Arquivo", "Nao foi possivel acessar o arquivo solicitado \"emprestimos.dat\". Finalizando o sistema...");
+   } else {
+      fread(&emprestimo, sizeof(Emprestimo), 1, file);
+
+      switch(filter) {
+         case 'T':
+            while(!feof(file)) {
+               print_emprestimo(emprestimo);
+               i++;
+               fread(&emprestimo, sizeof(Emprestimo), 1, file);
+            }
+            break;
+         default:
+            while(feof(file)) {
+               if(emprestimo.situacao == filter) {
+                  print_emprestimo(emprestimo);
+                  i++;
+               }
+               fread(&emprestimo, sizeof(Emprestimo), 1, file);
+            }
+            break;
+      }
+   }
+   return i;
+}

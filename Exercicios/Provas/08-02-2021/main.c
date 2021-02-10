@@ -18,7 +18,8 @@ int main() {
    // recover_livro();
    // filter_livros();
 
-   create_emprestimo();
+   // create_emprestimo();
+   index_emprestimos();
 
 
    return 0;

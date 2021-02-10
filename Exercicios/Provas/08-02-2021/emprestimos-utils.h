@@ -153,3 +153,33 @@ Emprestimo read_emprestimo() {
       return emprestimo;
    }
 }
+
+int print_emprestimo(Emprestimo emprestimo) {
+   printf("\n");
+   int temp = find_by_pront(emprestimo.codigo_aluno);
+   Aluno aluno = find_aluno_by_index(temp);
+
+   printf("ALUNO: \n");
+   if(temp < 0 || aluno.status == 'I') {
+      printf("ALUNO DELETADO.");
+      aluno.status == 'I' ? printf("VOLTE AO MENU PARA RECUPERAR O REGISTRO\n") : printf("\n");
+   } else {
+      print_aluno(aluno);
+   }
+
+   temp = find_by_tombo(emprestimo.codigo_livro);
+   Livro livro = find_livro_by_index(temp);
+
+   printf("\nLIVRO: \n");
+   if(temp < 0 || livro.status == 'I') {
+      printf("LIVRO DELETADO.");
+      livro.status == 'I' ? printf("VOLTE AO MENU PARA RECUPERAR O REGISTRO\n"):printf("\n");
+   } else {
+      print_livro(livro, 0);
+   }
+   
+   printf("Data do emprestimo: %s%d/%s%d/2020.\n",emprestimo.dia < 10 ? "0" : "" , emprestimo.dia, emprestimo.mes < 10 ? "0" : "", emprestimo.mes);
+   printf("Data de devolucao: %s%d/%s%d/2020.\n",emprestimo.dia_devolucao < 10 ? "0" : "" , emprestimo.dia_devolucao, emprestimo.mes < 10 ? "0" : "", emprestimo.mes_devolucao);
+   printf("\nSITUACAO: %s (%c).\n\n", emprestimo.situacao == 'P' ? "PENDENTE" : "FINALIZADO", emprestimo.situacao);
+   printf("+-+-+-+-+-+-+-+-+-+-+\n\n");
+};
