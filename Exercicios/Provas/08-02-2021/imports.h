@@ -16,3 +16,8 @@
 #include "livros-orm.h"
 #include "livros-utils.h"
 #include "livros-controller.h"
+
+#include "emprestimos-orm.h"
+#include "emprestimos-utils.h"
+#include "emprestimos-controller.h"
+

@@ -15,11 +15,11 @@ void print_aluno_linha(Aluno aluno) {
    printf("\n+-----------+----------------------------------------------------+--------+\n");
 }
 
-void print_livro(Livro livro) {
+void print_livro(Livro livro, int dashed) {
    printf("Tombo..............: %d.\n", livro.tombo);
    printf("Titulo.............: %s.\n", livro.titulo);
    printf("Autore(s)..........: %s.\n", livro.autores);
    printf("Ano de Publicacao..: %d.\n", livro.ano);
    printf("Situacao...........: %s (%c).\n\n", livro.situacao == 'D' ? "Disponivel" : "Emprestado", livro.situacao);
-   printf("+-+-+-+-+-+-+-+-+-+-+\n\n");
+   dashed ? printf("+-+-+-+-+-+-+-+-+-+-+\n\n") : printf(" ");
 }

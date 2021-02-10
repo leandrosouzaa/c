@@ -31,4 +31,10 @@
    - [X] Deve ser permitido filtrar os livros.
 
 # Emprestimos
-   - [ ]
+   - [X] Deve ser permitido realizar um emprestimo.
+   - [X] Não deve ser permitido realizar um emprestimo para um aluno inexistente ou excluído.
+   - [X] Não deve ser permitido realizar um emprestimo de um livro inexistente ou excluido.
+   - [X] Não deve ser permitido realizar um emprestimo de um livro já emprstado.
+   - [X] Cada emprestimo deve durar 7 dias.
+   - [ ] Deve ser permitido listar os emprestimos.
+   - [ ] Deve ser permitido exibir os emprestimos atrasados. 

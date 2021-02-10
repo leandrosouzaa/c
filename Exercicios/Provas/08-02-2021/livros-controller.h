@@ -89,7 +89,7 @@ void invalidate_livro() {
             getchar();
          } else {
             printf("LIVRO ENCONTRADO:\n\n");
-            print_livro(livro);
+            print_livro(livro, 1);
 
             printf("\nExcluir livro [S/N]: ");
             char continua;
@@ -112,7 +112,7 @@ void show_livro() {
    printf("Tombo para busca: ");
    scanf("%d", &tombo);
 
-   int index = find_livro_by_tombo(tombo);
+   int index = find_by_tombo(tombo);
 
    system("clear");
    if(index == -1) {
@@ -121,7 +121,7 @@ void show_livro() {
 
    } else {
       Livro livro = find_livro_by_index(index);
-      print_livro(livro);
+      print_livro(livro, 1);
    }
 
    getchar();
@@ -158,7 +158,7 @@ void recover_livro() {
             printf("Este livro não está desativado. Para desativar volte ao menu e escolha a opcao REMOVER ALUNO.\n");
          } else {
             printf("LIVRO ENCONTRADO:\n\n");
-            print_livro(livro);
+            print_livro(livro, 1);
 
             printf("\nReativar livro [S/N]: ");
             char continua;
@@ -220,7 +220,7 @@ void update_livro() {
             getchar();
          } else {
             printf("LIVRO ENCONTRADO:\n\n");
-            print_livro(livro);
+            print_livro(livro, 1);
 
             printf("\nAtualizar Livro[S/N]: ");
             char continua;

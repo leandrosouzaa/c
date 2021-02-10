@@ -33,6 +33,29 @@ int update_livro_status(int index, char status) {
    return 1;
 }
 
+int update_livro_situacao(int index, char situacao) {
+   FILE *file;
+   Livro livro;
+
+   file = fopen("livros.dat", "rb+");
+
+   if (file == NULL) {
+      internalError("Abertura de Arquivo", "Nao foi possivel manipular o arquivo solicitado \"livros.dat\". Finalizando o sistema...");
+      return 0;
+
+   } 
+   fseek(file, index*sizeof(Livro), SEEK_SET);
+   fread(&livro, sizeof(Livro), 1, file);
+   
+   livro.situacao = situacao;
+   
+   fseek(file, index*sizeof(Livro), SEEK_SET);
+   fwrite(&livro, sizeof(Livro), 1, file);
+   fclose(file);
+   
+   return 1;
+}
+
 int save_update_livro(int index, Livro livro) {
    FILE *file;
 
@@ -120,7 +143,7 @@ int list_livros(char status, char filter) {
             switch (filter) {
                case 'T':
                   while(!feof(file)) {
-                     print_livro(livro);
+                     print_livro(livro, 1);
                      fread(&livro, sizeof(Livro), 1, file);
                      i++;
                   }
@@ -129,7 +152,7 @@ int list_livros(char status, char filter) {
                default:
                   while(!feof(file)) {
                      if(livro.situacao == filter) {
-                        print_livro(livro);
+                        print_livro(livro, 1);
                         fread(&livro, sizeof(Livro), 1, file);
                         i++;
                      }
@@ -141,7 +164,7 @@ int list_livros(char status, char filter) {
             case 'T':
                while(!feof(file)) {
                   if(livro.status == status) {
-                     print_livro(livro);
+                     print_livro(livro, 1);
                      i++;
                   }
                   fread(&livro, sizeof(Livro), 1, file);
@@ -152,10 +175,11 @@ int list_livros(char status, char filter) {
             default:
                while(!feof(file)) {
                   if(livro.situacao == filter && livro.status == status) {
-                     print_livro(livro);
-                     fread(&livro, sizeof(Livro), 1, file);
+                     print_livro(livro, 1);
                      i++;
                   }
+                  fread(&livro, sizeof(Livro), 1, file);
+
                }
                break;
          }
