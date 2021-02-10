@@ -10,9 +10,9 @@ int main() {
    // create_aluno();
    // index_alunos();
 
-   // create_livro();
+   create_livro();
    // index_livros();
-   update_livro();
+   // update_livro();
    // remove_livros();
    // invalidate_livro();
    // recover_livro();

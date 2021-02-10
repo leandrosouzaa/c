@@ -26,5 +26,9 @@
    - [X] Deve ser pertmido atualizar os dados de cadastro.
    - [X] Não deve ser permitido alterar os dados de um livro excluído.
    - [X] Não deve ser permitido alterar o tombo do livro.
+   - [X] Não deve ser permitdo alterar a situação do livro (D ou E) no item de Edição.
    - [X] Deve ser permitido listar todos os livros.
    - [X] Deve ser permitido filtrar os livros.
+
+# Emprestimos
+   - [ ]

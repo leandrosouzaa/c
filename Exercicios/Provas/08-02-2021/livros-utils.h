@@ -25,7 +25,7 @@ Livro read_livro(int tombo, char situacao) {
          int temp, isValid;
 
          do {
-            printf("Informe o tombo do livro.....: ");
+            printf("Informe o tombo do livro.......: ");
             scanf("%d", &temp);
 
             isValid = find_by_tombo(temp);

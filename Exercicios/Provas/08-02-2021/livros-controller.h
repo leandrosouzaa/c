@@ -104,34 +104,29 @@ void invalidate_livro() {
    }
 }
 
-// void show_aluno() {
-//    system("clear");
-//    printf("BUSCA DE ALUNO POR PRONTUÁRIO\n\n");
-//    int pront;
+void show_livro() {
+   system("clear");
+   print_header("BUSCA DE LIVRO POR TOMBO");
+   int tombo;
 
-//    printf("Prontuário para busca: PE");
-//    scanf("%d", &pront);
+   printf("Tombo para busca: ");
+   scanf("%d", &tombo);
 
-//    int index = find_by_pront(pront);
+   int index = find_livro_by_tombo(tombo);
 
-//    system("clear");
-//    if(index == -1) {
-//       printf("Não foi encontrado nenhum aluno com o prontuario PE%d.\n", pront);
-//       printf("Pressione Enter para continuar...");
+   system("clear");
+   if(index == -1) {
+      printf("Não foi encontrado nenhum livro com o tombo %d.\n", tombo);
+      printf("Pressione Enter para continuar...");
 
-//    } else {
-//       Aluno aluno = find_by_index(index);
+   } else {
+      Livro livro = find_livro_by_index(index);
+      print_livro(livro);
+   }
 
-//       printf("ALUNO ENCONTRADO:\n\n");
-//       printf("Prontuario..: PE%d.\n",aluno.prontuario);
-//       printf("Nome........: %s.\n", aluno.nome);
-//       printf("Curso.......: %s.\n", aluno.curso);
-      
-//    }
-
-//    getchar();
-//    getchar();
-// }
+   getchar();
+   getchar();
+}
 
 void recover_livro() {
    system("clear");
@@ -185,6 +180,8 @@ void recover_livro() {
 }
 
 void update_livro() {
+   int tombo;
+
    system("clear");
    print_header("ATUALIZACAO DE LIVROS");
 
@@ -197,11 +194,11 @@ void update_livro() {
 
       getchar();
    } else {
-      int tombo;
 
       printf("Tombo para atualizacao: ");
       scanf("%d", &tombo);
-         
+      printf("caiu");
+   
       int index = find_by_tombo(tombo);
 
       system("clear");

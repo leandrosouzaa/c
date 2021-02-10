@@ -5,3 +5,10 @@ void internalError(const char* type, const char* message) {
    printf("Mensagem: %s.\n\n\n", message);
    exit(1);
 }
+
+void simpleError(const char* message) {
+   
+
+   setbuf(stdin, NULL);
+   getchar();
+}
