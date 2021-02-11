@@ -50,3 +50,34 @@ int list_emprestimos(char filter) {
    }
    return i;
 }
+
+int list_emprestimos_atrasados(int day, int month) {
+   FILE *file;
+   int i = 0;
+
+   Emprestimo emprestimo;
+
+   if(!cfileexists("emprestimos.dat")) {
+      printf("Não existem emprestimos para serem exibidos.\n");
+
+      return -1;
+   }
+
+   file = fopen("emprestimos.dat", "rb");
+
+   if(file == NULL) {
+      internalError("Leitura de Arquivo", "Nao foi possivel acessar o arquivo solicitado \"emprestimos.dat\". Finalizando o sistema...");
+   } else {
+      fread(&emprestimo, sizeof(Emprestimo), 1, file);
+
+      while(!feof(file)) {
+         if( emprestimo.situacao == 'P' && (month > emprestimo.mes_devolucao ||(day > emprestimo.dia_devolucao && (month >= emprestimo.mes_devolucao)))) {
+            print_emprestimo(emprestimo);
+            i++;
+         }
+         fread(&emprestimo, sizeof(Emprestimo), 1, file);
+      }
+   return i;
+}
+
+

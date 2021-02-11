@@ -25,3 +25,27 @@ void index_emprestimos() {
    setbuf(stdin, NULL);
    getchar();
 }
+
+void emprestimos_atraso() {
+   system("clear");
+   print_header("LISTAGEM DE EMPRESTIMOS");
+
+   int day, month;
+
+   printf("Informe a dia de hoje: ");
+   scanf("%d", &day);
+
+   printf("Informe o mês de hoje: ");
+   scanf("%d", &month);
+
+   int i = list_emprestimos_atrasados(day, month);
+
+   if(i<=0) {
+      printf("Não existem emprestimos atrasados para serem listados.\n");
+   }
+
+   printf("Pressione Enter para continuar...");
+   
+   setbuf(stdin, NULL);
+   getchar();
+}
