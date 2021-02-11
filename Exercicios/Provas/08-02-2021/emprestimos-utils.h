@@ -154,17 +154,19 @@ Emprestimo read_emprestimo() {
    }
 }
 
-int print_emprestimo(Emprestimo emprestimo) {
+void print_emprestimo(Emprestimo emprestimo, int printAluno) {
    printf("\n");
    int temp = find_by_pront(emprestimo.codigo_aluno);
    Aluno aluno = find_aluno_by_index(temp);
 
-   printf("ALUNO: \n");
-   if(temp < 0 || aluno.status == 'I') {
-      printf("ALUNO DELETADO.");
-      aluno.status == 'I' ? printf("VOLTE AO MENU PARA RECUPERAR O REGISTRO\n") : printf("\n");
-   } else {
-      print_aluno(aluno);
+   if(printAluno) {
+      printf("ALUNO: \n");
+      if(temp < 0 || aluno.status == 'I') {
+         printf("ALUNO DELETADO.");
+         aluno.status == 'I' ? printf("VOLTE AO MENU PARA RECUPERAR O REGISTRO\n") : printf("\n");
+      } else {
+         print_aluno(aluno);
+      }
    }
 
    temp = find_by_tombo(emprestimo.codigo_livro);

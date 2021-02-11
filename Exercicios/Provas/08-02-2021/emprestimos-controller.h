@@ -28,7 +28,7 @@ void index_emprestimos() {
 
 void emprestimos_atraso() {
    system("clear");
-   print_header("LISTAGEM DE EMPRESTIMOS");
+   print_header("LISTAGEM DE EMPRESTIMOS ATRASADOS");
 
    int day, month;
 
@@ -48,4 +48,109 @@ void emprestimos_atraso() {
    
    setbuf(stdin, NULL);
    getchar();
+}
+
+void emprestimos_aluno() {
+   system("clear");
+   print_header("LISTAGEM DE EMPRESTIMOS POR ALUNO");
+
+   int pront;
+
+   printf("Informe o prontuário para busca: PE");
+   scanf("%d", &pront);
+
+   system("clear");
+   print_header("EMPRESTIMOS POR ALUNO");
+   printf("PRONTUÁRIO: PE%d", pront);
+
+   int i = find_emprestimos_by_pront(pront);
+
+   if(i<=0) {
+      printf("Não existem emprestimos desse aluno para serem listados.\n");
+   }
+
+   printf("Pressione Enter para continuar...");
+   
+   setbuf(stdin, NULL);
+   getchar();
+}
+
+void emprestimos_curso() {
+   system("clear");
+   print_header("LISTAGEM DE EMPRESTIMOS POR CURSO");
+
+   char curso[4];
+
+   printf("Informe o curso para busca: ");
+   readString(curso, 4);
+
+   system("clear");
+   print_header("EMPRESTIMOS POR CURSO");
+   printf("CURSO: %s.\n", curso);
+
+   int i = count_emprestimos_by_curso(curso);
+
+   if(i<=0) {
+      printf("Não existem emprestimos desse curso para serem contados.\n");
+   } else {
+      printf("Quantidade de Emprestimos: %d.\n", i);
+   }
+
+   printf("\nPressione Enter para continuar...");
+   
+   setbuf(stdin, NULL);
+   getchar();
+}
+
+void finalizar_emprestimo() {
+   system("clear");
+   print_header("DEVOLUCAO DE EMPRESTIMO");
+
+   int tombo;
+
+   int i = list_emprestimos('P');
+
+   if(i<=0) {
+      printf("Não existem emprestimos para serem devolvidos.\n");
+      
+      printf("Pressione Enter para continuar...");
+      setbuf(stdin, NULL);
+      getchar();
+
+   } else {
+      printf("Informe o tombo do livro: ");
+      scanf("%d", &tombo);
+
+      Livro livro = find_livro_by_index(find_by_tombo(tombo));
+      
+      if(livro.situacao == 'E' && livro.status == 'A') {
+         int indexEmprestimo = find_emprestimo_by_tombo(tombo, 'P');
+         if(indexEmprestimo == -1) {
+            printf("Empréstimo inválido. Verifique os livros emprestados e tente novamente.\n");
+            
+            printf("Pressione Enter para continuar...");
+            setbuf(stdin, NULL);
+            getchar();
+
+         } else {
+            Emprestimo emprestimo = find_emprestimo_by_index(indexEmprestimo);
+            system("clear");
+            print_header("DEVOLUCAO DE EMPRESTIMO");
+            printf("Emprestimo a ser finalizado: ");
+            print_emprestimo(emprestimo, 1);
+            printf("\nConfirmar Devolucao [S/N]: ");
+            char continua;
+            scanf(" %c", &continua);
+            if(continua == 'S') {
+               update_livro_situacao(find_by_tombo(tombo), 'D');
+               update_emprestimo_situacao(indexEmprestimo, 'F');
+            }
+         }
+      } else {
+         printf("Livro inválido. Verifique os livros emprestados e tente novamente.\n");
+         printf("Pressione Enter para continuar...");
+         setbuf(stdin, NULL);
+         getchar();
+      }
+   }
 }
