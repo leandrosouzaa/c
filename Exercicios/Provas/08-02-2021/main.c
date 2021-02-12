@@ -20,12 +20,13 @@ int main() {
 
    // create_emprestimo();
    // devolver_emprestimo();
-   index_emprestimos();
+   // index_emprestimos();
    // emprestimos_atraso();
    // emprestimos_aluno();
    // emprestimos_curso();
    // finalizar_emprestimo();
    
+   menu();
    
 
 
