@@ -154,3 +154,19 @@ void finalizar_emprestimo() {
       }
    }
 }
+
+void emprestimos_livro() {
+   system("clear");
+   print_header("TOTAL DE EMPRESTIMOS POR LIVRO");
+
+   int i = list_emprestimos_livros();
+
+   if(i<=0) {
+      printf("Não existem emprestimos para serem listados.\n");
+   }
+
+   printf("Pressione Enter para continuar...");
+   
+   setbuf(stdin, NULL);
+   getchar();
+}

@@ -30,35 +30,35 @@ int menu() {
 
    printf("CONTROLE DE EMPRESTIMOS 1.0 - BIBLOTECA IFSP PEP\n\n");
    printf("ATALHOS:\n");
-   printf("  00 - CADASTRAR NOVO EMPRESTIMO.\n");
-   printf("  01 - DEVOLUCAO.\n");
-   printf("  02 - EMPRESTIMOS EM ATRASO.\n");
-   printf("  03 - Cadastrar Novo Aluno.\n");
-   printf("  04 - Cadastrar Novo Livro.\n");
+   printf("  01 - CADASTRAR NOVO EMPRESTIMO.\n");
+   printf("  02 - DEVOLUCAO.\n");
+   printf("  03 - EMPRESTIMOS EM ATRASO.\n");
+   printf("  05 - Cadastrar Novo Aluno.\n");
+   printf("  06 - Cadastrar Novo Livro.\n");
 
    printf("\nAlunos:\n");
-   printf("  05 - Atualizar.\n");
-   printf("  06 - Excluir.\n");
-   printf("  07 - Listagem.\n");
-   printf("  08 - Busca por Prontuario.\n");
-   printf("  09 - Recuperar Registros.\n");
-   printf("  10 - Limpar Registros.\n");
+   printf("  06 - Atualizar.\n");
+   printf("  07 - Excluir.\n");
+   printf("  08 - Listagem.\n");
+   printf("  09 - Busca por Prontuario.\n");
+   printf("  10 - Recuperar Registros.\n");
+   printf("  11 - Limpar Registros.\n");
 
    printf("\nLivros:\n");
-   printf("  11 - Atualizar.\n");
-   printf("  12 - Excluir.\n");
-   printf("  13 - Listagem.\n");
-   printf("  14 - Busca por Tombo.\n");
-   printf("  15 - Filtro por situacao (D/E).\n");
-   printf("  16 - Recuperar Registros.\n");
-   printf("  17 - Limpar Registros.\n");
+   printf("  12 - Atualizar.\n");
+   printf("  13 - Excluir.\n");
+   printf("  14 - Listagem.\n");
+   printf("  15 - Busca por Tombo.\n");
+   printf("  16 - Filtro por situacao (D/E).\n");
+   printf("  17 - Recuperar Registros.\n");
+   printf("  18 - Limpar Registros.\n");
 
    printf("\nEmprestimos:\n");
-   printf("  18 - Relatorio por Alunos.\n");
-   printf("  19 - Relatorio por Curso.\n");
-   printf("  20 - Relatorio por Livro.\n");
+   printf("  19 - Relatorio por Alunos.\n");
+   printf("  20 - Relatorio por Curso.\n");
+   printf("  21 - Relatorio por Livro.\n");
 
-   printf("\n21 - Finalizar sessao.\n");
+   printf("\n22 - Finalizar sessao.\n");
 
    printf("\nEscolha uma operacao: ");
    scanf("%d", &opcao);

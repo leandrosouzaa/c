@@ -1,5 +1,5 @@
 # Sistema
-   - [ ] Deve ser permitido navegar entre as opções por um menu.
+   - [X] Deve ser permitido navegar entre as opções por um menu.
    - [X] Ao encontrar um erro interno, o programa deve ser finalizado.
 
 # Alunos

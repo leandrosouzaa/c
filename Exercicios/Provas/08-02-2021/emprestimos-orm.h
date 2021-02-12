@@ -51,6 +51,56 @@ int list_emprestimos(char filter) {
    return i;
 }
 
+int list_emprestimos_livros() {
+   FILE *file, *file_livros;
+   int i = 0;
+
+   if(!cfileexists("emprestimos.dat")) {
+      printf("Não existem emprestimos para serem exibidos.\n");
+      printf("caiu");
+      return -1;
+   }
+
+   if(!cfileexists("livros.dat")) {
+      printf("Não existem emprestimos para serem exibidos.\n");
+      printf("caiu");
+      return -1;
+   }
+
+   file = fopen("emprestimos.dat", "rb");
+   file_livros = fopen("livros.dat", "rb");
+
+   Livro livro;
+   Emprestimo emprestimo;
+
+   if(file == NULL) {
+      internalError("Leitura de Arquivo", "Nao foi possivel acessar o arquivo solicitado \"emprestimos.dat\". Finalizando o sistema...");
+   } else {
+      if(file_livros == NULL) {
+         internalError("Leitura de Arquivo", "Nao foi possivel acessar o arquivo solicitado \"livros.dat\". Finalizando o sistema...");
+      } else {
+         fread(&livro, sizeof(Livro), 1, file_livros);
+         fread(&emprestimo, sizeof(Emprestimo), 1, file);
+
+         while(!feof(file_livros)) {
+            i=0;
+            while(!feof(file)) {
+               if(emprestimo.codigo_livro == livro.tombo) {
+                  i++;
+               }
+               fread(&emprestimo, sizeof(Emprestimo), 1, file);
+            }
+            fread(&livro, sizeof(Livro), 1, file_livros);
+            fseek(file, 0, SEEK_SET);
+            print_livro(livro, 0);
+            printf("Quantidade de Emprestimos: %d.\n", i);
+            printf("+-+-+-+-+-+-+-+-+-+-+\n\n");
+         }
+      }
+   }
+   return i;
+}
+
 int list_emprestimos_atrasados(int day, int month) {
    FILE *file;
    int i = 0;
