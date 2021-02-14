@@ -1,6 +1,6 @@
 void index_alunos() {
    int limpa;
-   system("clear");
+   system("cls");
    print_header("RELATÓRIO DE ALUNOS");
 
    int i = list_alunos('A');
@@ -16,7 +16,7 @@ void index_alunos() {
 }
 
 void create_aluno() {
-   system("clear");
+   system("cls");
    print_header("REGISTRO DE ALUNOS");
 
    Aluno aluno = read_aluno(NULL);
@@ -24,7 +24,7 @@ void create_aluno() {
 }
 
 void invalidate_aluno() {
-   system("clear");
+   system("cls");
    print_header("REMOCAO DE ALUNOS");
    int pront;
 
@@ -42,7 +42,7 @@ void invalidate_aluno() {
 
       int index = find_by_pront(pront);
 
-      system("clear");
+      system("cls");
       if(index == -1) {
          printf("Não foi encontrado nenhum aluno com o prontuario PE%d.\n", pront);
          printf("\nPressione Enter para continuar...");
@@ -75,7 +75,7 @@ void invalidate_aluno() {
 }
 
 void show_aluno() {
-   system("clear");
+   system("cls");
    printf("BUSCA DE ALUNO POR PRONTUÁRIO\n\n");
    int pront;
 
@@ -84,7 +84,7 @@ void show_aluno() {
 
    int index = find_by_pront(pront);
 
-   system("clear");
+   system("cls");
    if(index == -1) {
       printf("Não foi encontrado nenhum aluno com o prontuario PE%d.\n", pront);
       printf("Pressione Enter para continuar...");
@@ -101,7 +101,7 @@ void show_aluno() {
 }
 
 void recover_aluno() {
-   system("clear");
+   system("cls");
 
    print_header("RECUPERACAO DE ALUNOS");
 
@@ -116,7 +116,7 @@ void recover_aluno() {
 
       int index = find_by_pront(pront);
 
-      system("clear");
+      system("cls");
       if(index == -1) {
          printf("Não foi encontrado nenhum aluno com o prontuario PE%d.\n", pront);
          printf("Pressione Enter para continuar...");
@@ -152,7 +152,7 @@ void recover_aluno() {
 }
 
 void update_aluno() {
-   system("clear");
+   system("cls");
    print_header("ATUALIZACAO DE ALUNOS");
 
    printf("Alunos disponiveis:\n");
@@ -171,7 +171,7 @@ void update_aluno() {
 
       int index = find_by_pront(pront);
 
-      system("clear");
+      system("cls");
       if(index == -1) {
          printf("Não foi encontrado nenhum aluno com o prontuario PE%d.\n", pront);
          printf("\nPressione Enter para continuar...");
@@ -197,7 +197,7 @@ void update_aluno() {
             scanf(" %c", &continua);
 
             if(continua == 'S') {
-               system("clear");
+               system("cls");
                printf("ATUALIZACAO DE ALUNO\n\n");
                aluno = read_aluno(aluno.prontuario);
                save_update_aluno(index, aluno);
@@ -208,7 +208,7 @@ void update_aluno() {
 }
 
 void remove_alunos() {
-   system("clear");
+   system("cls");
 
    print_header("EXCLUSAO DE ALUNOS");
 
@@ -219,6 +219,6 @@ void remove_alunos() {
    scanf(" %c", &continua);
 
    if(continua == 'S') {
-      clear_alunos();
+      cls_alunos();
    }
 }

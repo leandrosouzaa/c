@@ -8,7 +8,7 @@ Emprestimo read_emprestimo() {
    emprestimo.situacao = 'P';
 
    do {
-      system("clear");
+      system("cls");
       print_header("CADASTRO DE EMPRESTIMOS");
       temp = list_alunos('A');
 
@@ -37,7 +37,7 @@ Emprestimo read_emprestimo() {
             setbuf(stdin, NULL);
             getchar();
          } else {
-            system("clear");
+            system("cls");
             print_header("CADASTRO DE EMPRESTIMOS");
             printf("Aluno encontrado:\n");
             print_aluno(aluno);
@@ -56,7 +56,7 @@ Emprestimo read_emprestimo() {
    emprestimo.codigo_aluno = temp;
 
    do {
-      system("clear");
+      system("cls");
       print_header("CADASTRO DE EMPRESTIMOS");
       temp = list_livros('A', 'D');
 
@@ -94,7 +94,7 @@ Emprestimo read_emprestimo() {
 
             } else {
                print_header("CADASTRO DE EMPRESTIMOS");
-               system("clear");
+               system("cls");
                printf("\nLivro encontradao:\n");
                print_livro(livro, 0);
                printf("\nConfirmar Livro [S/N]: ");
@@ -110,7 +110,7 @@ Emprestimo read_emprestimo() {
       }
    } while(isValid == 0);
    emprestimo.codigo_livro = temp;
-   system("clear");
+   system("cls");
    print_header("CADASTRO DE EMPRESTIMOS");
    printf("Aluno: \n");
    print_aluno(aluno);
@@ -132,7 +132,7 @@ Emprestimo read_emprestimo() {
       emprestimo.mes_devolucao = emprestimo.mes;
    }
 
-   system("clear");
+   system("cls");
 
    print_header("CADASTRO DE EMPRESTIMOS");
    printf("Aluno: \n");

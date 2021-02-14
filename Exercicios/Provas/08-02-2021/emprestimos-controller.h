@@ -1,5 +1,5 @@
 void create_emprestimo() {
-   system("clear");
+   system("cls");
    print_header("CADASTRO DE EMPRESTIMOS");
 
    Emprestimo emprestimo = read_emprestimo();
@@ -11,7 +11,7 @@ void create_emprestimo() {
 }
 
 void index_emprestimos() {
-   system("clear");
+   system("cls");
    print_header("LISTAGEM DE EMPRESTIMOS");
 
    int i = list_emprestimos('T');
@@ -27,7 +27,7 @@ void index_emprestimos() {
 }
 
 void emprestimos_atraso() {
-   system("clear");
+   system("cls");
    print_header("LISTAGEM DE EMPRESTIMOS ATRASADOS");
 
    int day, month;
@@ -51,7 +51,7 @@ void emprestimos_atraso() {
 }
 
 void emprestimos_aluno() {
-   system("clear");
+   system("cls");
    print_header("LISTAGEM DE EMPRESTIMOS POR ALUNO");
 
    int pront;
@@ -59,7 +59,7 @@ void emprestimos_aluno() {
    printf("Informe o prontuário para busca: PE");
    scanf("%d", &pront);
 
-   system("clear");
+   system("cls");
    print_header("EMPRESTIMOS POR ALUNO");
    printf("PRONTUÁRIO: PE%d.\n\n", pront);
 
@@ -72,7 +72,7 @@ void emprestimos_aluno() {
 }
 
 void emprestimos_curso() {
-   system("clear");
+   system("cls");
    print_header("LISTAGEM DE EMPRESTIMOS POR CURSO");
 
    char curso[4];
@@ -81,7 +81,7 @@ void emprestimos_curso() {
    printf("Informe o curso para busca: ");
    readString(curso, 4);
 
-   system("clear");
+   system("cls");
    print_header("EMPRESTIMOS POR CURSO");
    printf("CURSO: %s.\n", curso);
 
@@ -102,7 +102,7 @@ void emprestimos_curso() {
 }
 
 void finalizar_emprestimo() {
-   system("clear");
+   system("cls");
    print_header("DEVOLUCAO DE EMPRESTIMO");
 
    int tombo;
@@ -133,7 +133,7 @@ void finalizar_emprestimo() {
 
          } else {
             Emprestimo emprestimo = find_emprestimo_by_index(indexEmprestimo);
-            system("clear");
+            system("cls");
             print_header("DEVOLUCAO DE EMPRESTIMO");
             printf("Emprestimo a ser finalizado: ");
             print_emprestimo(emprestimo, 1);
@@ -155,7 +155,7 @@ void finalizar_emprestimo() {
 }
 
 void emprestimos_livro() {
-   system("clear");
+   system("cls");
    print_header("TOTAL DE EMPRESTIMOS POR LIVRO");
 
    int i = list_emprestimos_livros();

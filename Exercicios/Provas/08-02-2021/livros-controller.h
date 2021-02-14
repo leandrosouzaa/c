@@ -1,6 +1,6 @@
 void index_livros() {
    int limpa;
-   system("clear");
+   system("cls");
    print_header("RELATÓRIO DE LIVROS");
 
    int i = list_livros('A','T');
@@ -15,7 +15,7 @@ void index_livros() {
 }
 
 void create_livro() {
-   system("clear");
+   system("cls");
    print_header("REGISTRO DE LIVROS");
 
    Livro livro = read_livro(NULL, NULL);
@@ -26,7 +26,7 @@ void filter_livros() {
    int limpa;
    char type;
 
-   system("clear");
+   system("cls");
    print_header("RELATÓRIO DE LIVROS");
 
    printf("Selecione um tipo para ser listado: \n");
@@ -35,7 +35,7 @@ void filter_livros() {
    printf("Tipo desejado: ");
    scanf(" %c", &type);
 
-   system("clear");
+   system("cls");
    type == 'D' ? print_header("RELATÓRIO DE LIVROS DISPONIVEIS") : print_header("RELATORIO DE LIVROS EMPRESTADOS");
    
 
@@ -50,7 +50,7 @@ void filter_livros() {
 }
 
 void invalidate_livro() {
-   system("clear");
+   system("cls");
    print_header("REMOCAO DE LIVROS");
    int tombo;
 
@@ -67,7 +67,7 @@ void invalidate_livro() {
 
       int index = find_by_tombo(tombo);
 
-      system("clear");
+      system("cls");
       if(index == -1) {
          printf("Não foi encontrado nenhum livro com o tombo %d.\n", tombo);
          printf("\nPressione Enter para continuar...");
@@ -102,7 +102,7 @@ void invalidate_livro() {
 }
 
 void show_livro() {
-   system("clear");
+   system("cls");
    print_header("BUSCA DE LIVRO POR TOMBO");
    int tombo;
 
@@ -111,7 +111,7 @@ void show_livro() {
 
    int index = find_by_tombo(tombo);
 
-   system("clear");
+   system("cls");
    if(index == -1) {
       printf("Não foi encontrado nenhum livro com o tombo %d.\n", tombo);
       printf("Pressione Enter para continuar...");
@@ -126,7 +126,7 @@ void show_livro() {
 }
 
 void recover_livro() {
-   system("clear");
+   system("cls");
 
    print_header("RECUPERACAO DE LIVROS");
 
@@ -141,7 +141,7 @@ void recover_livro() {
 
       int index = find_by_tombo(tombo);
 
-      system("clear");
+      system("cls");
       if(index == -1) {
          printf("Não foi encontrado nenhum livro com o tombo %d.\n", tombo);
          printf("Pressione Enter para continuar...");
@@ -178,7 +178,7 @@ void recover_livro() {
 void update_livro() {
    int tombo;
 
-   system("clear");
+   system("cls");
    print_header("ATUALIZACAO DE LIVROS");
 
    printf("Livros disponiveis:\n");
@@ -196,7 +196,7 @@ void update_livro() {
    
       int index = find_by_tombo(tombo);
 
-      system("clear");
+      system("cls");
       if(index == -1) {
          printf("Não foi encontrado nenhum livro com o tombo %d.\n", tombo);
          printf("\nPressione Enter para continuar...");
@@ -223,7 +223,7 @@ void update_livro() {
             scanf(" %c", &continua);
 
             if(continua == 'S') {
-               system("clear");
+               system("cls");
                printf("ATUALIZACAO DE LIVRO\n\n");
                livro = read_livro(livro.tombo, livro.situacao);
                save_update_livro(index, livro);
@@ -234,7 +234,7 @@ void update_livro() {
 }
 
 void remove_livros() {
-   system("clear");
+   system("cls");
 
    print_header("EXCLUSAO DE LIVROS");
 
@@ -245,6 +245,6 @@ void remove_livros() {
    scanf(" %c", &continua);
 
    if(continua == 'S') {
-      clear_livros();
+      cls_livros();
    }
 }
