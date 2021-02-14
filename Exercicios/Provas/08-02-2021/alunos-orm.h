@@ -5,6 +5,7 @@ void save_aluno(Aluno aluno) {
    if(file == NULL) {
       internalError("Criacao de Arquivo", "Nao foi possivel manipular o arquivo solicitado \"alunos.dat\". Finalizando o sistema...");
    }
+   printf("%cbaaaaaaaa",aluno.status);
 
    fwrite(&aluno, sizeof(Aluno), 1, file);
    fclose(file);
@@ -132,7 +133,6 @@ int list_alunos(char filter) {
          while(!feof(file)) {
             if(aluno.status == filter) {
                   print_aluno_linha(aluno);
-                  fread(&aluno, sizeof(Aluno), 1, file);
                   i++;
                }
             fread(&aluno, sizeof(Aluno), 1, file);

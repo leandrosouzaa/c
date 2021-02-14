@@ -61,13 +61,9 @@ void emprestimos_aluno() {
 
    system("clear");
    print_header("EMPRESTIMOS POR ALUNO");
-   printf("PRONTUÁRIO: PE%d", pront);
+   printf("PRONTUÁRIO: PE%d.\n\n", pront);
 
    int i = find_emprestimos_by_pront(pront);
-
-   if(i<=0) {
-      printf("Não existem emprestimos desse aluno para serem listados.\n");
-   }
 
    printf("Pressione Enter para continuar...");
    
@@ -81,6 +77,7 @@ void emprestimos_curso() {
 
    char curso[4];
 
+   setbuf(stdin, NULL);
    printf("Informe o curso para busca: ");
    readString(curso, 4);
 
@@ -100,6 +97,8 @@ void emprestimos_curso() {
    
    setbuf(stdin, NULL);
    getchar();
+   getchar();
+
 }
 
 void finalizar_emprestimo() {
@@ -160,10 +159,6 @@ void emprestimos_livro() {
    print_header("TOTAL DE EMPRESTIMOS POR LIVRO");
 
    int i = list_emprestimos_livros();
-
-   if(i<=0) {
-      printf("Não existem emprestimos para serem listados.\n");
-   }
 
    printf("Pressione Enter para continuar...");
    

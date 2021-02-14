@@ -6,10 +6,9 @@ void index_livros() {
    int i = list_livros('A','T');
 
    if(i<=0) {
-      printf("Não existem livros para serem listados.\n");
    }
 
-   printf("Pressione Enter para continuar...");
+   printf("\nPressione Enter para continuar...");
    
    setbuf(stdin, NULL);
    getchar();
@@ -34,7 +33,7 @@ void filter_livros() {
    printf("D - Disponível\n");
    printf("E - Emprestado\n");
    printf("Tipo desejado: ");
-   scanf("%c", &type);
+   scanf(" %c", &type);
 
    system("clear");
    type == 'D' ? print_header("RELATÓRIO DE LIVROS DISPONIVEIS") : print_header("RELATORIO DE LIVROS EMPRESTADOS");
@@ -42,14 +41,12 @@ void filter_livros() {
 
    int i = list_livros('A',type);
 
-   if(i==0) {
-      printf("Não existem livros para serem listados.\n");
-   }
-
-   printf("Pressione Enter para continuar...");
+   printf("\nPressione Enter para continuar...");
    
    setbuf(stdin, NULL);
    getchar();
+   getchar();
+
 }
 
 void invalidate_livro() {
@@ -171,7 +168,6 @@ void recover_livro() {
          }
       }
    } else {
-      printf("Não existem livros para serem recuperados.\n");
       printf("\nPressione Enter para continuar...");
 
       setbuf(stdin, NULL);
@@ -189,15 +185,14 @@ void update_livro() {
    int i = list_livros('A', 'T');
 
    if(i<=0) {
-      printf("Não existem livros para serem atualizados.\n");
       printf("\nPressione Enter para continuar...");
 
+      setbuf(stdin, NULL);
       getchar();
    } else {
 
       printf("Tombo para atualizacao: ");
       scanf("%d", &tombo);
-      printf("caiu");
    
       int index = find_by_tombo(tombo);
 
@@ -220,7 +215,7 @@ void update_livro() {
             getchar();
          } else {
             printf("LIVRO ENCONTRADO:\n\n");
-            print_livro(livro, 1);
+            print_livro(livro, 0);
 
             printf("\nAtualizar Livro[S/N]: ");
             char continua;

@@ -57,13 +57,11 @@ int list_emprestimos_livros() {
 
    if(!cfileexists("emprestimos.dat")) {
       printf("Não existem emprestimos para serem exibidos.\n");
-      printf("caiu");
       return -1;
    }
 
    if(!cfileexists("livros.dat")) {
       printf("Não existem emprestimos para serem exibidos.\n");
-      printf("caiu");
       return -1;
    }
 

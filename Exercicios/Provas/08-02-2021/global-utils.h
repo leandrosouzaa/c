@@ -33,8 +33,8 @@ int menu() {
    printf("  01 - CADASTRAR NOVO EMPRESTIMO.\n");
    printf("  02 - DEVOLUCAO.\n");
    printf("  03 - EMPRESTIMOS EM ATRASO.\n");
-   printf("  05 - Cadastrar Novo Aluno.\n");
-   printf("  06 - Cadastrar Novo Livro.\n");
+   printf("  04 - Cadastrar Novo Aluno.\n");
+   printf("  05 - Cadastrar Novo Livro.\n");
 
    printf("\nAlunos:\n");
    printf("  06 - Atualizar.\n");

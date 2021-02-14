@@ -29,13 +29,15 @@ int main() {
 
       switch(opcao) {
          case 1:
-            break;
-         case 2:
             create_emprestimo();
             break;
-         case 3:
+         case 2:
             finalizar_emprestimo();
             break;
+         case 3:
+            emprestimos_atraso();
+            break;
+            
          case 4:
             create_aluno();
             break;

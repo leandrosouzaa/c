@@ -1,6 +1,7 @@
 Livro read_livro(int tombo, char situacao) {
       Livro livro;
       livro.status = 'A';
+      int clear;
 
       if(tombo && situacao) {
          livro.tombo = tombo;
@@ -9,8 +10,8 @@ Livro read_livro(int tombo, char situacao) {
          setbuf(stdin, NULL);
 
          printf("Novo nome do livro........: ");
+         scanf("%d", &clear);
          readString(livro.titulo, 99);
-         setbuf(stdin, NULL);
 
          printf("Novos autore(s) do livro..: ");
          readString(livro.autores, 149);

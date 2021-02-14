@@ -1,13 +1,13 @@
 Aluno read_aluno(int pront) {
       Aluno aluno;
       aluno.status = 'A';
+      int clear;
 
       if(pront) {
          aluno.prontuario = pront;
          printf("Prontuario do aluno..: PE%d.\n", aluno.prontuario);
-         setbuf(stdin, NULL);
-
          printf("Novo nome do aluno...: ");
+         scanf("%d", &clear);
          readString(aluno.nome, 100);
          setbuf(stdin, NULL);
 
