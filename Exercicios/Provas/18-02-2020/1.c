@@ -211,7 +211,7 @@ void read_save_venda() {
 int main() {
    printf("Mané do Portugueis - Leandro Ribeiro de Souza \n\n");
 
-   // read_produtos_from_file();
+   read_produtos_from_file();
 
    read_save_venda();
 
