@@ -21,12 +21,12 @@ int main() {
 
    printf("Preencha o vetor:\n");
    for(i=0; i < 12; i++) {
-      printf("\nVetor[%d]: ", i);
+      printf("Vetor[%d]: ", i);
 
-      vetor[i] = rand() % 20;
-      printf("%d.", vetor[i]);
+      // vetor[i] = rand() % 20;
+      // printf("%d.\n", vetor[i]);
 
-      // scanf("%d", vetor[i]);
+      scanf("%d", &vetor[i]);
    }
 
    printf("\n\nInforme um valor para busca: ");
