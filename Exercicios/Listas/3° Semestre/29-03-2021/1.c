@@ -2,42 +2,33 @@
 #include <stdlib.h>
 #include <time.h>
 
-int busca_posicao(int vetor[12], int valor) {
-   int i;
-   
-   for(i=0; i < 12; i++) {
-      if(vetor[i] == valor)
-         return i;
-   }
-
-   return -1;
-}
-
 int main() {
    printf("Busca no Vetor - Leandro Ribeiro de Souza \n\n");
    srand(time(NULL));
 
-   int vetor[12], i, temp, posicao;
+   int vetor[12], i, a, b;
 
    printf("Preencha o vetor:\n");
    for(i=0; i < 12; i++) {
       printf("Vetor[%d]: ", i);
 
-      // vetor[i] = rand() % 20;
-      // printf("%d.\n", vetor[i]);
+      vetor[i] = rand() % 20;
+      printf("%d.\n", vetor[i]);
 
-      scanf("%d", &vetor[i]);
+      // scanf("%d", &vetor[i]);
    }
 
-   printf("\n\nInforme um valor para busca: ");
-   scanf("%d", &temp);
-   posicao = busca_posicao(vetor, temp);
-   printf("Valor encontrado na posição %d%s\n", posicao, posicao == -1 ? " (Inexistente)." : ".");
+   printf("\n\nInforme uma posição do vetor: ");
+   scanf("%d", &a);
 
-   printf("\nInforme um outro valor para busca: ");
-   scanf("%d", &temp);
-   posicao = busca_posicao(vetor, temp);
-   printf("Valor encontrado na posição %d%s\n", posicao, posicao == -1 ? " (Inexistente)." : ".");
+   printf("Informe uma outra posição do vetor: ");
+   scanf("%d", &b);
+
+   if(a > 11 || b > 11 ) {
+      printf("Valores inválido. Reinicie o programa.\n");
+   } else {
+      printf("%d + %d = %d", vetor[a], vetor[b], vetor[a]+vetor[b]);
+   }
 
 
    return 0;
