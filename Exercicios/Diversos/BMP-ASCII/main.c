@@ -135,7 +135,7 @@ int createBWImage(BMPFILEHEADER header, BMPIMAGEHEADER imageHeader, IMAGE pictur
 }
 
 
-int main() {
+int main(int argc, char* argv[]) {
    printf("Conversor de BMP para ASCII - Leandro Ribeiro de Souza \n\n");
 
    FILE *fp;
@@ -143,7 +143,7 @@ int main() {
    BMPIMAGEHEADER imageHeader;
    RGB pixel;
 
-   fp = fopen("quadrado.bmp", "rb");
+   fp = fopen(argv[1], "rb");
 
    if(!fp) {
       printf("Não foi possível abrir o arquivo %s.", "quadrado.bmp");
