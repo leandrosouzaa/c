@@ -47,19 +47,6 @@ char stackTop(STACK *S) {
    return S->itens[S->topo];
 }
 
-void clone(STACK *S, STACK *C) {
-   char temp[TAM];
-   int i, j = S->topo+1;
-   
-   // pega o que esta em S e jogar para um Vetor Auxiliar
-
-   // Pega o que esta no vetor auxiliar e joga para S e para C ao mesmo tempo
-   for(i=0; i < j; i++) {
-      push(S, temp[i]);
-      push(C, temp[i]);
-   };
-};
-
 int isPalindromo(STACK *S) {
    int i, j = S->topo+1;
    char temp[TAM];
