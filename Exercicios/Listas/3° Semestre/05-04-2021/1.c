@@ -28,7 +28,7 @@ int lista_inserir_posicao(LISTA *L, int posicao, int valor) {
       return 1;
    }
 
-   for(int i =(L->n+1); i<posicao; i--) {
+   for(int i =(L->n+1); i>posicao; i--) {
       L->valor[i] = L->valor[i-1];
    }
 
