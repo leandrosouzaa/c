@@ -67,38 +67,26 @@ int reverse(STACK *S) {
    return 0;
 }
 
-int reverseExtremes(STACK *S) {
-   int k;
-   
-   if(isEmpty(S)) {
-      printf("\nERRO - A Pilha está vazia.\n");
-      return -1;
-   }
-
+void validate(STACK *S, int value) {
    STACK S2;
    init(&S2);
 
-   int i, temp[TAM], j = S->topo+1;
-
-   for(i=0;i < j; i++) {
-      push(&S2, pop(S));
+   if(value % 2 == 0) {
+      int j = S->topo+1;
+      int i = 0;
+      while(i < j && (stackTop(S) % 2 == 1)) {
+         push(&S2, pop(S));
+         printf("%d\n", i);
+         i++;
+      }
+      push(S, value);
+      while(S2.topo != -1) {
+         push(S, pop(&S2));
+      }
+   } else {
+      push(S, value);
    }
-
-   // push(, pop(&S2));
-
-   // for(i=0;i<j-2;i++) {
-      // for(k=j-2-1;k>=0;k--) {
-         // push(S, pop(&S2));
-      // }
-      // for(k=0;k<j-3-i;k++) {
-         // push(&S2, pop(S));
-      // }
-   // }
-
-   // push(S, pop(&S2));
-
-   return 0;
-}
+};
 
 void validate(STACK *S, int value) {
    STACK S2;
