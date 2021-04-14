@@ -124,13 +124,13 @@ int main() {
          case 3:
             printf("\nEscolha uma posição para visualizar: ");
             scanf("%d", &posicao);
-            lista_acessa_posicao(&lista, posicao);
+            printf("Valor: ",lista_acessa_posicao(&lista, posicao));
             break;
 
          case 4:
             printf("\nEscolha um valor para buscar: ");
             scanf("%d", &valor);
-            lista_busca_valor(&lista, valor);
+            printf("Elemento encontrado na posição %d (-1 não foi encontrado).",lista_busca_valor(&lista, valor));
             break;
 
          case 5:
