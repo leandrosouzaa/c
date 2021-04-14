@@ -56,7 +56,7 @@ int reverseExtremes(STACK *S) {
    }
 
    if(S->topo == 0) {
-      printf("\nERRO - A Pilha está vazia.\n");
+      printf("\nERRO - A Pilha não tem valores suficientes.\n");
       return -1;
    }
 
