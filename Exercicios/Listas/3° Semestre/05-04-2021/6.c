@@ -49,7 +49,7 @@ int lista_apresenta(LISTA *L) {
 }
 
 int main() {
-   printf("Intercalar Listas - Leandro Ribeiro de Souza \n\n");
+   printf("Inverter Listas - Leandro Ribeiro de Souza \n\n");
    LISTA lista, lista2;
 
    inicializa_lista(&lista);

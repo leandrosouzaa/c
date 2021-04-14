@@ -36,11 +36,8 @@ int lista_inserir_inicio(LISTA *L, int valor) {
       return 1;
    }
 
-   printf("%d > %d", L->n+1, 0);
-
    for(int i=(L->n+1); i>0; i--) {
       L->valor[i] = L->valor[i-1];
-      printf("\n%d -> %d", i-1, i);
    }
 
    L->valor[0] = valor;
