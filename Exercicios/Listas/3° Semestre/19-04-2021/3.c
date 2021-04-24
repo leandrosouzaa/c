@@ -69,11 +69,11 @@ void imprimir(Fila *f) {
 }
 
 int calcula_tamanho(Fila *f) {
-    if(f->inicio < f->fim) {
-        return f->fim - f->inicio;
-    } else {
-        return (TAMMAX-f->fim-(TAMMAX-f->inicio + 1));
-    }
+   if(f->inicio < f->fim) {
+      return f->fim - f->inicio;
+   } else {
+      return (TAMMAX-f->fim-(TAMMAX-f->inicio + 1));
+   }
 }
 
 int main() {
