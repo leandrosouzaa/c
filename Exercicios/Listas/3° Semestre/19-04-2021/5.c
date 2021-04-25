@@ -87,6 +87,8 @@ int verifica_maior(Fila *f1, Fila *f2) {
 }
 
 int main() {
+   printf("Fila Estatica - Leandro Ribeiro de Souza \n\n");
+
    Fila fila, fila2;
    inicializa(&fila);
    inicializa(&fila2);

@@ -153,6 +153,8 @@ int acha_menor(Fila *f) {
 }
 
 int main() {
+   printf("Fila Estática - Leandro Ribeiro de Souza \n\n");
+
    Fila fila;
    inicializa(&fila);
    int temp;
