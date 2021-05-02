@@ -1,5 +1,5 @@
 <h1 align="center">
-  MP4 TO ASCII
+  <img src="./logo.png" alt="MP4 to ASCII" width="100%"/>
 </h1>
 
 <h4 align="center">💾 Um simples conversor de .mp4 para ASCII 💾</h4>
