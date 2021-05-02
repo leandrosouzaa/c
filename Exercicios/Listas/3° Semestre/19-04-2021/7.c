@@ -130,6 +130,5 @@ int main() {
    printf("\nApós tocar outra músicas: \n");
    imprimir(&pasta);
 
-
    return 0;
 }

@@ -6,6 +6,7 @@
         "ctype.h": "c",
         "string.h": "c",
         "2.C": "cpp",
-        "cmath": "c"
+        "cmath": "c",
+        "stdio.h": "c"
     }
 }

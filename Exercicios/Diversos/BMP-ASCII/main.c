@@ -110,7 +110,6 @@ void imageToText(IMAGE img) {
       fputc(10, destiny);
    }
    fclose(destiny);
-
 }
 
 int createBWImage(BMPFILEHEADER header, BMPIMAGEHEADER imageHeader, IMAGE picture) {
