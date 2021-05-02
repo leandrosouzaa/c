@@ -5,8 +5,8 @@
 <p align="center">
   <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen">
   
-  <a href="https://github.com/leandrosouzaa/simple-iot/stargazers">
-    <img alt="Repository" issues" src="https://img.shields.io/github/stars/leandrosouzaa/simple-iot?style=social" />                       </a>
+  <a href="https://github.com/leandrosouzaa/c/stargazers">
+    <img alt="Repository" issues" src="https://img.shields.io/github/stars/leandrosouzaa/c?style=social" />                       </a>
 </p>
                                                                                                                       
 <p align="center">
@@ -16,7 +16,6 @@
   <a href="#-desenvolvedor">Desenvolvedor</a>
 </p>                                                                                                                      
 
-<p align="center">
  __       __  _______   __    __        ________   ______          ______    ______    ______   ______  ______ <br>
 |  \     /  \|       \ |  \  |  \      |        \ /      \        /      \  /      \  /      \ |      \|      \ <br>
 | $$\   /  $$| $$$$$$$\| $$  | $$       \$$$$$$$$|  $$$$$$\      |  $$$$$$\|  $$$$$$\|  $$$$$$\ \$$$$$$ \$$$$$$<br>
@@ -27,10 +26,7 @@
 | $$  \$ | $$| $$            | $$         | $$    \$$    $$      | $$  | $$ \$$    $$ \$$    $$|   $$ \|   $$ \<br>
  \$$      \$$ \$$             \$$          \$$     \$$$$$$        \$$   \$$  \$$$$$$   \$$$$$$  \$$$$$$ \$$$$$$<br>
                                                                                                                
-                                                                                                               
-                                                                                                               
-</p> 
-
+                                                                                                              
 ## Projeto 💻 
 Uma pequeno conversor de .mp4 para ASCII feito na linguagem C. 
    
