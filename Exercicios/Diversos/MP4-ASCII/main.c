@@ -1,45 +1,75 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
 
 #define W 72
 #define H 54
 
-char grayScale(unsigned char red, unsigned char green, unsigned char blue) {
+unsigned char grayScale(unsigned char red, unsigned char green, unsigned char blue) {
    return ((0.3 * red) + (0.59 * green) + (0.11 * blue));
 }
 
-int main() {
+int main(int argc, char* argv[]) {
+   printf("Conversor de MP4 para ASCII - Leandro Ribeiro de Souza \n\n");
+   if(argc < 3) {
+      printf("Missing Param.\n");
+      printf("%s <fileName> <frameTime>.\n", argv[0]);
+   };
+
    unsigned char frame[H][W][3] = {0};
 
-   int x, y, count;
-   char gray;
-   FILE *pipein = popen("ffmpeg -i bad-apple.mp4 -f image2pipe -vcodec rawvideo -pix_fmt rgb24 -hide_banner -loglevel error -", "r");
-   FILE *pipeout = popen("ffmpeg -y -f rawvideo -vcodec rawvideo -pix_fmt rgb24 -s 72x54 -r 25 -i - -f mp4 -q:v 5 -an -vcodec mpeg4 output.mp4", "w");
+   int x, y, count, gray;
+   char open[400] = "ffmpeg -i ", frameTime[100] = "sleep ";
 
-   int textPixel[] = {64, 35, 37,32};
+   strcat(open ,argv[1]);
+   strcat(open ," -f image2pipe -vcodec rawvideo -pix_fmt rgb24 -hide_banner -");
+   
+   strcat(frameTime ,argv[2]);
+
+   // FILE *pipein = popen(open, "r");
+   FILE *pipein = popen(open, "r");
+   FILE *fileout = fopen("output.txt", "w");
+
+   if(fileout == NULL) {
+      printf("Erro na abertura do arquivo.");
+      return 1;
+   }
+
+   int textPixel[] = {64, 35, 37, 79, 97, 45, 46, 32};
    int i = 0;
 
    while(1) {
       count = fread(frame, 1, H*W*3, pipein);
       if (count != H*W*3) break;
-      printf("\n");
       for (y=0 ; y<H ; ++y) {
          for (x=0 ; x<W ; ++x) {
             gray = grayScale(frame[y][x][0], frame[y][x][1], frame[y][x][2]);
-            // printf("%c",textPixel[3-gray/32]);
-            printf("%d", gray);
+            fputc(textPixel[7-gray/32], fileout);
          }
-         printf("\n");
+         fputc(10, fileout);
       }
-      sleep(1);
-
-      // fwrite(frame, 1, H*W*3, pipeout);
+      fputc('f', fileout);
    }
+
+   fclose(fileout);
+
+   fileout = fopen("output.txt", "r");
+   char temp = fgetc(fileout);
+   while(temp != EOF) {
+      if(temp == 'f') {
+         system(frameTime);
+         system("clear");
+      } else {
+         printf("%c", temp);
+      }
+      temp = fgetc(fileout);
+   }
+
 
    fflush(pipein);
    pclose(pipein);
-   fflush(pipeout);
-   pclose(pipeout);
+   fflush(fileout);
+   fclose(fileout);
    return 0;
 }
