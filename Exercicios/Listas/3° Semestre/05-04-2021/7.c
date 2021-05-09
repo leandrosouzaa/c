@@ -55,7 +55,7 @@ void relatorio_barracas(LISTA *l) {
    for(int i=0; i < TAM; i++) {
       printf("\nCódigo: %d.\n", i+1);
       printf("\nSituação: ");
-      if(i > l->n) {
+      if(i <= l->n) {
          printf("Ocupada.\n");
          ocupadas++;
       } else {

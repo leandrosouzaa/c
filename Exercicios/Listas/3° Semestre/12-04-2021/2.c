@@ -1,4 +1,4 @@
-#define TAM 15
+#define TAM 5
 #include <stdio.h>
 
 typedef struct sStack {
@@ -25,7 +25,6 @@ int push(STACK *S, int value) {
    }
 
    S->itens[++S->topo] = value;
-
    return 0;
 }
 
@@ -47,6 +46,20 @@ int stackTop(STACK *S) {
    return S->itens[S->topo];
 }
 
+void imprimir(STACK *s) {
+   int temp[TAM], i = 0;
+
+   while(!isEmpty(s)) {
+      temp[i] = pop(s);
+      printf("%d.\n", temp[i]);
+      i++;
+   }
+
+   for(int j = i-1; j > -1; j--) {
+      push(s, temp[j]);
+   }
+};
+
 int main() {
    printf("Pilha - Leandro Ribeiro de Souza \n\n");
 
@@ -54,7 +67,7 @@ int main() {
    init(&S);
    int temp, i = 0;
 
-   while(i<15) {
+   while(i<5) {
       printf("Insira um valor: ");
       scanf("%d", &temp);
 
@@ -66,6 +79,10 @@ int main() {
 
       i++;
    };
+
+   imprimir(&S);
+
+   printf("\nVERIFICAÇÃO\n");
 
    for(i=S.topo; i >= 0; i--) {
       printf("%d.\n", pop(&S));

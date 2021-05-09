@@ -48,13 +48,10 @@ char stackTop(STACK *S) {
 }
 
 int reverseExtremes(STACK *S) {
-   int k;
-   
    if(isEmpty(S)) {
       printf("\nERRO - A Pilha está vazia.\n");
       return -1;
    }
-
    if(S->topo == 0) {
       printf("\nERRO - A Pilha não tem valores suficientes.\n");
       return -1;
@@ -63,7 +60,7 @@ int reverseExtremes(STACK *S) {
    STACK S2;
    init(&S2);
 
-   int i, temp[TAM], j = S->topo+1;
+   int i, j = S->topo+1;
    char tempT, tempB;
 
    tempT = pop(S);
@@ -75,7 +72,7 @@ int reverseExtremes(STACK *S) {
    tempB = pop(S);
 
    push(S, tempT);
-   while(S2.topo != -1) {
+   while(!isEmpty(&S2)) {
       push(S, pop(&S2));
    }
    push(S, tempB);

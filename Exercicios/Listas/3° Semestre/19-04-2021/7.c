@@ -1,4 +1,4 @@
-// a: Uma lista com implementação circular, padrão FIFO (First In, Last Out).
+// a: Uma lista com implementação circular, padrão FILO (First In, Last Out).
 // Essa é a mais recomendada pois as musicas são organizadas em forma de Fila e toda
 // vez que uma musica é tocada, ela vai para o final da Fila.
 // b: 99 músicas
@@ -15,7 +15,7 @@ typedef struct sPasta {
    Musica musicas[100];
    int inicio, fim;
 } Pasta;
-
+ 
 void inicializa(Pasta *p) {
    p->inicio = TAMMAX - 1;
    p->fim = TAMMAX - 1;
