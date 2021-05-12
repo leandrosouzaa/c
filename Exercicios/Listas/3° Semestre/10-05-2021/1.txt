@@ -1,0 +1,4 @@
+1) 
+Estruturas de dados nada mais é do que as formas de organização de dados. Junto com essas formas, está associado os métodos de manipulação da mesma (Inserção, remoção, listagem, busca, entre outros).
+Tipos de dados primitivos são tipos de dados naturais da linguagem, que não são definidos posteriormente. Por exemplo o tipo int, char, float e booleano.
+Já uma estrutura de dados é um tipo definido posteriormente, derviado de tipos primitivos, que são usados para implementar a manipulação de um TAD (Tipo abstrato de Dados).
