@@ -72,21 +72,7 @@ int reverseExtremes(STACK *S) {
    tempB = pop(S);
 
    push(S, tempT);
-   while(!ma
-Marcelo Roberto
-3:56 PM
-
-sempre!
-ra
-Raissa Rosa dos Santos
-3:56 PM
-
-essa risadinha ai
-th
-Thiago Bruchmann
-3:56 PM
-
-1 questão?isEmpty(&S2)) {
+   while(!isEmpty(&S2)) {
       push(S, pop(&S2));
    }
    push(S, tempB);
