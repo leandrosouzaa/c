@@ -170,7 +170,7 @@ CELL* concat(CELL *list1, CELL *list2) {
    aux1 = list1;
    aux2 = list2;
 
-   if(size(list1) > size(list2)) {
+   if(size(list1) >= size(list2)) {
       while(aux1 != NULL) {
          if(aux2 != NULL) {
             q = getNode();
@@ -206,7 +206,6 @@ CELL* concat(CELL *list1, CELL *list2) {
 
       while(aux2 != NULL) {
          q = getNode();
-         printf("caiu");
          q->info = aux2->info;
          q->next = aux1->next;
          aux1->next = q;
@@ -226,8 +225,8 @@ int main() {
 
    list = insertEnd(list, 1);
    list = insertEnd(list, 3);
-   // list = insertEnd(list, 5);
-   // list = insertEnd(list, 7);
+   list = insertEnd(list, 5);
+   list = insertEnd(list, 7);
 
    list2 = insertEnd(list2, 2);
    list2 = insertEnd(list2, 4);
