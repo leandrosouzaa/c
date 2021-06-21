@@ -2,142 +2,91 @@
 #include <stdlib.h>
 
 typedef struct sCELL {
-   int info;
+   float info;
    struct sCELL *next;
 } CELL;
 
 CELL* getNode() {
-   return (CELL*) malloc(sizeof(CELL));
-};
-
-void init(CELL **list) {
-   *list = NULL;
+   return (CELL *) malloc(sizeof(CELL));
 }
 
-int isEmpty(CELL *list) {
-   return list == NULL ? 1 : 0;
+void init(CELL **stack) {
+   *stack = NULL;
 }
 
 void freeNode(CELL *cell) {
    free(cell);
 }
 
-void insert_end(CELL **list, int x) {
+int isEmpty(CELL *stack) {
+   return stack == NULL ? 1 : 0;
+}
+
+void push(CELL **stack, float x) {
    CELL *q = getNode();
 
-   if(q == NULL) {
-      printf("\nErro na alocacao de no.\n");
+   if(!q) {
+      printf("\nERRO: Nao foi possivel alocar o no.\n");
       exit(1);
    }
+
    q->info = x;
-
-   if(isEmpty(*list)) {
-      q->next = q;
-   } else {
-      q->next = (*list)->next;
-      (*list)->next = q;
-   }
-   *list = q;
+   q->next = *stack;
+   *stack = q;
 }
 
-void insert_start(CELL **list, int x) {
-   CELL *q = getNode();
+void pop(CELL **stack) {
+   CELL *aux = *stack;
 
-   if(q == NULL) {
-      printf("\nErro na alocacao de no.\n");
-      exit(1);
-   }
-   q->info = x;
-   
-   if(isEmpty(*list)) {
-      q->next = q;
-   } else {
-      CELL *aux = (*list)->next;
-      q->next = aux;
-      (*list)->next = q;
-   }
+   *stack = (*stack)->next;
+   freeNode(aux);
 }
 
-void remove_start(CELL **list) {
-   CELL *aux;
-
-   if(isEmpty(*list)) {
-      printf("\nErro: Lista vazia.\n");
-      exit(1);  
-   }
-
-   if((*list) == (*list)->next) {
-      freeNode(*list);
-      *list = NULL;
-   } else {
-      aux = (*list)->next;
-      (*list)->next = aux->next;
-      freeNode(aux);
-   }
+float stackTop(CELL *stack) {
+   return stack->info;
 }
 
-void remove_end(CELL **list) {
-   CELL *aux;
+void print(CELL *stack) {
+   CELL *aux = stack;
 
-   if(isEmpty(*list)) {
-      printf("\nErro: Lista vazia.\n");
-      exit(1);  
-   }
-
-   if((*list) == (*list)->next) {
-      freeNode(*list);
-      *list = NULL;
-   } else {
-      aux = *list;
-      
-      while(aux->next != *list) {
-         aux = aux->next;
-      }
-
-      aux->next = (*list)->next;
-      free(*list);
-      *list = aux;
-   }
-}
-
-void print(CELL *list) {
-   CELL *aux = list->next;
-
-   if(aux == NULL) {
-      printf("\nNao ha elemento na lista.");
+   if(isEmpty(stack)) {
+      printf("\nPilha Vazia.\n");
       return;
    }
 
-   do {
-      printf("%d\t", aux->info);
+   printf("\n");
+   while(aux != NULL) {
+      printf("%.02f\t", aux->info);
       aux = aux->next;
-   } while(aux != list->next);
+   }
    printf("\n");
 }
 
 int main() {
-   printf("Lista Simplesmente Encadeada Circular - Leandro Ribeiro de Souza \n\n");
+   printf("Pilha Dinamica - Leandro Ribeiro de Souza \n\n");
+   
+   CELL *stack;
+   init(&stack);
 
-   CELL *list;
-   init(&list);
+   push(&stack, 1);
+   push(&stack, 2);
+   push(&stack, 3);
+   push(&stack, 4);
+   push(&stack, 5);
 
-   insert_end(&list, 1);
-   insert_end(&list, 3);
-   insert_end(&list, 5);
-   insert_end(&list, 7);
-   insert_end(&list, 9);
-   print(list);
+   print(stack);
 
-   remove_start(&list);
-   remove_start(&list);
-   print(list);
+   pop(&stack);
+   pop(&stack);
+   pop(&stack);
 
-   insert_start(&list, 3);
-   insert_start(&list, 1);
-   print(list);
+   print(stack);
+   printf("\nElemento no topo: %0.2f.\n", stackTop(stack));
 
-   remove_end(&list);
-   remove_end(&list);
-   print(list);
+   push(&stack, 6);
+   push(&stack, 7);
+
+   print(stack);
+
    return 0;
 }
