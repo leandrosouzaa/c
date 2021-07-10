@@ -55,8 +55,8 @@ void print(CELL *list) {
    int i = 1;
 
    if(isEmpty(list)) {
-      printf("\nTodos os processos filhos foram encerrados. Chegou a vez do pai.\n");
-      exit(0);
+      // printf("\nTodos os processos filhos foram encerrados. Chegou a vez do pai.\n");
+      // exit(0);
    }
 
    printf("\n");
@@ -120,12 +120,11 @@ int main() {
    for(int i = 0; i < quantidade; i++) {
       cPid = fork();
       if(cPid == 0) {
-         pause();
+         while(1);
       } else {
          insert(&list, cPid);
       }
    }
-
    cPid = fork();
 
    if(fork != 0) {
@@ -152,5 +151,7 @@ int main() {
          getchar();
       }  
    }
+
+   printf("aaaaaa");
    return 0;
 }
