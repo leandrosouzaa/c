@@ -55,8 +55,8 @@ void print(CELL *list) {
    int i = 1;
 
    if(isEmpty(list)) {
-      // printf("\nTodos os processos filhos foram encerrados. Chegou a vez do pai.\n");
-      // exit(0);
+      printf("\nTodos os processos filhos foram encerrados. Chegou a vez do pai.\n");
+      exit(0);
    }
 
    printf("\n");
@@ -152,6 +152,5 @@ int main() {
       }  
    }
 
-   printf("aaaaaa");
    return 0;
 }
