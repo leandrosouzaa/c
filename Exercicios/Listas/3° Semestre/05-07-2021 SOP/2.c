@@ -55,8 +55,7 @@ void print(CELL *list) {
    int i = 1;
 
    if(isEmpty(list)) {
-      printf("\nTodos os processos filhos foram encerrados. Chegou a vez do pai.\n");
-      exit(0);
+      printf("\nLista Vazia.\n");
    }
 
    printf("\n");
@@ -125,32 +124,29 @@ int main() {
          insert(&list, cPid);
       }
    }
-   cPid = fork();
 
-   if(fork != 0) {
-      killProcess(cPid);
+   while(!isEmpty(list)) {
+      system("clear");
 
-      while(wait(0) != -1) {
-         system("clear");
+      printf("Processo pai: %d.\n\n", getpid());
+      printf("Lista de Processos Filhos em execucao: ");
+         
+      print(list);
+      
+      printf("Digite um PID para matar: ");
+      scanf("%d", &temp);
+      
+      if(temp == getpid()) {
+         printf("Nao e possivel finalizar o processo pai. Pressione Enter para continuar.");
+      } else {
+         removePosition(&list, temp);
+      }
+      
+      setbuf(stdin, NULL);
+      getchar();
+   }  
 
-         printf("Processo pai: %d.\n\n", getpid());
-         printf("Lista de Processos Filhos em execucao: ");
-         
-         print(list);
-         
-         printf("Digite um PID para matar: ");
-         scanf("%d", &temp);
-         
-         if(temp == getpid()) {
-            printf("Nao e possivel finalizar o processo pai. Pressione Enter para continuar.");
-         } else {
-            removePosition(&list, temp);
-         }
-         
-         setbuf(stdin, NULL);
-         getchar();
-      }  
-   }
+   printf("\nTodos os processos filhos foram encerrados. Chegou a vez do pai.\n");
 
    return 0;
 }

@@ -6,7 +6,7 @@
 int main() {
    printf("Criacao de Processos - Leandro Ribeiro de Souza \n\n");
 
-   int quantidade, tempo;
+   int quantidade, tempo, w;
 
    printf("Informe o numero de processos que deseja criar: ");
    scanf("%d", &quantidade);
@@ -18,14 +18,18 @@ int main() {
       if(fork() == 0) {
          printf("[%d] - Processo numero %d iniciado.\n", getpid(), i+1);
          sleep(tempo);
-         printf("[%d] - Processo numero %d finalizado.\n", getpid(), i+1);
          exit(0);
       }
    }
 
-   wait(0);
+   w = wait(0);
 
-   printf("\nTodos processos finalizados.\n");
+   while(w != -1) {
+      printf("[%d] - Processo finalizado.\n", w);
+      w = wait(0);
+   }
+
+   printf("[%d] - Processo pai finalizado.\n", getpid());
 
    return 0;
 }
