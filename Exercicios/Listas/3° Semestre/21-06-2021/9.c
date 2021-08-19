@@ -36,6 +36,7 @@ void insert(QUEUE *queue, float x) {
       exit(1);
    }
    q->info = x;
+   q->next = NULL;
 
    if(isEmpty(*queue)) {
       q->next = NULL;

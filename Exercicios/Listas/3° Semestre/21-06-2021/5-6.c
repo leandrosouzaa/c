@@ -104,6 +104,30 @@ void print(CELL *stack) {
 }
 
 
+void print_2(CELL **stack) {
+   CELL *aux;
+   float temp;
+
+   init(&aux);
+
+   if(isEmpty(*stack)) {
+      printf("\nPilha Vazia.\n");
+      return;
+   }
+
+   printf("\n");
+   while(!isEmpty(*stack)) {
+      temp = pop(stack);
+      push(&aux, temp);
+      printf("%.02f\t", temp);
+   }
+
+   while(!isEmpty(aux))
+      push(stack, pop(&aux));
+   
+   printf("\n");
+}
+
 int main() {
    printf("Inversao de Pilha - Leandro Ribeiro de Souza\n\n");
    CELL *stack;
@@ -120,6 +144,7 @@ int main() {
    print(stack);
    topToBase(&stack);
    print(stack);
+   print_2(&stack);
 
 
    return 0;

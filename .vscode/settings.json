@@ -8,6 +8,7 @@
         "2.C": "cpp",
         "cmath": "c",
         "stdio.h": "c",
-        "unistd.h": "c"
+        "unistd.h": "c",
+        "1.C": "cpp"
     }
 }

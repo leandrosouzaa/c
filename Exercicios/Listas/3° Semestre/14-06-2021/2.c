@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 typedef struct sCELL {
-   char info;
+   ASTRO info;
    struct sCELL *next;
 } CELL;
 
@@ -19,7 +19,7 @@ int isEmpty(CELL **list) {
 }
 
 
-void insert(CELL **list, char value) {
+void insert(CELL **list, ASTRO value) {
    CELL *atual = *list;
    CELL *anterior = NULL;
    CELL *q = getNode();
@@ -28,7 +28,7 @@ void insert(CELL **list, char value) {
       q->info = value;
       q->next = NULL;
 
-      while(atual != NULL && atual->info > value) {
+      while(atual != NULL && (atual->info).dim > value.dim) {
          anterior = atual;
          atual = atual->next;
       }
