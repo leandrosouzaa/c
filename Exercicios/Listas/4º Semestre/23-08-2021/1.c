@@ -102,9 +102,60 @@ int calcula_profundidade(No *raiz) {
    }
 }
 
+No*remover(No **raiz, int k) {
+   if(*raiz == NULL)
+      return NULL;
+   else if ((*raiz)->info > k) 
+      remover(&(*raiz)->esq, k);
+   else if ((*raiz)->info < k)
+      remover(&(*raiz)->esq, k);
+   else {
+      if(!(*raiz)->esq && !(*raiz)->dir) {
+         free(*raiz);
+         *raiz = NULL;
+      } else if (!(*raiz)->esq){
+         No *temp = *raiz;
+         *raiz = (*raiz)->dir;
+         free(temp);
+      } else if (!(*raiz)->dir){
+         No *temp = *raiz;
+         *raiz = (*raiz)->esq;
+         free(temp);
+      } else {
+         No *pai = *raiz;
+         No *f = (*raiz)->esq;
+         while(f->dir != NULL) {
+            pai = f;
+            f = f->dir;
+         }
+
+         (*raiz)->info = f->info;
+         f->info = k;
+         (*raiz)->esq = remover(&(*raiz)->esq, k);
+      }
+   }
+   return *raiz;
+}
+
+No* pesquisa(int valor, No *raiz) {
+   if(raiz->info == valor) {
+      return raiz;   
+   }
+
+   if(raiz->info > valor) {
+      pesquisa(valor, raiz->esq);
+   } else {
+      pesquisa(valor, raiz->dir);
+   }
+
+   return NULL;
+}
+
 int main() {
    No *raiz;
    inicializa(&raiz);
+
+   No *busca;
 
    int temp, num;
 
@@ -120,6 +171,8 @@ int main() {
       printf("2 - Apresentar Pre Ordem\n");
       printf("3 - Apresentar em Ordem\n");
       printf("4 - Apresentar Pos Ordem\n");
+      printf("5 - Buscar\n");
+      printf("6 - Remover\n");
 
       printf("\n0 - Sair\n");
 
@@ -152,6 +205,21 @@ int main() {
             printf("\nPos Ordem: ");
             pos_ordem(raiz);
             getchar();
+            break;
+
+         case 5:
+            printf("Informe um valor para buscar: ");
+            scanf("%d", &num);
+            busca = pesquisa(num, raiz);
+            if(busca) {
+               printf("O valor %d esta presente no endereco %x.\n", busca->info, busca);
+            }
+            break;
+
+         case 6:
+            printf("Informe um valor para excluir: ");
+            scanf("%d", &num);
+            remover(&raiz, num);
             break;
 
          case 0:
