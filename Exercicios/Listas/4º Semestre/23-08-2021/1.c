@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#define COUNT 10
 
 typedef struct sNo {
    int info;
@@ -33,7 +34,7 @@ void insere(No **raiz, int valor) {
       celula->info = valor;
       *raiz = celula ;
    } else {
-      if((*raiz)->info > valor) {
+      if((*raiz)->info < valor) {
          insere(&(*raiz)->esq, valor);
       } else {
          insere(&(*raiz)->dir, valor);
@@ -151,6 +152,32 @@ No* pesquisa(int valor, No *raiz) {
    return NULL;
 }
 
+void print2DUtil(No *root, int space) {
+    // Base case
+    if (root == NULL)
+        return;
+ 
+    // Increase distance between levels
+    space += COUNT;
+ 
+    // Process right child first
+    print2DUtil(root->dir, space);
+ 
+    // Print current node after space
+    // count
+    printf("\n");
+    for (int i = COUNT; i < space; i++)
+        printf(" ");
+    printf("%d\n", root->info);
+ 
+    // Process left child
+    print2DUtil(root->esq, space);
+}
+ 
+void print2D(No *root) {
+   print2DUtil(root, 0);
+}
+
 int main() {
    No *raiz;
    inicializa(&raiz);
@@ -173,6 +200,7 @@ int main() {
       printf("4 - Apresentar Pos Ordem\n");
       printf("5 - Buscar\n");
       printf("6 - Remover\n");
+      printf("7 - Desenhar\n");
 
       printf("\n0 - Sair\n");
 
@@ -220,6 +248,10 @@ int main() {
             printf("Informe um valor para excluir: ");
             scanf("%d", &num);
             remover(&raiz, num);
+            break;
+
+         case 7:
+            print2D(raiz);
             break;
 
          case 0:
