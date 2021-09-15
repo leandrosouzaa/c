@@ -88,7 +88,7 @@ No* remover(No  *raiz, char nome[50]) {
     if (strcmp(nome, raiz->info.nome) < 0)
         raiz->esq = remover(raiz->esq, nome);
  
-    else if (strcmp(nome, raiz->info.nome) < 0)
+    else if (strcmp(nome, raiz->info.nome) > 0)
         raiz->dir = remover(raiz->dir, nome);
  
     else {
@@ -118,7 +118,10 @@ No* faxina(No *raiz, int data) {
    }
 
    if(raiz->info.ultimoAcesso <= data) {
+      printf("Removendo o No %s...",raiz->info.nome);
       raiz = remover(raiz, (raiz)->info.nome);
+      printf("Removido com sucesso.\n");
+
    }
 
    raiz = faxina(raiz->esq, data);
@@ -154,7 +157,7 @@ int main() {
    em_ordem(arvore);
 
    printf("Remocao de todos os filmes apos o dia 5.\n");
-   arvore = faxina(arvore, 5);
+   arvore = faxina(arvore, 2);
 
    printf("Filmes em Ordem Alfabetica: \n");
    em_ordem(arvore);
