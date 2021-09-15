@@ -72,57 +72,59 @@ void em_ordem(No *raiz) {
    }
 }
 
-
-void remover(No **raiz, Arquivo arquivo) {
-   if(*raiz == NULL)
-      return;
-   else if (strcmp(arquivo.nome, (*raiz)->info.nome) < 0)
-      remover(&(*raiz)->esq, arquivo);
-   else if (strcmp(arquivo.nome, (*raiz)->info.nome) > 0)
-      remover(&(*raiz)->esq, arquivo);
-   else {
-      if((*raiz)->esq == NULL && (*raiz)->dir == NULL) {
-         free(*raiz);
-         *raiz = NULL;
-         printf("EXCLUIDO COM SUCESSO 1: %s.\n\n", arquivo.nome);
-
-      } else if ((*raiz)->esq == NULL){
-         No *temp = *raiz;
-         *raiz = (*raiz)->dir;
-         free(temp);
-         printf("EXCLUIDO COM SUCESSO 2: %s.\n\n", arquivo.nome);
-      } else if ((*raiz)->dir == NULL){
-         No *temp = *raiz;
-         *raiz = (*raiz)->esq;
-         free(temp);
-         printf("EXCLUIDO COM SUCESSO 3: %s.\n\n", arquivo.nome);
-      } else {
-         printf("deslocou");
-         No *pai = *raiz;
-         No *f = (*raiz)->esq;
-         while(f->dir != NULL) {
-            pai = f;
-            f = f->dir;
-         }
-         (*raiz)->info = f->info;
-         f->info = arquivo;
-         remover(&(*raiz)->esq, arquivo);
-      }
-   }
+No* minValueNode(No *node) {
+    No *atual = node;
+ 
+    while (atual && atual->esq != NULL)
+        atual = atual->dir;
+ 
+    return atual;
 }
 
-void faxina(No **raiz, int data) {
-   if(*raiz == NULL) {
-      return;
+No* remover(No  *raiz, char nome[50]) {
+    if (raiz == NULL)
+        return raiz;
+ 
+    if (strcmp(nome, raiz->info.nome) < 0)
+        raiz->esq = remover(raiz->esq, nome);
+ 
+    else if (strcmp(nome, raiz->info.nome) < 0)
+        raiz->dir = remover(raiz->dir, nome);
+ 
+    else {
+        if (raiz->esq == NULL) {
+            No *temp = raiz->dir;
+            free(raiz);
+            return temp;
+        }
+        else if (raiz->dir == NULL) {
+            No *temp = raiz->esq;
+            free(raiz);
+            return temp;
+        }
+ 
+        No *temp = minValueNode(raiz->dir);
+ 
+        raiz->info = temp->info;
+ 
+        raiz->dir = remover(raiz->dir, temp->info.nome);
+    }
+    return raiz;
+}
+
+No* faxina(No *raiz, int data) {
+   if(raiz == NULL) {
+      return NULL;
    }
 
-   if((*raiz)->info.ultimoAcesso <= data) {
-      printf("O ARQUIVO %s FOI ENVIADO PARA EXCLUSAO.\n", (*raiz)->info.nome);
-      remover(raiz, (*raiz)->info);
+   if(raiz->info.ultimoAcesso <= data) {
+      raiz = remover(raiz, (raiz)->info.nome);
    }
 
-   faxina(&(*raiz)->esq, data);
-   faxina(&(*raiz)->dir, data);
+   raiz = faxina(raiz->esq, data);
+   raiz = faxina(raiz->dir, data);
+
+   return raiz;
 }
 
 Arquivo criarArquivo(char nome[50], int ultimoAcesso) {
@@ -152,7 +154,7 @@ int main() {
    em_ordem(arvore);
 
    printf("Remocao de todos os filmes apos o dia 5.\n");
-   faxina(&arvore, 5);
+   arvore = faxina(arvore, 5);
 
    printf("Filmes em Ordem Alfabetica: \n");
    em_ordem(arvore);
