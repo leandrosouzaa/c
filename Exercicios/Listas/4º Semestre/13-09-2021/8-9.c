@@ -130,16 +130,30 @@ int balanceada(No* raiz) {
     return 0;
 }
 
-int qtdAncestrais(No *raiz, int valor) {
+int nivel(No* raiz, int valor) {
    if(raiz == NULL || raiz->info == valor) {
       return 0;
    }
 
    if(raiz->info > valor) {
-      return qtdAncestrais(raiz->esq, valor) + 1;
+      return nivel(raiz->esq, valor) + 1;
    } else {
-      return qtdAncestrais(raiz->dir, valor) + 1;
+      return nivel(raiz->dir, valor) + 1;
    }
+}
+
+int qtdAncestrais(No *raiz, int valor, int k) {
+   if(k < 0 || raiz == NULL) {
+      return -1;
+   }
+
+   int nivelValor = nivel(raiz, valor);
+
+   if(nivelValor == calcula_profundidade(raiz) || k > nivelValor) {
+      return -1;
+   }
+
+   return nivelValor - k + 1;
 }
 
 No* minValueNode(No *node) {
@@ -222,7 +236,7 @@ int main() {
 
    No *busca;
 
-   int temp, num;
+   int temp, num, k;
 
    do {
       printf("\nArvore Binaria - Leandro Ribeiro de Souza \n\n");
@@ -297,8 +311,12 @@ int main() {
          case 8:
             printf("Informe um valor para contar: ");
             scanf("%d", &num);
-            printf("Quantidade de nos ancestrais: %d.\n", qtdAncestrais(raiz, num));
-            printf("Se quantidade de nos ancestrais for igual a altura, o no com o numero desejado nao existe (Altura = %d).\n", calcula_profundidade(raiz));
+            printf("Informe um valor para contar: ");
+            scanf("%d", &k);
+
+            printf("Informe um nivel para buscar: ");
+            printf("Quantidade de nos ancestrais: %d.\n", qtdAncestrais(raiz, num, k));
+            printf("Se quantidade de nos ancestrais for igual a -1, nao eh opssivel realizar a operacao.\n");
 
             break;
 
