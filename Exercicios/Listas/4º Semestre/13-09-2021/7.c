@@ -55,6 +55,25 @@ void insere(No **raiz, Arquivo valor) {
    }
 };
 
+No* pesquisa_data(No *raiz,int data) {
+   if(raiz == NULL) {
+      return NULL;
+   }
+
+   if(raiz->info.ultimoAcesso < data) {
+      return raiz;
+   }
+
+   if(raiz->esq) {
+      return pesquisa_data(raiz->esq, data);
+   }
+   if(raiz->dir) {
+      return pesquisa_data(raiz->dir, data);
+   }
+
+   return NULL;
+};
+
 void pre_ordem(No *raiz) {
    if(raiz != NULL) {
       acessa(raiz);
@@ -116,15 +135,22 @@ No* remover(No  *raiz, char nome[50]) {
    return raiz;
 }
 
-void faxina(No **raiz, int data) {
+void faxina_recursiva(No **raiz, int data) {
    if(*raiz == NULL) return;
    
    if((*raiz)->info.ultimoAcesso < data) {
       *raiz = remover(*raiz, (*raiz)->info.nome);
    }
    
-   faxina(&(*raiz)->esq, data);
-   faxina(&(*raiz)->dir, data);
+   faxina_recursiva(&(*raiz)->esq, data);
+   faxina_recursiva(&(*raiz)->dir, data);
+}
+
+void faxina(No **raiz, int data) {
+   No *noParaExcluir = NULL;
+   while((noParaExcluir = pesquisa_data(*raiz, data)) != NULL) {
+      *raiz = remover(*raiz, noParaExcluir->info.nome);
+   }
 }
 
 Arquivo criarArquivo(char nome[50], int ultimoAcesso) {
@@ -143,6 +169,7 @@ int main() {
    inicializa(&arvore);
 
    insere(&arvore, criarArquivo("Apresentacao.ppt", 1));
+   insere(&arvore, criarArquivo("Projeto.doc", 2));
    insere(&arvore, criarArquivo("TCC.doc", 10));
    insere(&arvore, criarArquivo("TCC-OFICIAL.doc", 1));
    insere(&arvore, criarArquivo("Roteiro Bee-Movie.rar", 13));
@@ -157,7 +184,8 @@ int main() {
       printf("2 - Imprimir Arquivos Em Ordem.\n");
       printf("3 - Imprimir em Pos Ordem\n");
       printf("4 - Apresentar Pre Ordem\n");
-      printf("5 - Limpar\n");
+      printf("5 - Limpar (Recursao com Problema)\n");
+      printf("6 - Limpar (While com Pesquisa)\n");
 
       printf("\n0 - Sair\n");
 
@@ -195,6 +223,13 @@ int main() {
             break;
 
          case 5:
+            printf("Informe uma data para limpar: ");
+            scanf("%d", &num);
+            faxina_recursiva(&arvore, num);
+            printf("Faxina realizada com sucesso.\n");
+            break;
+
+         case 6:
             printf("Informe uma data para limpar: ");
             scanf("%d", &num);
             faxina(&arvore, num);
